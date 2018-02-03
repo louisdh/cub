@@ -562,7 +562,7 @@ public class BytecodeInterpreter {
 			
 			var arguments = [String: ValueType]()
 			
-			for argName in argumentNames {
+			for argName in argumentNames.reversed() {
 				let arg = try stack.pop()
 				arguments[argName] = arg
 			}
