@@ -25,6 +25,42 @@ class ViewController: NSViewController, RunnerDelegate {
 			
 			return ValueType.number(5)
 		}
+		
+		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments) in
+			
+			var arguments = arguments
+			
+			guard let input = arguments.removeValue(forKey: "input") else {
+				return .string("")
+			}
+			
+			guard case let .string(inputStr) = input else {
+				return .string("")
+			}
+			
+			var otherValues = arguments.values
+			
+			var varArgs = [CVarArg]()
+			
+			for value in otherValues {
+				
+				switch value {
+				case .bool(let b):
+					break
+				case .number(let n):
+					varArgs.append(n)
+				case .string(let str):
+					varArgs.append(str)
+				case .struct:
+					break
+				}
+				
+			}
+			
+			let output = String(format: inputStr, arguments: varArgs)
+
+			return .string(output)
+		}
 
 		guard let path = stringPath(for: "A") else {
 			return
