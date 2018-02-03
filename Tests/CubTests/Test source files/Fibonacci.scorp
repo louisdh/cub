@@ -16,11 +16,11 @@
 	17: push_const vnumber(1.0)
 	18: goto i3                   ; return
 	20: reg_load i1               ; n
-	21: push_const vnumber(1.0)
+	21: push_const vnumber(2.0)
 	22: sub                       ; -
 	23: invoke_virt i1            ; fibonacci
 	24: reg_load i1               ; n
-	25: push_const vnumber(2.0)
+	25: push_const vnumber(1.0)
 	26: sub                       ; -
 	27: invoke_virt i1            ; fibonacci
 	28: add                       ; +
