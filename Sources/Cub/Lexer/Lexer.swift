@@ -63,7 +63,7 @@ public class Lexer {
 
 	lazy var invalidIdentifierCharSet: CharacterSet = {
 
-		var chars = "-."
+		var chars = "-. "
 
 		Lexer.reservedOneCharIdentifiers.forEach {
 			chars.append($0)
@@ -273,7 +273,7 @@ public class Lexer {
 					continue
 				}
 
-				if (removedControlChar || (isStringValidKeyword(currentString) && !isStringValidKeyword(nextString))) && !currentString.isEmpty {
+				if (removedControlChar || (isStringValidKeyword(currentString) && !isStringValidKeyword(nextString) && !isStringValidIdentifier(nextString))) && !currentString.isEmpty {
 
 					if tokenizeKeyword() {
 						continue
