@@ -63,7 +63,7 @@ public struct BinaryOpNode: ASTNode {
 
 		var bytecode = BytecodeBody()
 
-		if op == ">" || op == ">=" {
+		if op == ">" || op == ">=" || op == "+" {
 
 			// flip l and r
 

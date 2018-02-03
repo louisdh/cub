@@ -13,6 +13,7 @@ public enum ValueType: Equatable {
 	case number(NumberType)
 	case `struct`([Int : ValueType])
 	case bool(Bool)
+	case string(String)
 
 }
 
@@ -51,6 +52,10 @@ public extension ValueType {
 			} else {
 				return "false"
 			}
+		
+		case let .string(val):
+			return val
+		
 		}
 
 	}
@@ -68,6 +73,10 @@ public func ==(lhs: ValueType, rhs: ValueType) -> Bool {
 	}
 
 	if case let ValueType.bool(l) = lhs, case let ValueType.bool(r) = rhs {
+		return l == r
+	}
+	
+	if case let ValueType.string(l) = lhs, case let ValueType.string(r) = rhs {
 		return l == r
 	}
 

@@ -272,10 +272,25 @@ public class BytecodeInterpreter {
 
 	private func executeAdd(pc: Int) throws -> Int {
 
-		let lhs = try popNumber()
-		let rhs = try popNumber()
+		let lhs = try stack.pop()
+		let rhs = try stack.pop()
 
-		try stack.push(.number(lhs + rhs))
+		switch (lhs, rhs) {
+		case let (.number(n1), .number(n2)):
+			try stack.push(.number(n1 + n2))
+			
+		case let (.number(n1), .string(n2)):
+			try stack.push(.string("\(n1)\(n2)"))
+			
+		case let (.string(n1), .number(n2)):
+			try stack.push(.string("\(n1)\(n2)"))
+			
+		case let (.string(n1), .string(n2)):
+			try stack.push(.string("\(n1)\(n2)"))
+
+		default:
+			throw error(.unexpectedArgument)
+		}
 
 		return pc + 1
 	}

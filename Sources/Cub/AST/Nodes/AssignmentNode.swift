@@ -19,7 +19,7 @@ public struct AssignmentNode: ASTNode {
 
 	public init(variable: ASTNode, value: ASTNode) throws {
 
-		guard value is NumberNode || value is VariableNode || value is StructMemberNode || value is CallNode || value is BinaryOpNode else {
+		guard value is NumberNode || value is VariableNode || value is StructMemberNode || value is CallNode || value is BinaryOpNode || value is StringNode else {
 			throw AssignmentNodeValidationError(invalidValueType: value.description)
 		}
 

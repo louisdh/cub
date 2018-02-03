@@ -92,6 +92,7 @@ public class Lexer {
 	private var isInBlockComment = false
 	private var isInIdentifier = false
 	private var isInNumber = false
+	private var isInString = false
 
 	private var charIndex = 0
 
@@ -166,6 +167,11 @@ public class Lexer {
 			
 			if !isInNumber {
 				
+				if !isInString && currentString == "\"" {
+					isInString = true
+					continue
+				}
+				
 				if !isInLineComment && currentString == "//" {
 					isInLineComment = true
 					continue
@@ -190,9 +196,16 @@ public class Lexer {
 					continue
 				}
 				
+				if currentString.isEmpty && !isInString && (!isInLineComment && content.hasPrefix("\"")) {
+					
+					isInString = true
+					consumeCharactersAtStart(1, updateCurrentString: false)
+					continue
+				}
+				
 			}
 
-			if !isInBlockComment && !isInLineComment {
+			if !isInBlockComment && !isInLineComment && !isInString {
 				
 				if isInNumber {
 
@@ -279,6 +292,13 @@ public class Lexer {
 
 			}
 			
+			if !isInString && nextString == "\"" {
+				
+				isInString = true
+				consumeCharactersAtStart(1, updateCurrentString: false)
+				continue
+			}
+			
 			if !isInLineComment && nextString == "//" {
 				
 				isInLineComment = true
@@ -293,6 +313,14 @@ public class Lexer {
 				continue
 			}
 
+			if isInString && content.hasPrefix("\"") {
+				
+				consumeCharactersAtStart(1, updateCurrentString: false)
+				isInString = false
+				addToken(type: .string(currentString))
+				continue
+			}
+			
 			if isInBlockComment && content.hasPrefix("*/") {
 
 				consumeCharactersAtStart(2)
@@ -363,9 +391,11 @@ public class Lexer {
 
 	func removeControlChar() -> Bool {
 
+		let updateCurrentString = isInString
+		
 		if content.hasPrefix(" ") {
 		
-			consumeCharactersAtStart(1, updateCurrentString: false)
+			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
 		
@@ -378,13 +408,13 @@ public class Lexer {
 				
 			}
 			
-			consumeCharactersAtStart(1, updateCurrentString: false)
+			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
 		
 		if content.hasPrefix("\t") {
 			
-			consumeCharactersAtStart(1, updateCurrentString: false)
+			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
 		
@@ -472,9 +502,9 @@ public class Lexer {
 
 		if updateCurrentString {
 			currentString += content[..<index]
+			currentStringLength += n
 		}
 		
-		currentStringLength += n
 		charIndex += n
 		content.removeCharacters(to: index)
 

@@ -1,2 +1,4 @@
 
-a = print(2)
+a = 2 * 2
+
+b = "hello " + a + " world"

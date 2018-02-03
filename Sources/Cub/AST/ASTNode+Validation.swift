@@ -25,7 +25,7 @@ extension ASTNode {
 
 	var isValidBinaryOpNode: Bool {
 
-		if self is BinaryOpNode || self is NumberNode || self is VariableNode || self is InternalVariableNode || self is BooleanNode || self is CallNode || self is StructMemberNode {
+		if self is BinaryOpNode || self is NumberNode || self is VariableNode || self is InternalVariableNode || self is BooleanNode || self is CallNode || self is StructMemberNode || self is StringNode {
 			return true
 		}
 

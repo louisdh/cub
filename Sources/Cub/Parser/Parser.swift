@@ -348,7 +348,20 @@ public class Parser {
 
 		return NumberNode(value: value)
 	}
-
+	
+	private func parseString() throws -> StringNode {
+		
+		guard let currentToken = popCurrentToken() else {
+			throw error(.unexpectedToken)
+		}
+		
+		guard case let .string(value) = currentToken.type else {
+			throw error(.unexpectedToken)
+		}
+		
+		return StringNode(value: value)
+	}
+	
 	/// Expression can be a binary/bool op, member
 	private func parseExpression() throws -> ASTNode {
 
@@ -552,6 +565,9 @@ public class Parser {
 
 			case .number:
 				return try parseNumber()
+			
+			case .string:
+				return try parseString()
 
 			case .true, .false:
 				return try parseRawBoolean()
