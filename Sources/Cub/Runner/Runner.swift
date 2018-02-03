@@ -9,6 +9,8 @@
 import Foundation
 import CoreFoundation
 
+public typealias ExternalFunc = ([String: ValueType]) -> ValueType?
+
 precedencegroup Pipe {
 	associativity: left
 	higherThan: AdditionPrecedence
@@ -46,7 +48,18 @@ public class Runner {
 		self.logTime = logTime
 		compiler = BytecodeCompiler()
 	}
+	
+	var externalFunctions = [Int: ([String], ExternalFunc)]()
+	
+	public func registerExternalFunction(name: String, argumentNames: [String], returns: Bool, callback: @escaping ExternalFunc) {
 
+		let prototype = FunctionPrototypeNode(name: name, argumentNames: argumentNames, returns: returns)
+		let node = FunctionNode(prototype: prototype, body: BodyNode(nodes: []))
+		let id = compiler.getFunctionId(for: node)
+		
+		externalFunctions[id] = (argumentNames, callback)
+	}
+	
 	public func runSource(at path: String, get varName: String, useStdLib: Bool = true) throws -> ValueType {
 
 		let source = try String(contentsOfFile: path, encoding: .utf8)
@@ -349,6 +362,10 @@ public class Runner {
 
 			let interpreter = try BytecodeInterpreter(bytecode: executionBytecode)
 
+			for (id, callback) in externalFunctions {
+				interpreter.registerExternalFunction(id: id, callback: callback)
+			}
+			
 			self.interpreter = interpreter
 
 			try interpreter.interpret()

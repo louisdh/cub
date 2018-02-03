@@ -14,8 +14,17 @@ class ViewController: NSViewController, RunnerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let runner = Runner(logDebug: true, logTime: true)
+		let runner = Runner(logDebug: true, logTime: false)
 		runner.delegate = self
+		
+		runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments) in
+			
+			for (name, arg) in arguments {
+				print(arg)
+			}
+			
+			return ValueType.number(5)
+		}
 
 		guard let path = stringPath(for: "A") else {
 			return

@@ -105,20 +105,41 @@ public class BytecodeInterpreter {
 		}
 
 	}
+	
+	var externalFunctions = [Int: ([String], ExternalFunc)]()
+	
+	public func registerExternalFunction(id: Int, callback: ([String], ExternalFunc)) {
 
-	private var pcStart: Int {
-		return 0
+		externalFunctions[id] = callback
 	}
 
+	var pc = 0
+
+	var isPaused = false
+	
+	func pause() {
+		
+		isPaused = true
+		
+	}
+	
+	func resume() throws {
+		
+		isPaused = false
+		try interpret()
+		
+	}
+	
 	/// Interpret the bytecode passed in the initializer
 	///
 	/// - Throws: InterpreterError
 	public func interpret() throws {
 
-		// Program counter
-		var pc = pcStart
-
 		while pc < bytecode.count {
+			
+			if isPaused {
+				return
+			}
 
 			pcTrace.append(pc)
 			pc = try executeInstruction(bytecode[pc], pc: pc)
@@ -517,11 +538,27 @@ public class BytecodeInterpreter {
 		guard let id = instruction.arguments.first else {
 			throw error(.unexpectedArgument)
 		}
-
+		
 		guard case let .index(i) = id else {
 			throw error(.unexpectedArgument)
 		}
 
+		if let (argumentNames, externalCallback) = externalFunctions[i] {
+			
+			var arguments = [String: ValueType]()
+			
+			for argName in argumentNames {
+				let arg = try stack.pop()
+				arguments[argName] = arg
+			}
+			
+			if let result = externalCallback(arguments) {
+				try stack.push(result)
+			}
+			
+			return pc + 1
+		}
+		
 		guard let idPc = virtualMap[i] else {
 			throw error(.unexpectedArgument)
 		}
