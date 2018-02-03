@@ -1,0 +1,12 @@
+//
+//  Floor.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 03/06/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = floor(2)
+b = floor(-2)
+c = floor(0.5)
+d = floor(-2.9)

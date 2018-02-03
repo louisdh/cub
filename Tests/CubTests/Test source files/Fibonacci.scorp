@@ -1,0 +1,37 @@
+1: virt_h i1                  ; fibonacci(n)
+	2: skip_past i4               ; skip exit instruction
+	3: invoke_virt i2             ; cleanup_fibonacci()
+	4: exit_virt                  ; exit function
+	5: reg_store i1               ; n
+	6: reg_load i1                ; n
+	7: push_const vnumber(0.0)
+	8: eq                         ; ==
+	9: if_false i13
+	10: push_const vnumber(0.0)
+	11: goto i3                   ; return
+	13: reg_load i1               ; n
+	14: push_const vnumber(1.0)
+	15: eq                        ; ==
+	16: if_false i20
+	17: push_const vnumber(1.0)
+	18: goto i3                   ; return
+	20: reg_load i1               ; n
+	21: push_const vnumber(1.0)
+	22: sub                       ; -
+	23: invoke_virt i1            ; fibonacci
+	24: reg_load i1               ; n
+	25: push_const vnumber(2.0)
+	26: sub                       ; -
+	27: invoke_virt i1            ; fibonacci
+	28: add                       ; +
+	29: goto i3                   ; return
+
+	30: pvirt_h i2                ; cleanup_fibonacci
+		31: reg_clear i1              ; cleanup n
+	32: pvirt_e
+
+33: virt_e
+
+34: push_const vnumber(10.0)
+35: invoke_virt i1            ; fibonacci
+36: reg_store i2              ; a

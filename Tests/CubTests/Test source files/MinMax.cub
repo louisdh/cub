@@ -1,0 +1,19 @@
+//
+//  MinMax.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 03/06/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = min(10, 12)
+b = min(12, 10)
+c = min(10, 10)
+d = min(-10, 10)
+e = min(10, -10)
+
+f = max(10, 12)
+g = max(12, 10)
+h = max(10, 10)
+i = max(-10, 10)
+j = max(10, -10)

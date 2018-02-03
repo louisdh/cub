@@ -1,0 +1,15 @@
+//
+//  FunctionReturnGlobalVar.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 08/01/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+b = 2
+
+func add(x) returns {
+	return b + x
+}
+
+a = add(10)

@@ -1,0 +1,32 @@
+/*
+Cub Test
+*/
+
+i = 0
+sum = 1
+
+while i < 10 {
+	
+	j = 0
+	while j < 3 {
+		
+		j += 1
+		
+		if j > 3 {
+			continue
+		}
+		
+		sum *= j
+		
+	}
+	
+	i += 1
+	
+	if i > 5 {
+		continue
+	}
+	
+	sum *= i
+	
+}
+

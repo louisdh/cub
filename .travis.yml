@@ -1,0 +1,75 @@
+language: generic
+
+dist: trusty
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      env: 
+        - JOB=Linux
+    - os: osx
+      osx_image: xcode9.1
+      env: 
+        - JOB=OSX DESTINATION="OS=9.0,name=iPhone 6" SCHEME="Lioness iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+    - os: osx
+      osx_image: xcode9.1
+      env: 
+        - JOB=OSX DESTINATION="arch=x86_64" SCHEME="Lioness macOS Release [Double]" RUN_TESTS="YES" BUILD_EXAMPLE="NO" CODE_COV="YES"
+    - os: osx
+      osx_image: xcode9.1
+      env: 
+        - JOB=OSX DESTINATION="OS=11.1,name=iPhone 7 Plus" SCHEME="Lioness iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+
+before_install:
+  if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+    DIR="$(pwd)";
+    cd ..;
+    export SWIFT_VERSION=swift-4.0.2-RELEASE;
+    wget https://swift.org/builds/swift-4.0.2-release/ubuntu1404/$SWIFT_VERSION/$SWIFT_VERSION-ubuntu14.04.tar.gz;
+    tar xzf $SWIFT_VERSION-ubuntu14.04.tar.gz;
+    export PATH="${PWD}/${SWIFT_VERSION}-ubuntu14.04/usr/bin:${PATH}";
+    cd "$DIR";
+  fi
+
+script: 
+
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+
+    export WORKSPACE=Lioness.xcworkspace;
+
+    set -o pipefail;
+    xcodebuild -version;
+    xcodebuild -showsdks;
+
+    if [ $RUN_TESTS == "YES" ]; then
+      travis_retry xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+    else
+      travis_retry xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
+
+    if [ $RUN_TESTS == "YES" ]; then
+      travis_retry xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+    else
+      travis_retry xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
+
+    if [ $BUILD_EXAMPLE == "YES" ]; then
+      travis_retry xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
+
+    if [ $CODE_COV == "YES" ]; then
+      xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES -enableCodeCoverage YES test;
+    fi
+
+    fi
+
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+    swift build;
+    swift test;
+    fi
+
+after_success:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    bash <(curl -s https://codecov.io/bash);
+    fi

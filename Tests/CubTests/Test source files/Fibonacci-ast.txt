@@ -1,0 +1,14 @@
+
+    FunctionNode(prototype: FunctionPrototypeNode(name: fibonacci, argumentNames: ["n"], returns: true), 
+    
+    ConditionalStatementNode(condition: BinaryOpNode(==, lhs: VariableNode(n), rhs: Optional(NumberNode(0.0))), body: [
+    
+    ReturnNode
+])
+    ConditionalStatementNode(condition: BinaryOpNode(==, lhs: VariableNode(n), rhs: Optional(NumberNode(1.0))), body: [
+    
+    ReturnNode
+])
+    ReturnNode)
+    VariableNode(a) = CallNode(name: fibonacci, argument: 
+    NumberNode(10.0))

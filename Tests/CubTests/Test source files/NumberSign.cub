@@ -1,0 +1,15 @@
+//
+//  NumberSign.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 03/06/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = isPositive(2)
+b = isPositive(-2)
+c = isPositive(0)
+
+d = isNegative(2)
+e = isNegative(-2)
+f = isNegative(0)

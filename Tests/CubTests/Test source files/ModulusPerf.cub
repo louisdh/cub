@@ -1,0 +1,13 @@
+//
+//  Modulus.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 11/01/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = 5
+
+do 10000 times {
+	mod(a, a + 2)
+}

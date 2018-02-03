@@ -1,0 +1,9 @@
+//
+//  UnicodeSumFunction.lion
+//
+
+func ∑(a, b) returns {
+	return a + b
+}
+
+😀 = ∑(2, 3)

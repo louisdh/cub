@@ -1,0 +1,42 @@
+/*
+ Complex Cub Test
+ */
+
+i = (1 - 2) * 3
+sum = 1
+
+do 10 times {
+	
+	while i < 10 {
+		
+		i += 1
+		
+		if i > 5 {
+			continue
+		}
+		
+		sum *= i
+		
+	}
+	
+}
+
+a = (i > 10) && (3 < 4) && (true || false)
+b = (i < 10) && (3 < 4) && (true || false)
+c = (i <= 10) && (3 < 4) && (true || false)
+d = (i >= 10) && (3 < 4) && (true || false)
+e = (i == 10) && (3 < 4) && (true || false)
+f = (i != 10) && (3 < 4) && (true || false)
+
+for j = 0, j < 10, j += 1 {
+	
+	if b {
+		continue
+	}
+	
+	sum -= 10
+	sum *= 2
+	sum /= 3
+	sum ^= 2
+	
+}

@@ -1,0 +1,19 @@
+//
+//  DoTimesLoops.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 08/01/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = 0
+
+do 100 times {
+
+	do 100 times {
+
+		a += 1
+
+	}
+
+}

@@ -1,0 +1,26 @@
+//
+//  FunctionInFunction.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 09/01/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+a = 0
+
+func foo() {
+	
+	func bar() {
+		a += 1
+	}
+	
+	do 10 times {
+		bar()
+	}
+	
+}
+
+do 10 times {
+	foo()
+}
+

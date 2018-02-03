@@ -1,0 +1,22 @@
+//
+//  Primes.lion
+//
+
+func isPrime(num) returns {
+	if num < 2 {
+		return false
+	}
+	
+	max = sqrt(num)
+	
+	for i = 0, i < max, i += 2 {
+		m = mod(num, 2)
+		if m == 0 {
+			return false
+		}
+	}
+	
+	return true
+}
+
+a = isPrime(6) // a = false

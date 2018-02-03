@@ -1,0 +1,15 @@
+//
+//  RepeatWhileStatement.lion
+//  Cub
+//
+//  Created by Louis D'hauwe on 17/06/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+i = 1
+
+repeat {
+
+	i *= 2
+
+} while i < 10
