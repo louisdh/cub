@@ -5,9 +5,9 @@
 <h1 align="center">The Cub Programming Language</h1>
 
 <p align="center">
-<a href="https://travis-ci.org/louisdh/lioness"><img src="https://travis-ci.org/louisdh/cub.svg?branch=master" alt="Travis build status"/></a>
-<a href="https://codeclimate.com/github/louisdh/cub"><img src="https://codeclimate.com/github/louisdh/lioness/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
-<a href="https://codecov.io/gh/louisdh/lioness"><img src="https://codecov.io/gh/louisdh/lioness/branch/master/graph/badge.svg" alt="Codecov"/></a>
+<a href="https://travis-ci.org/louisdh/cub"><img src="https://travis-ci.org/louisdh/cub.svg?branch=master" alt="Travis build status"/></a>
+<a href="https://codeclimate.com/github/louisdh/cub"><img src="https://codeclimate.com/github/louisdh/cub/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
+<a href="https://codecov.io/gh/louisdh/cub"><img src="https://codecov.io/gh/louisdh/cub/branch/master/graph/badge.svg" alt="Codecov"/></a>
 <br>
 <img src="https://img.shields.io/badge/version-0.5.2-blue.svg" style="max-height: 300px;" alt="version 0.5.2">
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4bc51d.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"/></a>
