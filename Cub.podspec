@@ -1,18 +1,18 @@
 Pod::Spec.new do |s|
-  s.name = 'Lioness'
+  s.name = 'Cub'
   s.version = '0.5.2'
   s.license = 'MIT'
-  s.summary = 'The Lioness Programming Language'
-  s.homepage = 'https://github.com/louisdh/lioness'
+  s.summary = 'The Cub Programming Language'
+  s.homepage = 'https://github.com/louisdh/cub'
   s.social_media_url = 'http://twitter.com/LouisDhauwe'
   s.authors = { 'Louis D\'hauwe' => 'louisdhauwe@silverfox.be' }
-  s.source = { :git => 'https://github.com/louisdh/lioness.git', :tag => s.version }
-  s.module_name  = 'Lioness'
+  s.source = { :git => 'https://github.com/louisdh/cub.git', :tag => s.version }
+  s.module_name  = 'Cub'
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target  = '10.12'
 
   s.source_files = 'Sources/**/*.swift'
-  s.resources = 'Sources/**/*.lion'
+  s.resources = 'Sources/**/*.cub'
 
 end
