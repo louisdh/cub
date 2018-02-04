@@ -1,12 +1,12 @@
 <p align="center">
-<img src="docs/resources/readme/logo.png" alt="Lioness Logo" style="max-height: 300px">
+<img src="docs/resources/readme/logo.png" alt="Cub Logo" style="max-height: 150px">
 </p>
 
 <h1 align="center">The Cub Programming Language</h1>
 
 <p align="center">
-<a href="https://travis-ci.org/louisdh/lioness"><img src="https://travis-ci.org/louisdh/lioness.svg?branch=master" alt="Travis build status"/></a>
-<a href="https://codeclimate.com/github/louisdh/lioness"><img src="https://codeclimate.com/github/louisdh/lioness/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
+<a href="https://travis-ci.org/louisdh/lioness"><img src="https://travis-ci.org/louisdh/cub.svg?branch=master" alt="Travis build status"/></a>
+<a href="https://codeclimate.com/github/louisdh/cub"><img src="https://codeclimate.com/github/louisdh/lioness/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
 <a href="https://codecov.io/gh/louisdh/lioness"><img src="https://codecov.io/gh/louisdh/lioness/branch/master/graph/badge.svg" alt="Codecov"/></a>
 <br>
 <img src="https://img.shields.io/badge/version-0.5.2-blue.svg" style="max-height: 300px;" alt="version 0.5.2">
@@ -19,11 +19,11 @@
 <a href="https://paypal.me/louisdhauwe"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat" alt="Donate via PayPal"/></a>
 </p>
 
-Cub is a scripting language. This project includes a lexer, parser, compiler and interpreter. All of these are 100% written in Swift without dependencies. 
+Cub is an **interpreted** scripting language inspired by Swift. This project includes a lexer, parser, compiler and interpreter. All of these are 100% written in Swift without dependencies. 
 
-The syntax of Cub is inspired by Swift, and its feature set is akin to shader languages such as GLSL.
+Cub was derived from [Lioness](https://github.com/louisdh/lioness) (my first programming language).
 
-The standard library (abbreviated: stdlib) contains basic functions for number manipulation, including: max/min, ceil, floor, trigonometry, etc. However, more trivial functions, such as to calculate prime numbers, are not considered relevant for the standard library.
+The standard library (abbreviated: stdlib) contains basic functions for number manipulation, including: max/min, ceil, floor, trigonometry, etc.
 
 
 ## Source examples
@@ -55,6 +55,29 @@ do n times {
 
 *More examples can be found [here](Source%20examples).*
 
+## External functions
+An important feature Cub has is the ability to define external functions. These functions are implemented in native code (for example Swift) and thus allows Cub to call native code.
+
+An external function pauses the interpreter, executes the native code, and resumes the interpreter when the native code is executed.
+
+The following example implements a print function:
+
+```swift
+let runner = Runner(logDebug: true, logTime: true)
+		
+runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments, callback) in
+			
+	for (name, arg) in arguments {
+		print(arg)
+	}
+			
+	callback(nil)
+}
+
+```
+
+
+
 ## Features
 
 * Minimalistic, yet expressive, syntax
@@ -67,6 +90,8 @@ do n times {
 * Booleans
 	* Can be evaluated from comparison
 	* Can be defined by literal: ```true``` or ```false``` 
+* String
+	* Can be concatenated with the + operator 
 * Functions
 	* Supports parameters, returning and recursion 
 	* Can be declared inside other functions
@@ -94,7 +119,7 @@ Open ```Cub.xcworkspace``` (preferably in the latest non-beta version of Xcode) 
 Add to your `Package.swift` file's `dependencies` section:
 
 ```swift
-.Package(url: "https://github.com/louisdh/lioness.git",
+.Package(url: "https://github.com/louisdh/cub.git",
 		         majorVersion: 0, minor: 5)
 ```
 
@@ -103,28 +128,28 @@ Add to your `Package.swift` file's `dependencies` section:
 Add the following line to your ```Podfile```:
 
 ```ruby
-pod 'Lioness', '~> 0.5'
+pod 'Cub', '~> 0.5'
 ```
 
 ### Using [Carthage](https://github.com/Carthage/Carthage)
 Add the following line to your ```Cartfile```:
 
 ```ruby
-github "louisdh/lioness" ~> 0.5
+github "louisdh/cub" ~> 0.5
 ```
-Run ```carthage update``` to build the framework and drag the built ```Lioness.framework``` into your Xcode project.
+Run ```carthage update``` to build the framework and drag the built ```Cub.framework``` into your Xcode project.
 
 
 ## Standard Library
-*Please note: Lioness is currently in beta*
+*Please note: Cub is currently in beta*
 
-The Standard Library is currently under active development. There currently is no one document with everything from the stdlib. The best place to look for what's available is in [the source files](Sources/Lioness/Standard%20Library/Sources/).
+The Standard Library is currently under active development. There currently is no one document with everything from the stdlib. The best place to look for what's available is in [the source files](Sources/Cub/Standard%20Library/Sources/).
 
 ## Roadmap
 - [x] Structs
-- [ ] Completion suggestions (given an incomplete source string and insertion point)
-- [ ] Breakpoint support in interpreter
-- [ ] Stdlib documentation (Dash?)
+- [ ] Completion suggestion interpreter
+- [ ] Stdlib documentations (given an incomplete source string and insertion point)
+- [ ] Breakpoint support in (Dash?)
 - [ ] Compiler warnings
 - [ ] Compiler optimizations
 - [x] Faster Lexer (without regex)
@@ -134,7 +159,7 @@ The Standard Library is currently under active development. There currently is n
 - [x] Linux support
 
 ## Xcode file template
-Lioness source files can easily be created with Xcode, see [XcodeTemplate.md](XcodeTemplate.md) for instructions.
+Cub source files can easily be created with Xcode, see [XcodeTemplate.md](XcodeTemplate.md) for instructions.
 
 
 ## Architecture
