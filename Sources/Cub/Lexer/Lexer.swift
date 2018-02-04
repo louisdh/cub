@@ -63,7 +63,7 @@ public class Lexer {
 
 	lazy var invalidIdentifierCharSet: CharacterSet = {
 
-		var chars = "-. "
+		var chars = "-."
 
 		Lexer.reservedOneCharIdentifiers.forEach {
 			chars.append($0)
@@ -199,7 +199,7 @@ public class Lexer {
 				if currentString.isEmpty && !isInString && (!isInLineComment && content.hasPrefix("\"")) {
 					
 					isInString = true
-					consumeCharactersAtStart(1, updateCurrentString: false)
+					consumeCharactersAtStart(1, updateCurrentString: true)
 					continue
 				}
 				
@@ -295,7 +295,7 @@ public class Lexer {
 			if !isInString && nextString == "\"" {
 				
 				isInString = true
-				consumeCharactersAtStart(1, updateCurrentString: false)
+				consumeCharactersAtStart(1, updateCurrentString: true)
 				continue
 			}
 			
@@ -315,9 +315,13 @@ public class Lexer {
 
 			if isInString && content.hasPrefix("\"") {
 				
-				consumeCharactersAtStart(1, updateCurrentString: false)
+				consumeCharactersAtStart(1, updateCurrentString: true)
 				isInString = false
-				addToken(type: .string(currentString))
+				
+				var rawString = currentString
+				rawString.removeFirst()
+				rawString.removeLast()
+				addToken(type: .string(rawString))
 				continue
 			}
 			
@@ -502,9 +506,10 @@ public class Lexer {
 
 		if updateCurrentString {
 			currentString += content[..<index]
-			currentStringLength += n
 		}
 		
+		currentStringLength += n
+
 		charIndex += n
 		content.removeCharacters(to: index)
 
