@@ -11,15 +11,15 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       env: 
-        - JOB=OSX DESTINATION="OS=9.0,name=iPhone 6" SCHEME="Lioness iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+        - JOB=OSX DESTINATION="OS=9.0,name=iPhone 6" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
     - os: osx
       osx_image: xcode9.1
       env: 
-        - JOB=OSX DESTINATION="arch=x86_64" SCHEME="Lioness macOS Release [Double]" RUN_TESTS="YES" BUILD_EXAMPLE="NO" CODE_COV="YES"
+        - JOB=OSX DESTINATION="arch=x86_64" SCHEME="Cub macOS Release [Double]" RUN_TESTS="YES" BUILD_EXAMPLE="NO" CODE_COV="YES"
     - os: osx
       osx_image: xcode9.1
       env: 
-        - JOB=OSX DESTINATION="OS=11.1,name=iPhone 7 Plus" SCHEME="Lioness iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+        - JOB=OSX DESTINATION="OS=11.1,name=iPhone 7 Plus" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
 
 before_install:
   if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
@@ -36,7 +36,7 @@ script:
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
 
-    export WORKSPACE=Lioness.xcworkspace;
+    export WORKSPACE=Cub.xcworkspace;
 
     set -o pipefail;
     xcodebuild -version;
