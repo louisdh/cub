@@ -9,7 +9,7 @@
 import Foundation
 import CoreFoundation
 
-public typealias ExternalFunc = ([String: ValueType]) -> ValueType?
+public typealias ExternalFunc = ([String: ValueType], _ callback: @escaping (ValueType?) -> Bool) -> Void
 
 precedencegroup Pipe {
 	associativity: left
@@ -40,6 +40,8 @@ public class Runner {
 	public var delegate: RunnerDelegate?
 
 	let compiler: BytecodeCompiler
+	
+	public var executionFinishedCallback: (() -> Void)?
 
 	// MARK: -
 
@@ -365,6 +367,8 @@ public class Runner {
 			for (id, callback) in externalFunctions {
 				interpreter.registerExternalFunction(id: id, callback: callback)
 			}
+			
+			interpreter.executionFinishedCallback = executionFinishedCallback
 			
 			self.interpreter = interpreter
 

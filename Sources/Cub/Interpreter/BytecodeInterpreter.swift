@@ -31,6 +31,8 @@ public class BytecodeInterpreter {
 	private(set) public var registers = [Int: ValueType]()
 
 	private(set) var pcTrace = [Int]()
+	
+	var executionFinishedCallback: (() -> Void)?
 
 	// MARK: - Init
 
@@ -142,15 +144,25 @@ public class BytecodeInterpreter {
 			}
 
 			pcTrace.append(pc)
-			pc = try executeInstruction(bytecode[pc], pc: pc)
+			if let newPc = try executeInstruction(bytecode[pc], pc: pc) {
+				pc = newPc
+				
+				if pc >= bytecode.count {
+					executionFinishedCallback?()
+					break
+				}
+				
+			} else {
+				break
+			}
 
 		}
 
 	}
 
-	private func executeInstruction(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+	private func executeInstruction(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int? {
 
-		let newPc: Int
+		let newPc: Int?
 
 		// TODO: Cleaner (more generic) mapping possible?
 
@@ -548,7 +560,7 @@ public class BytecodeInterpreter {
 		return pc + 1
 	}
 
-	private func executeInvokeVirtual(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+	private func executeInvokeVirtual(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int? {
 
 		guard let id = instruction.arguments.first else {
 			throw error(.unexpectedArgument)
@@ -567,11 +579,30 @@ public class BytecodeInterpreter {
 				arguments[argName] = arg
 			}
 			
-			if let result = externalCallback(arguments) {
-				try stack.push(result)
-			}
+			pause()
 			
-			return pc + 1
+			externalCallback(arguments, { (result) in
+				
+				do {
+					
+					if let result = result {
+						try self.stack.push(result)
+					}
+					
+					self.pc += 1
+					
+					try self.resume()
+					
+					return true
+					
+				} catch {
+					
+					return false
+				}
+			
+			})
+
+			return nil
 		}
 		
 		guard let idPc = virtualMap[i] else {

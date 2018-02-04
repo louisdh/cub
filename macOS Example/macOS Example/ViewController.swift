@@ -17,25 +17,27 @@ class ViewController: NSViewController, RunnerDelegate {
 		let runner = Runner(logDebug: true, logTime: false)
 		runner.delegate = self
 		
-		runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments) in
+		runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments, callback) in
 			
 			for (name, arg) in arguments {
 				print(arg)
 			}
 			
-			return ValueType.number(5)
+			callback(nil)
 		}
 		
-		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments) in
+		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments, callback) in
 			
 			var arguments = arguments
 			
 			guard let input = arguments.removeValue(forKey: "input") else {
-				return .string("")
+				callback(.string(""))
+				return
 			}
 			
 			guard case let .string(inputStr) = input else {
-				return .string("")
+				callback(.string(""))
+				return
 			}
 			
 			var otherValues = arguments.values
@@ -58,8 +60,9 @@ class ViewController: NSViewController, RunnerDelegate {
 			}
 			
 			let output = String(format: inputStr, arguments: varArgs)
-
-			return .string(output)
+			
+			callback(.string(output))
+			return
 		}
 
 		guard let path = stringPath(for: "A") else {
