@@ -9,17 +9,17 @@ matrix:
       env: 
         - JOB=Linux
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.2
       env: 
         - JOB=OSX DESTINATION="OS=9.0,name=iPhone 6" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.2
       env: 
         - JOB=OSX DESTINATION="arch=x86_64" SCHEME="Cub macOS Release [Double]" RUN_TESTS="YES" BUILD_EXAMPLE="NO" CODE_COV="YES"
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.2
       env: 
-        - JOB=OSX DESTINATION="OS=11.1,name=iPhone 7 Plus" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+        - JOB=OSX DESTINATION="OS=11.2,name=iPhone 7 Plus" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
 
 before_install:
   if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
