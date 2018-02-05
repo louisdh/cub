@@ -109,8 +109,6 @@
 		BE3F27841EE0A97400D58C83 /* StdLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F271C1EE0A97400D58C83 /* StdLib.swift */; };
 		BE3F27BF1EE0AF7300D58C83 /* Arithmetic.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */; };
 		BE3F27C01EE0AF7300D58C83 /* Arithmetic.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */; };
-		BE3F27C11EE0AF7300D58C83 /* Geometry.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BD1EE0AF7300D58C83 /* Geometry.cub */; };
-		BE3F27C21EE0AF7300D58C83 /* Geometry.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BD1EE0AF7300D58C83 /* Geometry.cub */; };
 		BE3F27C31EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
 		BE3F27C41EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
 		BE58C1581E16D7BE00BC73CA /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE58C1561E16D7BE00BC73CA /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -221,7 +219,6 @@
 		BE3F27171EE0A97400D58C83 /* RunnerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerError.swift; sourceTree = "<group>"; };
 		BE3F271C1EE0A97400D58C83 /* StdLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdLib.swift; sourceTree = "<group>"; };
 		BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Arithmetic.cub; sourceTree = "<group>"; };
-		BE3F27BD1EE0AF7300D58C83 /* Geometry.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Geometry.cub; sourceTree = "<group>"; };
 		BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Graphics.cub; sourceTree = "<group>"; };
 		BE58C14C1E16D77900BC73CA /* Cub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE58C1551E16D7BE00BC73CA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub iOS/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -475,7 +472,6 @@
 			isa = PBXGroup;
 			children = (
 				BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */,
-				BE3F27BD1EE0AF7300D58C83 /* Geometry.cub */,
 				BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */,
 			);
 			path = Sources;
@@ -761,7 +757,6 @@
 			files = (
 				BE3F27C31EE0AF7300D58C83 /* Graphics.cub in Resources */,
 				BE3F27BF1EE0AF7300D58C83 /* Arithmetic.cub in Resources */,
-				BE3F27C11EE0AF7300D58C83 /* Geometry.cub in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +802,6 @@
 			files = (
 				BE3F27C41EE0AF7300D58C83 /* Graphics.cub in Resources */,
 				BE3F27C01EE0AF7300D58C83 /* Arithmetic.cub in Resources */,
-				BE3F27C21EE0AF7300D58C83 /* Geometry.cub in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
