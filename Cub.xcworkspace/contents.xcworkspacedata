@@ -5,6 +5,6 @@
       location = "group:macOS Example/macOS Example.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:/Users/louisdhauwe/projects/oss/cub/Cub.xcodeproj">
+      location = "group:macOS Example/../Cub.xcodeproj">
    </FileRef>
 </Workspace>
