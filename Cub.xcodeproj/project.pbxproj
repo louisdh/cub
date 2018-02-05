@@ -136,7 +136,6 @@
 		BE64E20A2025DE8200D4A6FF /* LargeSource.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1DC2025DE8200D4A6FF /* LargeSource.cub */; };
 		BE64E20B2025DE8200D4A6FF /* Fibonacci.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1DD2025DE8200D4A6FF /* Fibonacci.cub */; };
 		BE64E20C2025DE8200D4A6FF /* LargeMathOperation.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1DE2025DE8200D4A6FF /* LargeMathOperation.cub */; };
-		BE64E20D2025DE8200D4A6FF /* Trigonometry.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1DF2025DE8200D4A6FF /* Trigonometry.cub */; };
 		BE64E20E2025DE8200D4A6FF /* RepeatWhileStatement.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1E02025DE8200D4A6FF /* RepeatWhileStatement.cub */; };
 		BE64E20F2025DE8200D4A6FF /* Floor.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1E12025DE8200D4A6FF /* Floor.cub */; };
 		BE64E2102025DE8200D4A6FF /* CommentBlockAfterAssignment.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1E22025DE8200D4A6FF /* CommentBlockAfterAssignment.cub */; };
@@ -247,7 +246,6 @@
 		BE64E1DC2025DE8200D4A6FF /* LargeSource.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LargeSource.cub; sourceTree = "<group>"; };
 		BE64E1DD2025DE8200D4A6FF /* Fibonacci.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fibonacci.cub; sourceTree = "<group>"; };
 		BE64E1DE2025DE8200D4A6FF /* LargeMathOperation.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LargeMathOperation.cub; sourceTree = "<group>"; };
-		BE64E1DF2025DE8200D4A6FF /* Trigonometry.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Trigonometry.cub; sourceTree = "<group>"; };
 		BE64E1E02025DE8200D4A6FF /* RepeatWhileStatement.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepeatWhileStatement.cub; sourceTree = "<group>"; };
 		BE64E1E12025DE8200D4A6FF /* Floor.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Floor.cub; sourceTree = "<group>"; };
 		BE64E1E22025DE8200D4A6FF /* CommentBlockAfterAssignment.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommentBlockAfterAssignment.cub; sourceTree = "<group>"; };
@@ -561,7 +559,6 @@
 				BE64E1DC2025DE8200D4A6FF /* LargeSource.cub */,
 				BE64E1DD2025DE8200D4A6FF /* Fibonacci.cub */,
 				BE64E1DE2025DE8200D4A6FF /* LargeMathOperation.cub */,
-				BE64E1DF2025DE8200D4A6FF /* Trigonometry.cub */,
 				BE64E1E02025DE8200D4A6FF /* RepeatWhileStatement.cub */,
 				BE64E1E12025DE8200D4A6FF /* Floor.cub */,
 				BE64E1E22025DE8200D4A6FF /* CommentBlockAfterAssignment.cub */,
@@ -767,7 +764,6 @@
 				BE64E2062025DE8200D4A6FF /* MinMax.cub in Resources */,
 				BE64E1FC2025DE8200D4A6FF /* BinaryOp.cub in Resources */,
 				BE64E2112025DE8200D4A6FF /* UnusedFunctionResult.cub in Resources */,
-				BE64E20D2025DE8200D4A6FF /* Trigonometry.cub in Resources */,
 				BE64E20E2025DE8200D4A6FF /* RepeatWhileStatement.cub in Resources */,
 				BE64E1FB2025DE8200D4A6FF /* GreatestCommonDivisor.cub in Resources */,
 				BE64E1F82025DE8200D4A6FF /* NumberSign.cub in Resources */,

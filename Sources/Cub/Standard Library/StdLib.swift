@@ -10,7 +10,7 @@ import Foundation
 
 public class StdLib {
 
-	private let sources = ["Arithmetic", "Geometry", "Graphics"]
+	private let sources = ["Arithmetic", "Graphics"]
 
 	public init() {
 

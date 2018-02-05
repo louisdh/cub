@@ -19,10 +19,6 @@ class Execution_Performance: BaseTestCase {
 	
 	// MARK: - Tests
 
-	func testTrigonometryPerformance() {
-		doExecutionTest(for: "Trigonometry")
-	}
-	
 	func testModulusPerformance() {
 		doExecutionTest(for: "ModulusPerf")
 	}
