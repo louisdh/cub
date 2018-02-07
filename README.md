@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<img src="docs/resources/readme/logo@2x.png" alt="Cub Logo" style="height: 200px">
+<img src="docs/resources/readme/logo@2x.png" alt="Cub Logo" height="200px">
 </p>
 
 <h1 align="center">The Cub Programming Language</h1>
