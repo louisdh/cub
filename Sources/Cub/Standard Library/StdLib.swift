@@ -87,6 +87,8 @@ public class StdLib {
 					varArgs.append(str)
 				case .struct:
 					break
+				case .array:
+					break
 				}
 				
 			}
