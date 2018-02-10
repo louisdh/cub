@@ -40,45 +40,6 @@ class ViewController: NSViewController, RunnerDelegate {
 			
 			_ = callback(.number(0))
 		}
-		
-		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments, callback) in
-			
-			var arguments = arguments
-			
-			guard let input = arguments.removeValue(forKey: "input") else {
-				_ = callback(.string(""))
-				return
-			}
-			
-			guard case let .string(inputStr) = input else {
-				_ = callback(.string(""))
-				return
-			}
-			
-			let otherValues = arguments.values
-			
-			var varArgs = [CVarArg]()
-			
-			for value in otherValues {
-				
-				switch value {
-				case .bool(let b):
-					break
-				case .number(let n):
-					varArgs.append(n)
-				case .string(let str):
-					varArgs.append(str)
-				case .struct:
-					break
-				}
-				
-			}
-			
-			let output = String(format: inputStr, arguments: varArgs)
-			
-			_ = callback(.string(output))
-			return
-		}
 
 		guard let path = stringPath(for: "A") else {
 			return

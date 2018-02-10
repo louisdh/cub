@@ -75,9 +75,13 @@ public class Runner {
 
 		if useStdLib {
 
-			let stdLib = try StdLib().stdLibCode()
+			let stdLib = StdLib()
+			
+			stdLib.registerExternalFunctions(self)
+			
+			let stdLibCode = try stdLib.stdLibCode()
 
-			guard let compiledStdLib = compileLionessSourceCode(stdLib) else {
+			guard let compiledStdLib = compileLionessSourceCode(stdLibCode) else {
 				throw RunnerError.stdlibFailed
 			}
 
@@ -125,9 +129,13 @@ public class Runner {
 
 		let startTime = CFAbsoluteTimeGetCurrent()
 
-		let stdLib = try StdLib().stdLibCode()
-
-		guard let compiledStdLib = compileLionessSourceCode(stdLib) else {
+		let stdLib = StdLib()
+		
+		stdLib.registerExternalFunctions(self)
+		
+		let stdLibCode = try stdLib.stdLibCode()
+		
+		guard let compiledStdLib = compileLionessSourceCode(stdLibCode) else {
 			throw RunnerError.stdlibFailed
 		}
 
