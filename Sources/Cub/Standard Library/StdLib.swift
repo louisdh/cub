@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreFoundation
 
 public class StdLib {
 
@@ -55,6 +54,10 @@ public class StdLib {
 	
 	func registerExternalFunctions(_ runner: Runner) {
 		
+		// Can't support the format command on Linux at the moment,
+		// since String does not conform to CVarArg.
+		#if !os(Linux)
+
 		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments, callback) in
 			
 			var arguments = arguments
@@ -93,7 +96,9 @@ public class StdLib {
 			_ = callback(.string(output))
 			return
 		}
-		
+	
+		#endif
+
 	}
 
 	enum StdLibError: Error {
