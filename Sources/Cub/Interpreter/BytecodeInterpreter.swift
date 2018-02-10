@@ -125,10 +125,9 @@ public class BytecodeInterpreter {
 		
 	}
 	
-	func resume() throws {
+	func resume() {
 		
 		isPaused = false
-		try interpret()
 		
 	}
 	
@@ -137,10 +136,11 @@ public class BytecodeInterpreter {
 	/// - Throws: InterpreterError
 	public func interpret() throws {
 
-		while pc < bytecode.count {
+		while true {
 			
 			if isPaused {
-				return
+				Thread.sleep(forTimeInterval: 0.001)
+				continue
 			}
 
 			pcTrace.append(pc)
@@ -153,7 +153,7 @@ public class BytecodeInterpreter {
 				}
 				
 			} else {
-				break
+				continue
 			}
 
 		}
@@ -591,8 +591,8 @@ public class BytecodeInterpreter {
 					
 					self.pc += 1
 					
-					try self.resume()
-					
+					self.resume()
+
 					return true
 					
 				} catch {
