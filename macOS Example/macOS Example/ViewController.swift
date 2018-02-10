@@ -14,16 +14,31 @@ class ViewController: NSViewController, RunnerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let runner = Runner(logDebug: true, logTime: false)
+		let runner = Runner(logDebug: false, logTime: false)
 		runner.delegate = self
 		
 		runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments, callback) in
 			
-			for (name, arg) in arguments {
-				print(arg)
+			for (_, arg) in arguments {
+				
+				switch arg {
+				case .bool(let b):
+					print(b)
+
+				case .number(let n):
+					print(n)
+
+				case .string(let str):
+					print(str)
+
+				case .struct(let stru):
+					print(stru)
+					
+				}
+				
 			}
 			
-			callback(nil)
+			_ = callback(.number(0))
 		}
 		
 		runner.registerExternalFunction(name: "format", argumentNames: ["input", "arg"], returns: true) { (arguments, callback) in
@@ -31,16 +46,16 @@ class ViewController: NSViewController, RunnerDelegate {
 			var arguments = arguments
 			
 			guard let input = arguments.removeValue(forKey: "input") else {
-				callback(.string(""))
+				_ = callback(.string(""))
 				return
 			}
 			
 			guard case let .string(inputStr) = input else {
-				callback(.string(""))
+				_ = callback(.string(""))
 				return
 			}
 			
-			var otherValues = arguments.values
+			let otherValues = arguments.values
 			
 			var varArgs = [CVarArg]()
 			
@@ -61,7 +76,7 @@ class ViewController: NSViewController, RunnerDelegate {
 			
 			let output = String(format: inputStr, arguments: varArgs)
 			
-			callback(.string(output))
+			_ = callback(.string(output))
 			return
 		}
 
