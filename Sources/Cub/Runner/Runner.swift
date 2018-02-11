@@ -39,7 +39,7 @@ public class Runner {
 
 	public var delegate: RunnerDelegate?
 
-	let compiler: BytecodeCompiler
+	public let compiler: BytecodeCompiler
 	
 	public var executionFinishedCallback: (() -> Void)?
 

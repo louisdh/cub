@@ -22,6 +22,8 @@ public enum TokenType {
 	case parensClose
 	case curlyOpen
 	case curlyClose
+	case squareBracketOpen
+	case squareBracketClose
 	case comma
 	case dot
 	

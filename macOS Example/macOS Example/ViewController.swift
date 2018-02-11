@@ -21,20 +21,7 @@ class ViewController: NSViewController, RunnerDelegate {
 			
 			for (_, arg) in arguments {
 				
-				switch arg {
-				case .bool(let b):
-					print(b)
-
-				case .number(let n):
-					print(n)
-
-				case .string(let str):
-					print(str)
-
-				case .struct(let stru):
-					print(stru)
-					
-				}
+				print(arg.description(with: runner.compiler))
 				
 			}
 			

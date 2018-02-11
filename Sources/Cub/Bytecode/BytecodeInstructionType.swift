@@ -67,6 +67,11 @@ public enum BytecodeInstructionType: UInt8, CustomStringConvertible {
 	case virtualEnd = 30
 	case privateVirtualEnd = 31
 
+	case arrayInit = 32
+	case arraySet = 33
+	case arrayUpdate = 34
+	case arrayGet = 35
+	
 	public var opCode: UInt8 {
 		return self.rawValue
 	}
@@ -171,6 +176,19 @@ public enum BytecodeInstructionType: UInt8, CustomStringConvertible {
 		case .privateVirtualEnd:
 			return "pvirt_e"
 
+		case .arrayInit:
+			return "array_init"
+			
+		case .arraySet:
+			return "array_set"
+			
+		case .arrayUpdate:
+			return "array_update"
+			
+		case .arrayGet:
+			return "array_get"
+
+			
 		}
 
 	}

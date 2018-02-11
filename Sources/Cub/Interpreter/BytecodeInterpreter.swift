@@ -264,6 +264,18 @@ public class BytecodeInterpreter {
 			case .privateVirtualEnd:
 				newPc = try executePrivateVirtualEnd(instruction, pc: pc)
 
+			case .arrayInit:
+				newPc = try executeArrayInit(instruction, pc: pc)
+			
+			case .arraySet:
+				newPc = try executeArraySet(instruction, pc: pc)
+			
+			case .arrayUpdate:
+				newPc = try executeArrayUpdate(instruction, pc: pc)
+			
+			case .arrayGet:
+				newPc = try executeArrayGet(instruction, pc: pc)
+
 		}
 
 		return newPc
@@ -764,6 +776,85 @@ public class BytecodeInterpreter {
 	private func executePrivateVirtualEnd(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
 
 		return try virtualInvokeStack.pop()
+	}
+	
+	private func executeArrayInit(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+		
+		guard let arg = instruction.arguments.first, case let .index(size) = arg else {
+			throw error(.unexpectedArgument)
+		}
+		
+		let newArray = ValueType.array([ValueType](repeating: .number(0), count: size))
+		
+		try stack.push(newArray)
+		
+		return pc + 1
+	}
+	
+	private func executeArraySet(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+		
+		guard let arg = instruction.arguments.first, case let .index(i) = arg else {
+			throw error(.unexpectedArgument)
+		}
+		
+		let newValue = try stack.pop()
+		
+		guard case let ValueType.array(v) = try stack.pop() else {
+			throw error(.unexpectedArgument)
+		}
+		
+		var newArray = v
+		
+		guard i >= 0 && i < newArray.count else {
+			throw error(.unexpectedArgument)
+		}
+		
+		newArray[i] = newValue
+		
+		try stack.push(.array(newArray))
+		
+		return pc + 1
+	}
+	
+	private func executeArrayUpdate(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+		
+		guard let arg = instruction.arguments.first, case let .index(i) = arg else {
+			throw error(.unexpectedArgument)
+		}
+		
+		guard case let ValueType.array(v) = try stack.pop() else {
+			throw error(.unexpectedArgument)
+		}
+		
+		let updateValue = try stack.pop()
+		
+		var newArray = v
+		newArray[i] = updateValue
+		
+//		let newArray = try updatedDict(for: v, keyPath: memberIds, newValue: updateValue)
+//
+		try stack.push(.array(newArray))
+		
+		return pc + 1
+	}
+	
+	private func executeArrayGet(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+		
+		guard let arg = instruction.arguments.first, case let .index(key) = arg else {
+			throw error(.unexpectedArgument)
+		}
+		
+		guard case let ValueType.array(v) = try stack.pop() else {
+			throw error(.unexpectedArgument)
+		}
+		
+		guard let memberValue = v[safe: key] else {
+			throw error(.unexpectedArgument)
+		}
+		
+		try stack.push(memberValue)
+		
+		return pc + 1
 	}
 
 	// MARK: - Structs

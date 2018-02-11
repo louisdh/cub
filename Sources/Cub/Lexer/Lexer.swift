@@ -34,6 +34,8 @@ public class Lexer {
 		")": .parensClose,
 		"{": .curlyOpen,
 		"}": .curlyClose,
+		"[": .squareBracketOpen,
+		"]": .squareBracketClose,
 		",": .comma,
 		".": .dot,
 		"!": .booleanNot,

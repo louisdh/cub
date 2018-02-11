@@ -563,6 +563,9 @@ public class Parser {
 			case .identifier:
 				return try parseIdentifier()
 
+			case .squareBracketOpen:
+				return try parseArray()
+			
 			case .number:
 				return try parseNumber()
 			
@@ -949,6 +952,43 @@ public class Parser {
 		return FunctionNode(prototype: prototype, body: body)
 	}
 
+	private func parseArray() throws -> ArrayNode {
+		
+		try popCurrentToken(andExpect: .squareBracketOpen, "[")
+		
+		var arguments = [ASTNode]()
+		
+		if let currentToken = peekCurrentToken(), case .squareBracketClose = currentToken.type {
+			
+		} else {
+			
+			while true {
+				
+				let argument = try parseExpression()
+				arguments.append(argument)
+				
+				if let currentToken = peekCurrentToken(), case .squareBracketClose = currentToken.type {
+					break
+				}
+				
+				guard let commaToken = popCurrentToken() else {
+					throw error(.unexpectedToken)
+				}
+				
+				guard case .comma = commaToken.type else {
+					throw error(.expectedArgumentList)
+				}
+				
+			}
+		
+
+		}
+
+		try popCurrentToken(andExpect: .squareBracketClose, "]")
+
+		return try ArrayNode(values: arguments)
+	}
+	
 	private func parseStruct() throws -> StructNode {
 
 		try popCurrentToken(andExpect: .struct)
