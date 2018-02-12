@@ -152,9 +152,9 @@ The Standard Library is currently under active development. There currently is n
 
 ## Roadmap
 - [x] Structs
-- [ ] Completion suggestion interpreter
-- [ ] Stdlib documentations (given an incomplete source string and insertion point)
-- [ ] Breakpoint support in (Dash?)
+- [ ] Completion suggestions  (given an incomplete source string and insertion point)
+- [ ] Breakpoint support in interpreter
+- [ ] Stdlib documentation (Dash?)
 - [ ] Compiler warnings
 - [ ] Compiler optimizations
 - [x] Faster Lexer (without regex)
