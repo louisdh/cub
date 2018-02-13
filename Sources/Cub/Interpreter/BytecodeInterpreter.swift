@@ -818,21 +818,23 @@ public class BytecodeInterpreter {
 	
 	private func executeArrayUpdate(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
 		
-		guard let arg = instruction.arguments.first, case let .index(i) = arg else {
-			throw error(.unexpectedArgument)
-		}
-		
 		guard case let ValueType.array(v) = try stack.pop() else {
 			throw error(.unexpectedArgument)
 		}
 		
+		let index = try popNumber()
+		let i = Int(index)
+		
 		let updateValue = try stack.pop()
 		
 		var newArray = v
+		
+		guard i >= 0 && i < newArray.count else {
+			throw error(.unexpectedArgument)
+		}
+		
 		newArray[i] = updateValue
 		
-//		let newArray = try updatedDict(for: v, keyPath: memberIds, newValue: updateValue)
-//
 		try stack.push(.array(newArray))
 		
 		return pc + 1
@@ -840,7 +842,7 @@ public class BytecodeInterpreter {
 	
 	private func executeArrayGet(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
 		
-		guard let arg = instruction.arguments.first, case let .index(key) = arg else {
+		guard case let ValueType.number(i) = try stack.pop() else {
 			throw error(.unexpectedArgument)
 		}
 		
@@ -848,7 +850,7 @@ public class BytecodeInterpreter {
 			throw error(.unexpectedArgument)
 		}
 		
-		guard let memberValue = v[safe: key] else {
+		guard let memberValue = v[safe: Int(i)] else {
 			throw error(.unexpectedArgument)
 		}
 		

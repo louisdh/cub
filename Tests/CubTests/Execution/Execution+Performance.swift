@@ -68,7 +68,7 @@ class Execution_Performance: BaseTestCase {
 		}
 		
 		guard let compiledSource = runner.compileLionessSourceCode(source) else {
-			XCTFail("Failed to compile stdlib")
+			XCTFail("Failed to compile source code")
 			return nil
 		}
 		

@@ -19,7 +19,7 @@ public struct AssignmentNode: ASTNode {
 
 	public init(variable: ASTNode, value: ASTNode) throws {
 
-		guard value is NumberNode || value is VariableNode || value is StructMemberNode || value is CallNode || value is BinaryOpNode || value is StringNode || value is ArrayNode else {
+		guard value is NumberNode || value is VariableNode || value is StructMemberNode || value is CallNode || value is BinaryOpNode || value is StringNode || value is ArrayNode || value is ArraySubscriptNode else {
 			throw AssignmentNodeValidationError(invalidValueType: value.description)
 		}
 
@@ -70,8 +70,34 @@ public struct AssignmentNode: ASTNode {
 
 			bytecode.append(storeInstruction)
 
-		}
+		} else if let arraySubscript = variable as? ArraySubscriptNode {
+			
+			guard let variable = arraySubscript.variable as? VariableNode else {
+				throw CompileError.unexpectedCommand
+			}
+			
+			bytecode.append(contentsOf: try arraySubscript.name.compile(with: ctx, in: self))
+			
+			bytecode.append(contentsOf: try variable.compile(with: ctx, in: self))
 
+			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayUpdate, comment: "update")
+			bytecode.append(instr)
+		
+			let (varReg, isNew) = ctx.getRegister(for: variable.name)
+			
+			guard !isNew else {
+				throw CompileError.unexpectedCommand
+			}
+			
+			let instruction = BytecodeInstruction(label: label, type: .registerUpdate, arguments: [.index(varReg)], comment: "\(variable.name)")
+			
+			bytecode.append(instruction)
+			
+		} else {
+			// error
+			
+		}
+		
 		return bytecode
 
 	}
