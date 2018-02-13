@@ -95,13 +95,15 @@ runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns
 * Booleans
 	* Can be evaluated from comparison
 	* Can be defined by literal: ```true``` or ```false``` 
-* String
+* Strings
 	* Can be concatenated with the + operator 
+* Arrays
+	* Can contain any type, including other arrays  
 * Functions
 	* Supports parameters, returning and recursion 
 	* Can be declared inside other functions
 * Structs
-	* Can contain **any** type, including other structs  
+	* Can contain any type, including other structs  
 * Loops
 	* ```for```
 	* ```while```
