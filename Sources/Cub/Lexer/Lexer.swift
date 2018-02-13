@@ -25,7 +25,10 @@ public class Lexer {
 		"repeat": .repeat,
 		"return": .return,
 		"returns": .returns,
-		"struct": .struct
+		"struct": .struct,
+		"guard": .guard,
+		"in": .in,
+		"nil": .nil
 	]
 
 	/// Currently only works for 1 char tokens

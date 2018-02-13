@@ -65,7 +65,10 @@ public enum TokenType {
 	case `return`
 	case returns
 	case `struct`
-	
+	case `guard`
+	case `in`
+	case `nil`
+
 	// Fallback
 	case other(String)
 	
