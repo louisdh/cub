@@ -1,5 +1,5 @@
 //
-//  Fibonacci.lion
+//  Fibonacci.cub
 //
 
 func fibonacci(n) returns {

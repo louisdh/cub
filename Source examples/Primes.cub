@@ -1,5 +1,5 @@
 //
-//  Primes.lion
+//  Primes.cub
 //
 
 func isPrime(num) returns {
