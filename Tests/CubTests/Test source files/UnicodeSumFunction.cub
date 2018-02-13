@@ -1,5 +1,5 @@
 //
-//  UnicodeSumFunction.lion
+//  UnicodeSumFunction.cub
 //
 
 func ∑(a, b) returns {

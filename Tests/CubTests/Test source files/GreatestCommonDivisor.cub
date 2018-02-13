@@ -1,5 +1,5 @@
 //
-//  GreatestCommonDivisor.lion
+//  GreatestCommonDivisor.cub
 //
 
 func gcd(p, q) returns {
