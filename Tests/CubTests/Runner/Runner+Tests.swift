@@ -57,6 +57,20 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "StructDeepGet", that: "b", equals: .number(3), useStdLib: false)
 	}
 	
+	func testArrayInit() {
+		let expectedArr = ValueType.array([.number(1), .number(2), .number(3)])
+		assert(in: "ArrayInit", that: "a", equals: expectedArr, useStdLib: false)
+	}
+	
+	func testArrayGet() {
+		assert(in: "ArrayGet", that: "b", equals: .number(1), useStdLib: false)
+	}
+	
+	func testArrayUpdate() {
+		let expectedArr = ValueType.array([.number(5), .number(2), .number(3)])
+		assert(in: "ArrayUpdate", that: "a", equals: expectedArr, useStdLib: false)
+	}
+	
 	func testUnicodeSumFunction() {
 		assert(in: "UnicodeSumFunction", that: "😀", equals: .number(5))
 	}
