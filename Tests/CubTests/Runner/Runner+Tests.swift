@@ -75,6 +75,14 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "UnicodeSumFunction", that: "😀", equals: .number(5))
 	}
 	
+	func testStringInit() {
+		assert(in: "StringInit", that: "a", equals: .string("hello world"))
+	}
+	
+	func testStringConcat() {
+		assert(in: "StringConcat", that: "b", equals: .string("hello there"))
+	}
+	
 	func testBinaryOp() {
 		assert(in: "BinaryOp", that: "a", equals: .number(512.75))
 	}
