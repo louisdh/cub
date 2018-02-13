@@ -11,7 +11,7 @@
 
 Scorpion is a simple instruction language, with a very small [instruction set](#instruction-set).
 
-Lioness is compiled to Scorpion, which can be executed using an interpreter. The interpreter included in this project does not perform any JIT compilation, making it safe to use in sandboxed environments, such as in iOS apps.
+Cub is compiled to Scorpion, which can be executed using an interpreter. The interpreter included in this project does not perform any JIT compilation, making it safe to use in sandboxed environments, such as in iOS apps.
 
 ## Instruction set
 | Mnemonic      | Opcode <br/>(UInt8) | Arguments | Stack <br/>[before] ➡️ [after] | Description                                                                           |
@@ -53,7 +53,7 @@ Lioness is compiled to Scorpion, which can be executed using an interpreter. The
 
 <table>
   <tr>
-    <th>Lioness</th>
+    <th>Cub</th>
     <th>Scorpion</th> 
   </tr>
   

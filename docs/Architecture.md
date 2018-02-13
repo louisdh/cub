@@ -1,7 +1,7 @@
 # Architecture
-This project consists of four main steps that, when put together, can run Lioness source code from a raw string to an executed result.
+This project consists of four main steps that, when put together, can run Cub source code from a raw string to an executed result.
 
-## Lioness pipeline
+## Cub pipeline
 
 ### Full pipeline:
 | 🛬 ```source code``` | ➡️ | Lexer 	| ➡️ | Parser | ➡️ | Compiler |  ➡️ | Interpreter | ➡️ | ```result``` 🛫 |
