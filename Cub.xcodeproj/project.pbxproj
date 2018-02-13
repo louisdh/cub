@@ -154,6 +154,9 @@
 		BE64E2202026414800D4A6FF /* StringNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64E21C2026414200D4A6FF /* StringNode.swift */; };
 		BE71CB8F1F12A23300C6B93E /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE71CB8E1F12A23300C6B93E /* TokenType.swift */; };
 		BE71CB901F12A23300C6B93E /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE71CB8E1F12A23300C6B93E /* TokenType.swift */; };
+		BE759C6520331FEB001E814D /* StructDeepUpdate.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C6420331FEB001E814D /* StructDeepUpdate.cub */; };
+		BE759C6820332045001E814D /* StructDeepGet.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C6620332044001E814D /* StructDeepGet.cub */; };
+		BE759C6920332045001E814D /* StructDeepAssign.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C6720332045001E814D /* StructDeepAssign.cub */; };
 		BE7C81771F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
 		BE7C81781F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
 		BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
@@ -266,6 +269,9 @@
 		BE64E1F42025DE8200D4A6FF /* Compiler+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Compiler+Errors.swift"; sourceTree = "<group>"; };
 		BE64E21C2026414200D4A6FF /* StringNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNode.swift; sourceTree = "<group>"; };
 		BE71CB8E1F12A23300C6B93E /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
+		BE759C6420331FEB001E814D /* StructDeepUpdate.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructDeepUpdate.cub; sourceTree = "<group>"; };
+		BE759C6620332044001E814D /* StructDeepGet.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructDeepGet.cub; sourceTree = "<group>"; };
+		BE759C6720332045001E814D /* StructDeepAssign.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructDeepAssign.cub; sourceTree = "<group>"; };
 		BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorType.swift; sourceTree = "<group>"; };
 		BEA14DDC2030804000AB7351 /* ArrayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNode.swift; sourceTree = "<group>"; };
 		BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySubscriptNode.swift; sourceTree = "<group>"; };
@@ -558,6 +564,9 @@
 				BE64E1D32025DE8200D4A6FF /* ModulusPerf.cub */,
 				BE64E1D42025DE8200D4A6FF /* VarAssignAfterScopeLeave.cub */,
 				BE64E1D52025DE8200D4A6FF /* StructUpdate.cub */,
+				BE759C6420331FEB001E814D /* StructDeepUpdate.cub */,
+				BE759C6720332045001E814D /* StructDeepAssign.cub */,
+				BE759C6620332044001E814D /* StructDeepGet.cub */,
 				BE64E1D62025DE8200D4A6FF /* FunctionReturnGlobalVar.cub */,
 				BE64E1D72025DE8200D4A6FF /* InnerWhileLoops.cub */,
 				BE64E1D82025DE8200D4A6FF /* MinMax.cub */,
@@ -771,10 +780,12 @@
 			files = (
 				BE64E2062025DE8200D4A6FF /* MinMax.cub in Resources */,
 				BE64E1FC2025DE8200D4A6FF /* BinaryOp.cub in Resources */,
+				BE759C6920332045001E814D /* StructDeepAssign.cub in Resources */,
 				BE64E2112025DE8200D4A6FF /* UnusedFunctionResult.cub in Resources */,
 				BE64E20E2025DE8200D4A6FF /* RepeatWhileStatement.cub in Resources */,
 				BE64E1FB2025DE8200D4A6FF /* GreatestCommonDivisor.cub in Resources */,
 				BE64E1F82025DE8200D4A6FF /* NumberSign.cub in Resources */,
+				BE759C6820332045001E814D /* StructDeepGet.cub in Resources */,
 				BE64E20C2025DE8200D4A6FF /* LargeMathOperation.cub in Resources */,
 				BE64E20B2025DE8200D4A6FF /* Fibonacci.cub in Resources */,
 				BE64E2042025DE8200D4A6FF /* FunctionReturnGlobalVar.cub in Resources */,
@@ -792,6 +803,7 @@
 				BE64E1FF2025DE8200D4A6FF /* DoTimesLoops.cub in Resources */,
 				BE64E2002025DE8200D4A6FF /* CommentAfterAssignment.cub in Resources */,
 				BE64E2092025DE8200D4A6FF /* AssignFunctionToVar.cub in Resources */,
+				BE759C6520331FEB001E814D /* StructDeepUpdate.cub in Resources */,
 				BE64E2072025DE8200D4A6FF /* Fibonacci-ast.txt in Resources */,
 				BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */,
 				BE64E1FD2025DE8200D4A6FF /* Modulus.cub in Resources */,

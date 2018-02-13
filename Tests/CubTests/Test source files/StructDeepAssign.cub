@@ -1,0 +1,14 @@
+//
+//  StructDeepAssign.cub
+//  Cub
+//
+//  Created by Louis D'hauwe on 04/06/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+struct foo {
+	a, b, c
+}
+
+bar = foo(1, foo(1, 2, 3), 3)
+bar.b.a = 2
