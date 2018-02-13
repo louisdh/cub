@@ -29,7 +29,7 @@ class CompilerErrors: BaseTestCase {
 		}
 
 		guard error == expectedError else {
-			let message = "[\(file).lion]: Expected error \"\(expectedError)\""
+			let message = "[\(file).cub]: Expected error \"\(expectedError)\""
 			XCTFail(message)
 			return
 		}

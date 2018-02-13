@@ -81,11 +81,11 @@ public class Runner {
 			
 			let stdLibCode = try stdLib.stdLibCode()
 
-			guard let compiledStdLib = compileLionessSourceCode(stdLibCode) else {
+			guard let compiledStdLib = compileCubSourceCode(stdLibCode) else {
 				throw RunnerError.stdlibFailed
 			}
 
-			guard let compiledSource = compileLionessSourceCode(source) else {
+			guard let compiledSource = compileCubSourceCode(source) else {
 				throw RunnerError.runFailed
 			}
 
@@ -93,7 +93,7 @@ public class Runner {
 
 		} else {
 
-			guard let compiledSource = compileLionessSourceCode(source) else {
+			guard let compiledSource = compileCubSourceCode(source) else {
 				throw RunnerError.runFailed
 			}
 
@@ -135,7 +135,7 @@ public class Runner {
 		
 		let stdLibCode = try stdLib.stdLibCode()
 		
-		guard let compiledStdLib = compileLionessSourceCode(stdLibCode) else {
+		guard let compiledStdLib = compileCubSourceCode(stdLibCode) else {
 			throw RunnerError.stdlibFailed
 		}
 
@@ -145,7 +145,7 @@ public class Runner {
 			logSourceCode(source)
 		}
 
-		guard let compiledSource = compileLionessSourceCode(source) else {
+		guard let compiledSource = compileCubSourceCode(source) else {
 			throw RunnerError.runFailed
 		}
 
@@ -181,7 +181,7 @@ public class Runner {
 			logSourceCode(source)
 		}
 
-		guard let compiledSource = compileLionessSourceCode(source) else {
+		guard let compiledSource = compileCubSourceCode(source) else {
 			throw RunnerError.runFailed
 		}
 
@@ -216,7 +216,7 @@ public class Runner {
 		return ast
 	}
 	
-	func compileLionessSourceCode(_ source: String) -> BytecodeBody? {
+	func compileCubSourceCode(_ source: String) -> BytecodeBody? {
 
 		guard let ast = parseAST(source) else {
 			return nil
@@ -230,9 +230,9 @@ public class Runner {
 
 	}
 
-	private func runLionessSourceCode(_ source: String) {
+	private func runCubSourceCode(_ source: String) {
 
-		guard let bytecode = compileLionessSourceCode(source) else {
+		guard let bytecode = compileCubSourceCode(source) else {
 			return
 		}
 
