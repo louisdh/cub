@@ -162,6 +162,7 @@
 		BE759C6F203331FE001E814D /* ArrayUpdate.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C6C203331FE001E814D /* ArrayUpdate.cub */; };
 		BE759C7220333465001E814D /* StringConcat.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C7020333464001E814D /* StringConcat.cub */; };
 		BE759C7320333465001E814D /* StringInit.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C7120333465001E814D /* StringInit.cub */; };
+		BE759C7520333699001E814D /* Format.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C7420333698001E814D /* Format.cub */; };
 		BE7C81771F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
 		BE7C81781F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
 		BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
@@ -282,6 +283,7 @@
 		BE759C6C203331FE001E814D /* ArrayUpdate.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayUpdate.cub; sourceTree = "<group>"; };
 		BE759C7020333464001E814D /* StringConcat.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringConcat.cub; sourceTree = "<group>"; };
 		BE759C7120333465001E814D /* StringInit.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringInit.cub; sourceTree = "<group>"; };
+		BE759C7420333698001E814D /* Format.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Format.cub; sourceTree = "<group>"; };
 		BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorType.swift; sourceTree = "<group>"; };
 		BEA14DDC2030804000AB7351 /* ArrayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNode.swift; sourceTree = "<group>"; };
 		BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySubscriptNode.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				BE64E1CD2025DE8200D4A6FF /* GreatestCommonDivisor.cub */,
 				BE64E1CE2025DE8200D4A6FF /* BinaryOp.cub */,
 				BE64E1CF2025DE8200D4A6FF /* Modulus.cub */,
+				BE759C7420333698001E814D /* Format.cub */,
 				BE64E1D02025DE8200D4A6FF /* FunctionInFunction.cub */,
 				BE64E1D12025DE8200D4A6FF /* DoTimesLoops.cub */,
 				BE64E1D22025DE8200D4A6FF /* CommentAfterAssignment.cub */,
@@ -818,6 +821,7 @@
 				BE759C6D203331FE001E814D /* ArrayGet.cub in Resources */,
 				BE64E2032025DE8200D4A6FF /* StructUpdate.cub in Resources */,
 				BE64E2012025DE8200D4A6FF /* ModulusPerf.cub in Resources */,
+				BE759C7520333699001E814D /* Format.cub in Resources */,
 				BE64E1F52025DE8200D4A6FF /* FunctionGlobalVar.cub in Resources */,
 				BE759C7220333465001E814D /* StringConcat.cub in Resources */,
 				BE64E1FF2025DE8200D4A6FF /* DoTimesLoops.cub in Resources */,

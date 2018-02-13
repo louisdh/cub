@@ -104,6 +104,11 @@ public class Runner {
 		let executionBytecode = bytecode.map { $0.executionInstruction }
 
 		let interpreter = try BytecodeInterpreter(bytecode: executionBytecode)
+		
+		for (id, callback) in externalFunctions {
+			interpreter.registerExternalFunction(id: id, callback: callback)
+		}
+		
 		try interpreter.interpret()
 
 		guard let reg = compiler.getCompiledRegister(for: varName) else {

@@ -83,6 +83,10 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "StringConcat", that: "b", equals: .string("hello there"))
 	}
 	
+	func testFormat() {
+		assert(in: "Format", that: "a", equals: .string("10"))
+	}
+	
 	func testBinaryOp() {
 		assert(in: "BinaryOp", that: "a", equals: .number(512.75))
 	}
