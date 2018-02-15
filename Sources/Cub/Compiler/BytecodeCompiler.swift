@@ -47,7 +47,7 @@ public class BytecodeCompiler {
 
 	private var structMemberIndex: Int
 
-	private var structMemberMap: [String : Int]
+	private var structMemberMap: [String: Int]
 
 	private let scopeTreeRoot: ScopeNode
 

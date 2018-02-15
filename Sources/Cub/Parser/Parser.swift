@@ -58,7 +58,7 @@ public class Parser {
 
 	// TODO: Refactor operators and their precedence
 
-	private let operatorPrecedence: [String : Int] = [
+	private let operatorPrecedence: [String: Int] = [
 		"+": 20,
 		"-": 20,
 		"*": 40,

@@ -12,7 +12,7 @@ public struct BinaryOpNode: ASTNode {
 
 	// TODO: add BinaryOpType enum
 	
-	static var opTypes: [String : BytecodeInstructionType] {
+	static var opTypes: [String: BytecodeInstructionType] {
 		return ["+": .add,
 		        "-": .sub,
 		        "*": .mul,

@@ -864,11 +864,11 @@ public class BytecodeInterpreter {
 	/// Get updated dictionary for given dictionary, updating with newValue at keyPath.
 	/// Recursively traverses dictionary tree to update a value, then reconstructs the dictionary.
 	/// E.g.
-	/// dict = [0 : [1 : 4.0]]
+	/// dict = [0: [1: 4.0]]
 	/// keyPath = [1, 0]
 	/// newValue = 8.0
-	/// -> [0 : [1 : 8.0]]
-	private func updatedDict(for dict: [Int : ValueType], keyPath: [Int], newValue: ValueType, isReconstructing: Bool = false, trace: [[Int : ValueType]] = [], keyPathPassed: [Int] = []) throws -> [Int : ValueType] {
+	/// -> [0: [1: 8.0]]
+	private func updatedDict(for dict: [Int: ValueType], keyPath: [Int], newValue: ValueType, isReconstructing: Bool = false, trace: [[Int: ValueType]] = [], keyPathPassed: [Int] = []) throws -> [Int: ValueType] {
 
 		var trace = trace
 		var keyPathPassed = keyPathPassed

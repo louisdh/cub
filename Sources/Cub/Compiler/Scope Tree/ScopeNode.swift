@@ -13,8 +13,8 @@ internal class ScopeNode {
 	weak var parentNode: ScopeNode?
 	var childNodes: [ScopeNode]
 
-	var registerMap: [String : Int]
-	var functionMap: [String : FunctionMapped]
+	var registerMap: [String: Int]
+	var functionMap: [String: FunctionMapped]
 	var internalRegisters: [Int]
 
 	// TODO: make Set?
@@ -38,7 +38,7 @@ internal class ScopeNode {
 	}
 
 	/// Get deep register map (including parents' register map)
-	func deepRegisterMap() -> [String : Int] {
+	func deepRegisterMap() -> [String: Int] {
 
 		if let parentNode = parentNode {
 
@@ -57,7 +57,7 @@ internal class ScopeNode {
 	}
 
 	/// Get deep function map (including parents' function map)
-	func deepFunctionMap() -> [String : FunctionMapped] {
+	func deepFunctionMap() -> [String: FunctionMapped] {
 
 		if let parentNode = parentNode {
 
