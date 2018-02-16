@@ -275,6 +275,9 @@ public class BytecodeInterpreter {
 			
 			case .arrayGet:
 				newPc = try executeArrayGet(instruction, pc: pc)
+			
+			case .sizeOf:
+				newPc = try sizeOf(instruction, pc: pc)
 
 		}
 
@@ -855,6 +858,35 @@ public class BytecodeInterpreter {
 		}
 		
 		try stack.push(memberValue)
+		
+		return pc + 1
+	}
+	
+	private func sizeOf(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
+
+		let value = try stack.pop()
+		
+		let size: NumberType
+		
+		switch value {
+		case .array(let array):
+			size = NumberType(array.count)
+			
+		case .bool:
+			size = 1
+			
+		case .number(let number):
+			size = number
+			
+		case .string(let string):
+			size = NumberType(string.count)
+			
+		case .struct(let stru):
+			size = NumberType(stru.count)
+
+		}
+		
+		try stack.push(.number(size))
 		
 		return pc + 1
 	}

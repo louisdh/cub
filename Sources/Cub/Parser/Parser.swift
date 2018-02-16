@@ -231,7 +231,7 @@ public class Parser {
 	}
 
 	@discardableResult
-	private func popCurrentToken(andExpect type: TokenType, _ tokenString: String? = nil) throws  -> Token {
+	private func popCurrentToken(andExpect type: TokenType, _ tokenString: String? = nil) throws -> Token {
 
 		guard let currentToken = popCurrentToken() else {
 			throw error(.unexpectedToken)
@@ -717,10 +717,44 @@ public class Parser {
 		return doStatement
 	}
 
-	private func parseForStatement() throws -> ForStatementNode {
+	private func parseForStatement() throws -> ASTNode {
 
 		let forToken = try popCurrentToken(andExpect: .for)
+		
+		if let peekCurrentToken = peekCurrentToken(), case .identifier = peekCurrentToken.type {
+			
+			guard let currentToken = popCurrentToken() else {
+				throw self.error(.unexpectedToken)
+			}
+			
+			guard case .identifier(let name) = currentToken.type else {
+				throw self.error(.unexpectedToken)
+			}
+			
+			let varNode = VariableNode(name: name)
 
+			try popCurrentToken(andExpect: .in, "in")
+			
+			let arrayExpression = try parseExpression()
+			
+			let body = try parseBodyWithCurlies()
+			
+			let forStatement: ForInLoopNode
+			
+			do {
+				
+				forStatement = try ForInLoopNode(iteratorVarNode: varNode, arrayNode: arrayExpression, body: body)
+				
+			} catch {
+				
+				throw self.error(.illegalStatement, token: forToken)
+				
+			}
+			
+			return forStatement
+			
+		}
+		
 		let assignment = try parseAssignment()
 
 		try popCurrentToken(andExpect: .comma, ",")

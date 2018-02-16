@@ -71,7 +71,9 @@ public enum BytecodeInstructionType: UInt8, CustomStringConvertible {
 	case arraySet = 33
 	case arrayUpdate = 34
 	case arrayGet = 35
-	
+
+	case sizeOf = 36
+
 	public var opCode: UInt8 {
 		return self.rawValue
 	}
@@ -187,7 +189,9 @@ public enum BytecodeInstructionType: UInt8, CustomStringConvertible {
 			
 		case .arrayGet:
 			return "array_get"
-
+			
+		case .sizeOf:
+			return "size_of"
 			
 		}
 

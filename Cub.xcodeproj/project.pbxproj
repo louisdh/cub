@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BE14125A1DB1774900DAA385 /* Cub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2296281DB16EE800EA477A /* Cub.framework */; };
+		BE21555E20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */; };
+		BE21555F20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */; };
 		BE3F26A81EE0969A00D58C83 /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE3F26A61EE0969A00D58C83 /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE3F271D1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
 		BE3F271E1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
@@ -111,6 +113,7 @@
 		BE3F27C01EE0AF7300D58C83 /* Arithmetic.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */; };
 		BE3F27C31EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
 		BE3F27C41EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
+		BE42802F20378F8500C8FE24 /* ForInArray.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE42802E20378F8500C8FE24 /* ForInArray.cub */; };
 		BE58C1581E16D7BE00BC73CA /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE58C1561E16D7BE00BC73CA /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE64E1F52025DE8200D4A6FF /* FunctionGlobalVar.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */; };
 		BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C82025DE8200D4A6FF /* Complex.cub */; };
@@ -176,6 +179,7 @@
 /* Begin PBXFileReference section */
 		BE1412571DB1755E00DAA385 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BE16D8041F1565FD000C58A3 /* DecimalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DecimalConfig.xcconfig; sourceTree = "<group>"; };
+		BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForInLoopNode.swift; sourceTree = "<group>"; };
 		BE2296281DB16EE800EA477A /* Cub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE295CE81DB14DCE0019EC57 /* Cub macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cub macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3F26A51EE0969A00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub macOS/Info.plist"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		BE3F271C1EE0A97400D58C83 /* StdLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdLib.swift; sourceTree = "<group>"; };
 		BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Arithmetic.cub; sourceTree = "<group>"; };
 		BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Graphics.cub; sourceTree = "<group>"; };
+		BE42802E20378F8500C8FE24 /* ForInArray.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForInArray.cub; sourceTree = "<group>"; };
 		BE58C14C1E16D77900BC73CA /* Cub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE58C1551E16D7BE00BC73CA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub iOS/Info.plist"; sourceTree = SOURCE_ROOT; };
 		BE58C1561E16D7BE00BC73CA /* Cub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cub.h; path = "Cub iOS/Cub.h"; sourceTree = SOURCE_ROOT; };
@@ -403,6 +408,7 @@
 				BE3F26F01EE0A97300D58C83 /* ContinueNode.swift */,
 				BE3F26F11EE0A97300D58C83 /* DoStatementNode.swift */,
 				BE3F26F21EE0A97300D58C83 /* ForStatementNode.swift */,
+				BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */,
 				BE3F26F31EE0A97300D58C83 /* LoopNode.swift */,
 				BE3F26F41EE0A97300D58C83 /* RepeatWhileStatementNode.swift */,
 				BE3F26F51EE0A97300D58C83 /* WhileStatementNode.swift */,
@@ -586,6 +592,7 @@
 				BE759C7020333464001E814D /* StringConcat.cub */,
 				BE759C7120333465001E814D /* StringInit.cub */,
 				BE64E1D62025DE8200D4A6FF /* FunctionReturnGlobalVar.cub */,
+				BE42802E20378F8500C8FE24 /* ForInArray.cub */,
 				BE64E1D72025DE8200D4A6FF /* InnerWhileLoops.cub */,
 				BE64E1D82025DE8200D4A6FF /* MinMax.cub */,
 				BE64E1D92025DE8200D4A6FF /* Fibonacci-ast.txt */,
@@ -817,6 +824,7 @@
 				BE64E1F92025DE8200D4A6FF /* CommentLineAndBlock.cub in Resources */,
 				BE64E1FA2025DE8200D4A6FF /* Fibonacci.scorp in Resources */,
 				BE64E2082025DE8200D4A6FF /* UnicodeSumFunction.cub in Resources */,
+				BE42802F20378F8500C8FE24 /* ForInArray.cub in Resources */,
 				BE64E1FE2025DE8200D4A6FF /* FunctionInFunction.cub in Resources */,
 				BE759C6D203331FE001E814D /* ArrayGet.cub in Resources */,
 				BE64E2032025DE8200D4A6FF /* StructUpdate.cub in Resources */,
@@ -896,6 +904,7 @@
 				BE3F27751EE0A97400D58C83 /* Parser.swift in Sources */,
 				BE3F27251EE0A97400D58C83 /* ASTNodeDescriptor.swift in Sources */,
 				BE3F27291EE0A97400D58C83 /* BinaryOpNode.swift in Sources */,
+				BE21555E20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */,
 				BE3F273D1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27631EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27651EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
@@ -975,6 +984,7 @@
 				BE3F27761EE0A97400D58C83 /* Parser.swift in Sources */,
 				BE3F27261EE0A97400D58C83 /* ASTNodeDescriptor.swift in Sources */,
 				BE3F272A1EE0A97400D58C83 /* BinaryOpNode.swift in Sources */,
+				BE21555F20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */,
 				BE3F273E1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27641EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27661EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,

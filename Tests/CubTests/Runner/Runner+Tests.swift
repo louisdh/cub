@@ -99,6 +99,10 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "GreatestCommonDivisor", that: "a", equals: .number(4))
 	}
 	
+	func testForInArray() {
+		assert(in: "ForInArray", that: "sum", equals: .number(10))
+	}
+	
 	func testFibonacci() {
 		assert(in: "Fibonacci", that: "a", equals: .number(55))
 	}
