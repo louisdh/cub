@@ -721,7 +721,8 @@ public class Parser {
 
 		let forToken = try popCurrentToken(andExpect: .for)
 		
-		if let peekCurrentToken = peekCurrentToken(), case .identifier = peekCurrentToken.type {
+		if let peekCurrentToken = peekCurrentToken(), case .identifier = peekCurrentToken.type,
+			let peekNextToken = peekNextToken(), case .in = peekNextToken.type {
 			
 			guard let currentToken = popCurrentToken() else {
 				throw self.error(.unexpectedToken)
