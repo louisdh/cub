@@ -29,6 +29,10 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "CommentBlockAfterAssignment", that: "a", equals: .number(2), useStdLib: false)
 	}
 	
+	func testAssignBoolToVar() {
+		assert(in: "AssignBoolToVar", that: "a", equals: .bool(true), useStdLib: false)
+	}
+	
 	func testUnusedFunctionResult() {
 		
 		let interpreter = try? execute("UnusedFunctionResult")
