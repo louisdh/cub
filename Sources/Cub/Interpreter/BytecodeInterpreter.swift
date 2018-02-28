@@ -315,6 +315,24 @@ public class BytecodeInterpreter {
 		case let (.string(n1), .string(n2)):
 			try stack.push(.string("\(n1)\(n2)"))
 
+		case let (.array(a1), .array(a2)):
+			var array = a1
+			array.append(contentsOf: a2)
+			
+			try stack.push(.array(array))
+			
+		case let (.array(a1), a2):
+			var array = a1
+			array.append(a2)
+			
+			try stack.push(.array(array))
+
+		case let (a1, .array(a2)):
+			var array = a2
+			array.insert(a1, at: 0)
+			
+			try stack.push(.array(array))
+			
 		default:
 			throw error(.unexpectedArgument)
 		}

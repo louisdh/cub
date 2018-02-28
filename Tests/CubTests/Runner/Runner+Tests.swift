@@ -13,6 +13,18 @@ class Runner_Tests: BaseTestCase {
 	
 	// MARK: - Tests
 	
+	func testArrayAdd1() {
+		assert(in: "ArrayAdd1", that: "a", equals: .array([.number(1), .number(2), .number(3), .number(4)]), useStdLib: false)
+	}
+	
+	func testArrayAdd2() {
+		assert(in: "ArrayAdd2", that: "a", equals: .array([.number(1), .number(2), .number(3), .number(4), .number(5)]), useStdLib: false)
+	}
+	
+	func testArrayAdd3() {
+		assert(in: "ArrayAdd3", that: "a", equals: .array([.number(1), .number(2), .number(3)]), useStdLib: false)
+	}
+	
 	func testCommentLineAndBlock() {
 		assert(in: "CommentLineAndBlock", that: "a", equals: .number(2), useStdLib: false)
 	}

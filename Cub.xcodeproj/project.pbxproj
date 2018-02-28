@@ -173,6 +173,9 @@
 		BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
 		BEA14DE02030C85000AB7351 /* ArraySubscriptNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */; };
 		BEA14DE12030C85000AB7351 /* ArraySubscriptNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */; };
+		BEC8665E204732D400761E36 /* ArrayAdd1.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665B204732D300761E36 /* ArrayAdd1.cub */; };
+		BEC8665F204732D400761E36 /* ArrayAdd3.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665C204732D300761E36 /* ArrayAdd3.cub */; };
+		BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665D204732D300761E36 /* ArrayAdd2.cub */; };
 		BEEB790E1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 		BEEB790F1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 /* End PBXBuildFile section */
@@ -294,6 +297,9 @@
 		BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorType.swift; sourceTree = "<group>"; };
 		BEA14DDC2030804000AB7351 /* ArrayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNode.swift; sourceTree = "<group>"; };
 		BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySubscriptNode.swift; sourceTree = "<group>"; };
+		BEC8665B204732D300761E36 /* ArrayAdd1.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd1.cub; sourceTree = "<group>"; };
+		BEC8665C204732D300761E36 /* ArrayAdd3.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd3.cub; sourceTree = "<group>"; };
+		BEC8665D204732D300761E36 /* ArrayAdd2.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd2.cub; sourceTree = "<group>"; };
 		BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytecodeDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -569,6 +575,9 @@
 		BE64E1C62025DE8200D4A6FF /* Test source files */ = {
 			isa = PBXGroup;
 			children = (
+				BEC8665B204732D300761E36 /* ArrayAdd1.cub */,
+				BEC8665D204732D300761E36 /* ArrayAdd2.cub */,
+				BEC8665C204732D300761E36 /* ArrayAdd3.cub */,
 				BE759C6A203331FD001E814D /* ArrayGet.cub */,
 				BE759C6B203331FE001E814D /* ArrayInit.cub */,
 				BE759C6C203331FE001E814D /* ArrayUpdate.cub */,
@@ -809,9 +818,11 @@
 				BE64E2062025DE8200D4A6FF /* MinMax.cub in Resources */,
 				BE64E1FC2025DE8200D4A6FF /* BinaryOp.cub in Resources */,
 				BE759C6920332045001E814D /* StructDeepAssign.cub in Resources */,
+				BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */,
 				BE64E2112025DE8200D4A6FF /* UnusedFunctionResult.cub in Resources */,
 				BE64E20E2025DE8200D4A6FF /* RepeatWhileStatement.cub in Resources */,
 				BE7767CF20420047009E5B63 /* AssignBoolToVar.cub in Resources */,
+				BEC8665E204732D400761E36 /* ArrayAdd1.cub in Resources */,
 				BE64E1FB2025DE8200D4A6FF /* GreatestCommonDivisor.cub in Resources */,
 				BE64E1F82025DE8200D4A6FF /* NumberSign.cub in Resources */,
 				BE759C6E203331FE001E814D /* ArrayInit.cub in Resources */,
@@ -822,6 +833,7 @@
 				BE64E20A2025DE8200D4A6FF /* LargeSource.cub in Resources */,
 				BE64E20F2025DE8200D4A6FF /* Floor.cub in Resources */,
 				BE64E2052025DE8200D4A6FF /* InnerWhileLoops.cub in Resources */,
+				BEC8665F204732D400761E36 /* ArrayAdd3.cub in Resources */,
 				BE759C6F203331FE001E814D /* ArrayUpdate.cub in Resources */,
 				BE64E2102025DE8200D4A6FF /* CommentBlockAfterAssignment.cub in Resources */,
 				BE759C7320333465001E814D /* StringInit.cub in Resources */,
