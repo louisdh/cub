@@ -404,7 +404,7 @@ public class Runner {
 	// MARK: -
 	// MARK: Logging
 
-	private func logInterpreter(_ interpreter: BytecodeInterpreter) {
+	func logInterpreter(_ interpreter: BytecodeInterpreter) {
 
 		log("Stack at end of execution:\n\(interpreter.stack)\n")
 

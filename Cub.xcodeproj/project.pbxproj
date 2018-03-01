@@ -173,6 +173,7 @@
 		BE882FA62048844500F4A194 /* StringSubscriptGet.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA42048844500F4A194 /* StringSubscriptGet.cub */; };
 		BE882FA92048870600F4A194 /* StringSubscriptGetError.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */; };
 		BE882FAA2048870600F4A194 /* StringSubscriptSetError.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */; };
+		BE882FAC20488B9200F4A194 /* Runner+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE882FAB20488B9200F4A194 /* Runner+Log.swift */; };
 		BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
 		BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
 		BEA14DE02030C85000AB7351 /* ArraySubscriptNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */; };
@@ -303,6 +304,7 @@
 		BE882FA42048844500F4A194 /* StringSubscriptGet.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptGet.cub; sourceTree = "<group>"; };
 		BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptGetError.cub; sourceTree = "<group>"; };
 		BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptSetError.cub; sourceTree = "<group>"; };
+		BE882FAB20488B9200F4A194 /* Runner+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Runner+Log.swift"; sourceTree = "<group>"; };
 		BEA14DDC2030804000AB7351 /* ArrayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNode.swift; sourceTree = "<group>"; };
 		BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySubscriptNode.swift; sourceTree = "<group>"; };
 		BEC8665B204732D300761E36 /* ArrayAdd1.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd1.cub; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 			children = (
 				BE64E1E82025DE8200D4A6FF /* Runner+Performance.swift */,
 				BE64E1E92025DE8200D4A6FF /* Runner+Tests.swift */,
+				BE882FAB20488B9200F4A194 /* Runner+Log.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 				BE64E21A2025DE8200D4A6FF /* Stdlib+Tests.swift in Sources */,
 				BE64E2142025DE8200D4A6FF /* Runner+Performance.swift in Sources */,
 				BE64E2122025DE8200D4A6FF /* Lexer+Performance.swift in Sources */,
+				BE882FAC20488B9200F4A194 /* Runner+Log.swift in Sources */,
 				BE64E21B2025DE8200D4A6FF /* Compiler+Errors.swift in Sources */,
 				BE64E2172025DE8200D4A6FF /* Execution+Performance.swift in Sources */,
 				BE64E2182025DE8200D4A6FF /* CompiledBytecodeTests.swift in Sources */,
