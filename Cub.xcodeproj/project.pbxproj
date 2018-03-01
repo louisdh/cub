@@ -169,6 +169,10 @@
 		BE7767CF20420047009E5B63 /* AssignBoolToVar.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE7767CE20420046009E5B63 /* AssignBoolToVar.cub */; };
 		BE7C81771F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
 		BE7C81781F1AA5E100FAF195 /* ParseErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */; };
+		BE882FA52048844500F4A194 /* StringSubscriptSet.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA32048844400F4A194 /* StringSubscriptSet.cub */; };
+		BE882FA62048844500F4A194 /* StringSubscriptGet.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA42048844500F4A194 /* StringSubscriptGet.cub */; };
+		BE882FA92048870600F4A194 /* StringSubscriptGetError.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */; };
+		BE882FAA2048870600F4A194 /* StringSubscriptSetError.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */; };
 		BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
 		BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDC2030804000AB7351 /* ArrayNode.swift */; };
 		BEA14DE02030C85000AB7351 /* ArraySubscriptNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */; };
@@ -295,6 +299,10 @@
 		BE759C7420333698001E814D /* Format.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Format.cub; sourceTree = "<group>"; };
 		BE7767CE20420046009E5B63 /* AssignBoolToVar.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AssignBoolToVar.cub; sourceTree = "<group>"; };
 		BE7C81761F1AA5E100FAF195 /* ParseErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorType.swift; sourceTree = "<group>"; };
+		BE882FA32048844400F4A194 /* StringSubscriptSet.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptSet.cub; sourceTree = "<group>"; };
+		BE882FA42048844500F4A194 /* StringSubscriptGet.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptGet.cub; sourceTree = "<group>"; };
+		BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptGetError.cub; sourceTree = "<group>"; };
+		BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringSubscriptSetError.cub; sourceTree = "<group>"; };
 		BEA14DDC2030804000AB7351 /* ArrayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNode.swift; sourceTree = "<group>"; };
 		BEA14DDF2030C85000AB7351 /* ArraySubscriptNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySubscriptNode.swift; sourceTree = "<group>"; };
 		BEC8665B204732D300761E36 /* ArrayAdd1.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd1.cub; sourceTree = "<group>"; };
@@ -603,6 +611,10 @@
 				BE759C6620332044001E814D /* StructDeepGet.cub */,
 				BE759C7020333464001E814D /* StringConcat.cub */,
 				BE759C7120333465001E814D /* StringInit.cub */,
+				BE882FA42048844500F4A194 /* StringSubscriptGet.cub */,
+				BE882FA32048844400F4A194 /* StringSubscriptSet.cub */,
+				BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */,
+				BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */,
 				BE64E1D62025DE8200D4A6FF /* FunctionReturnGlobalVar.cub */,
 				BE42802E20378F8500C8FE24 /* ForInArray.cub */,
 				BE64E1D72025DE8200D4A6FF /* InnerWhileLoops.cub */,
@@ -816,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE64E2062025DE8200D4A6FF /* MinMax.cub in Resources */,
+				BE882FA92048870600F4A194 /* StringSubscriptGetError.cub in Resources */,
 				BE64E1FC2025DE8200D4A6FF /* BinaryOp.cub in Resources */,
 				BE759C6920332045001E814D /* StructDeepAssign.cub in Resources */,
 				BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */,
@@ -828,6 +841,7 @@
 				BE759C6E203331FE001E814D /* ArrayInit.cub in Resources */,
 				BE759C6820332045001E814D /* StructDeepGet.cub in Resources */,
 				BE64E20C2025DE8200D4A6FF /* LargeMathOperation.cub in Resources */,
+				BE882FA52048844500F4A194 /* StringSubscriptSet.cub in Resources */,
 				BE64E20B2025DE8200D4A6FF /* Fibonacci.cub in Resources */,
 				BE64E2042025DE8200D4A6FF /* FunctionReturnGlobalVar.cub in Resources */,
 				BE64E20A2025DE8200D4A6FF /* LargeSource.cub in Resources */,
@@ -850,10 +864,12 @@
 				BE759C7220333465001E814D /* StringConcat.cub in Resources */,
 				BE64E1FF2025DE8200D4A6FF /* DoTimesLoops.cub in Resources */,
 				BE64E2002025DE8200D4A6FF /* CommentAfterAssignment.cub in Resources */,
+				BE882FAA2048870600F4A194 /* StringSubscriptSetError.cub in Resources */,
 				BE64E2092025DE8200D4A6FF /* AssignFunctionToVar.cub in Resources */,
 				BE759C6520331FEB001E814D /* StructDeepUpdate.cub in Resources */,
 				BE64E2072025DE8200D4A6FF /* Fibonacci-ast.txt in Resources */,
 				BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */,
+				BE882FA62048844500F4A194 /* StringSubscriptGet.cub in Resources */,
 				BE64E1FD2025DE8200D4A6FF /* Modulus.cub in Resources */,
 				BE64E1F72025DE8200D4A6FF /* EmptyOneLineComment.cub in Resources */,
 				BE64E2022025DE8200D4A6FF /* VarAssignAfterScopeLeave.cub in Resources */,

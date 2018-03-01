@@ -99,6 +99,22 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "StringConcat", that: "b", equals: .string("hello there"))
 	}
 	
+	func testStringSubscriptGet() {
+		assert(in: "StringSubscriptGet", that: "b", equals: .string("H"))
+	}
+	
+	func testStringSubscriptSet() {
+		assert(in: "StringSubscriptSet", that: "a", equals: .string("Jello"))
+	}
+	
+	func testStringSubscriptSetError() {
+		assertInterpretError(in: "StringSubscriptSetError", expectedError: .arrayOutOfBounds, useStdLib: false)
+	}
+	
+	func testStringSubscriptGetError() {
+		assertInterpretError(in: "StringSubscriptGetError", expectedError: .arrayOutOfBounds, useStdLib: false)
+	}
+	
 	func testFormat() {
 		assert(in: "Format", that: "a", equals: .string("10"))
 	}

@@ -108,6 +108,41 @@ class BaseTestCase: XCTestCase {
 		
 	}
 	
+	func assertInterpretError(in file: String, expectedError: InterpreterError, useStdLib: Bool = true) {
+
+		guard let error = interpretAndExpectError(file, useStdLib: useStdLib) else {
+			XCTAssert(false, "[\(file).cub]: Expected \(expectedError) as error, but found: nil")
+			return
+		}
+		
+		let message = "[\(file).cub]: Expected \(expectedError) as error, but found: \(error)"
+		XCTAssert(error == expectedError, message)
+	}
+	
+	func interpretAndExpectError(_ file: String, useStdLib: Bool = true) -> InterpreterError? {
+		
+		let runner = Runner(logDebug: false)
+		
+		let fileURL = getFilePath(for: file, extension: "cub")
+		
+		guard let path = fileURL?.path else {
+			return nil
+		}
+		
+		do {
+			
+			try runner.runSource(at: path)
+			return nil
+			
+		} catch let error as InterpreterError {
+			return error
+			
+		} catch {
+			return nil
+		}
+		
+	}
+	
 	func execute(_ file: String, get varName: String, useStdLib: Bool = true) throws -> ValueType {
 		
 		let runner = Runner(logDebug: false)

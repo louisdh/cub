@@ -158,7 +158,7 @@ public class Runner {
 
 		let interpretStartTime = CFAbsoluteTimeGetCurrent()
 
-		interpret(fullBytecode)
+		try interpret(fullBytecode)
 
 		if logTime {
 
@@ -194,7 +194,7 @@ public class Runner {
 
 		let interpretStartTime = CFAbsoluteTimeGetCurrent()
 
-		interpret(fullBytecode)
+		try interpret(fullBytecode)
 
 		if logDebug {
 
@@ -235,13 +235,13 @@ public class Runner {
 
 	}
 
-	private func runCubSourceCode(_ source: String) {
+	private func runCubSourceCode(_ source: String) throws {
 
 		guard let bytecode = compileCubSourceCode(source) else {
 			return
 		}
 
-		interpret(bytecode)
+		try interpret(bytecode)
 
 	}
 
@@ -365,52 +365,40 @@ public class Runner {
 
 	var interpreter: BytecodeInterpreter?
 
-	private func interpret(_ bytecode: BytecodeBody) {
+	private func interpret(_ bytecode: BytecodeBody) throws {
 
 		if logDebug {
 			logTitle("Start bytecode interpreter")
 		}
 
-		do {
-
-			let executionBytecode = bytecode.map { $0.executionInstruction }
-
-			let interpreter = try BytecodeInterpreter(bytecode: executionBytecode)
-
-			for (id, callback) in externalFunctions {
-				interpreter.registerExternalFunction(id: id, callback: callback)
-			}
-			
-			interpreter.executionFinishedCallback = executionFinishedCallback
-			
-			self.interpreter = interpreter
-
-			try interpreter.interpret()
-
-			if logDebug {
-				logInterpreter(interpreter)
-			}
-
-		} catch {
-
-			if logDebug {
-
-				log("pc trace:")
-
-				if let interpreter = interpreter {
-					for pc in interpreter.pcTrace {
-						log(bytecode[pc].description)
-					}
-				}
-
-				log("\n")
-
-				log(error)
-
-			}
-
+		let executionBytecode = bytecode.map { $0.executionInstruction }
+		
+		let interpreter = try BytecodeInterpreter(bytecode: executionBytecode)
+		
+		for (id, callback) in externalFunctions {
+			interpreter.registerExternalFunction(id: id, callback: callback)
+		}
+		
+		interpreter.executionFinishedCallback = executionFinishedCallback
+		
+		self.interpreter = interpreter
+		
+		try interpreter.interpret()
+		
+		if logDebug {
+			logInterpreter(interpreter)
 		}
 
+	}
+	
+	func printTrace(_ bytecode: BytecodeBody) {
+		
+		if let interpreter = interpreter {
+			for pc in interpreter.pcTrace {
+				log(bytecode[pc].description)
+			}
+		}
+		
 	}
 
 	// MARK: -

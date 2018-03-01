@@ -827,7 +827,7 @@ public class BytecodeInterpreter {
 		var newArray = v
 		
 		guard i >= 0 && i < newArray.count else {
-			throw error(.unexpectedArgument)
+			throw error(.arrayOutOfBounds)
 		}
 		
 		newArray[i] = newValue
@@ -839,24 +839,44 @@ public class BytecodeInterpreter {
 	
 	private func executeArrayUpdate(_ instruction: BytecodeExecutionInstruction, pc: Int) throws -> Int {
 		
-		guard case let ValueType.array(v) = try stack.pop() else {
-			throw error(.unexpectedArgument)
-		}
-		
+		let v2 = try stack.pop()
+
 		let index = try popNumber()
 		let i = Int(index)
 		
 		let updateValue = try stack.pop()
-		
-		var newArray = v
-		
-		guard i >= 0 && i < newArray.count else {
+
+		if case let ValueType.array(v) = v2 {
+			
+			var newArray = v
+			
+			guard i >= 0 && i < newArray.count else {
+				throw error(.arrayOutOfBounds)
+			}
+			
+			newArray[i] = updateValue
+			
+			try stack.push(.array(newArray))
+			
+		} else if case let ValueType.string(v) = v2 {
+
+			guard case let .string(insertString) = updateValue else {
+				throw error(.unexpectedArgument)
+			}
+			
+			guard i >= 0 && i < v.count else {
+				throw error(.arrayOutOfBounds)
+			}
+			
+			let newString = String(v.prefix(i)) + insertString + String(v.dropFirst(i + 1))
+			
+			try stack.push(.string(newString))
+			
+		} else {
+			
 			throw error(.unexpectedArgument)
+
 		}
-		
-		newArray[i] = updateValue
-		
-		try stack.push(.array(newArray))
 		
 		return pc + 1
 	}
@@ -867,15 +887,30 @@ public class BytecodeInterpreter {
 			throw error(.unexpectedArgument)
 		}
 		
-		guard case let ValueType.array(v) = try stack.pop() else {
-			throw error(.unexpectedArgument)
-		}
+		let v2 = try stack.pop()
+		if case let ValueType.array(v) = v2 {
+
+			guard let memberValue = v[safe: Int(i)] else {
+				throw error(.arrayOutOfBounds)
+			}
+			
+			try stack.push(memberValue)
 		
-		guard let memberValue = v[safe: Int(i)] else {
+		} else if case let ValueType.string(v) = v2 {
+
+			guard i >= 0 && Int(i) < v.count else {
+				throw error(.arrayOutOfBounds)
+			}
+			
+			let memberValue = v[v.index(v.startIndex, offsetBy: Int(i))]
+
+			try stack.push(.string(String(memberValue)))
+			
+		} else {
+			
 			throw error(.unexpectedArgument)
+
 		}
-		
-		try stack.push(memberValue)
 		
 		return pc + 1
 	}

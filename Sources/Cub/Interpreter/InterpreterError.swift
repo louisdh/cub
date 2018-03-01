@@ -25,5 +25,8 @@ public enum InterpreterError: Error {
 
 	/// Underflow occured
 	case underflow
+	
+	/// Array out of bounds
+	case arrayOutOfBounds
 
 }
