@@ -14,7 +14,7 @@
 <a href="https://travis-ci.org/louisdh/cub"><img src="https://travis-ci.org/louisdh/cub.svg?branch=master" alt="Travis build status"/></a>
 <a href="https://codecov.io/gh/louisdh/cub"><img src="https://codecov.io/gh/louisdh/cub/branch/master/graph/badge.svg" alt="Codecov"/></a>
 <br>
-<img src="https://img.shields.io/badge/version-0.6.1-blue.svg" style="max-height: 300px;" alt="version 0.6.1">
+<img src="https://img.shields.io/badge/version-0.7.0-blue.svg" style="max-height: 300px;" alt="version 0.7.0">
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4bc51d.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"/></a>
 <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-4.0.3-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"/></a>
 <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS macOS tvOS watchOS">
@@ -127,7 +127,7 @@ Add to your `Package.swift` file's `dependencies` section:
 
 ```swift
 .Package(url: "https://github.com/louisdh/cub.git",
-		         majorVersion: 0, minor: 6)
+		         majorVersion: 0, minor: 7)
 ```
 
 ### Using [CocoaPods](http://cocoapods.org)
@@ -135,14 +135,14 @@ Add to your `Package.swift` file's `dependencies` section:
 Add the following line to your ```Podfile```:
 
 ```ruby
-pod 'Cub', '~> 0.6'
+pod 'Cub', '~> 0.7'
 ```
 
 ### Using [Carthage](https://github.com/Carthage/Carthage)
 Add the following line to your ```Cartfile```:
 
 ```ruby
-github "louisdh/cub" ~> 0.6
+github "louisdh/cub" ~> 0.7
 ```
 Run ```carthage update``` to build the framework and drag the built ```Cub.framework``` into your Xcode project.
 
