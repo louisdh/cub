@@ -10,7 +10,7 @@ import Foundation
 
 public class Lexer {
 
-	private static let keywordTokens: [String: TokenType] = [
+	static let keywordTokens: [String: TokenType] = [
 		"func": .function,
 		"while": .while,
 		"for": .for,
