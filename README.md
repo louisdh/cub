@@ -81,6 +81,11 @@ runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns
 
 ```
 
+External functions are called like any other global functions in Cub, the print function from the example above could be called like this:
+
+```swift
+print("Hello world")
+```
 
 
 ## Features
