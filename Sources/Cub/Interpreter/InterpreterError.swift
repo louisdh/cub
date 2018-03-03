@@ -30,3 +30,32 @@ public enum InterpreterError: Error {
 	case arrayOutOfBounds
 
 }
+
+extension InterpreterError: DisplayableError {
+	
+	public func description(inSource source: String) -> String {
+		
+		switch self {
+		case .unexpectedArgument:
+			return "An unexpected argument was found during interpretation."
+			
+		case .illegalStackOperation:
+			return "An illegal stack operation was performed during interpretation."
+
+		case .invalidRegister:
+			return "An invalid register was accessed during interpretation."
+			
+		case .stackOverflow:
+			return "A stack overflow occurred during interpretation."
+
+		case .underflow:
+			return "An underflow occurred during interpretation."
+			
+		case .arrayOutOfBounds:
+			return "An array was accessed outside its bounds during interpretation."
+			
+		}
+		
+	}
+	
+}
