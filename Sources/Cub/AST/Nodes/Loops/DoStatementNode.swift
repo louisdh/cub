@@ -24,19 +24,19 @@ public struct DoStatementNode: LoopNode {
 	/// - Throws: CompileError
 	public init(amount: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
-		guard amount is NumberNode || amount is VariableNode || amount is BinaryOpNode else {
-			throw CompileError.unexpectedCommand
-		}
-
-		if let numberNode = amount as? NumberNode {
-			if numberNode.value <= 0.0 {
-				throw CompileError.unexpectedCommand
-			}
-		}
-
 		self.amount = amount
 		self.body = body
 		self.range = range
+		
+		guard amount is NumberNode || amount is VariableNode || amount is BinaryOpNode else {
+			throw compileError(.unexpectedCommand)
+		}
+		
+		if let numberNode = amount as? NumberNode {
+			if numberNode.value <= 0.0 {
+				throw compileError(.unexpectedCommand)
+			}
+		}
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {
@@ -97,7 +97,7 @@ public struct DoStatementNode: LoopNode {
 		bytecode.append(goToStart)
 
 		guard let _ = ctx.popLoopContinue() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		return bytecode

@@ -107,7 +107,7 @@ public struct ForInLoopNode: LoopNode {
 		bytecode.append(goToStart)
 		
 		guard let _ = ctx.popLoopContinue() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 		
 		return bytecode

@@ -17,7 +17,7 @@ public struct ContinueNode: ASTNode {
 		let label = ctx.nextIndexLabel()
 
 		guard let continueLabel = ctx.peekLoopContinue() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(continueLabel)], comment: "continue")]

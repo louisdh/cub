@@ -40,26 +40,27 @@ public struct BinaryOpNode: ASTNode {
 
 	public init(op: String, lhs: ASTNode, rhs: ASTNode? = nil, range: Range<Int>?) throws {
 		self.op = op
-
-		guard lhs.isValidBinaryOpNode else {
-			throw CompileError.unexpectedCommand
-		}
-
-		if let rhs = rhs {
-			guard rhs.isValidBinaryOpNode else {
-				throw CompileError.unexpectedCommand
-			}
-		}
+		self.range = range
 
 		guard let type = BinaryOpNode.opTypes[op] else {
-			throw CompileError.unexpectedBinaryOperator
+			throw BinaryOpNode.compileError(.unexpectedBinaryOperator, range: range)
 		}
 
 		self.opInstructionType = type
 
 		self.lhs = lhs
 		self.rhs = rhs
-		self.range = range
+		
+		guard lhs.isValidBinaryOpNode else {
+			throw compileError(.unexpectedCommand)
+		}
+		
+		if let rhs = rhs {
+			guard rhs.isValidBinaryOpNode else {
+				throw compileError(.unexpectedCommand)
+			}
+		}
+		
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

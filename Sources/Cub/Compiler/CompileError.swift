@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CompileError: Error {
+public enum CompileErrorType {
 	case unexpectedCommand
 	case emptyStruct
 	case unexpectedBinaryOperator
@@ -16,11 +16,20 @@ public enum CompileError: Error {
 	case unbalancedScope
 }
 
+struct CompileError: Error {
+	
+	let type: CompileErrorType
+	
+	/// The range in the original source code where the error occurred.
+	let range: Range<Int>?
+	
+}
+
 extension CompileError: DisplayableError {
 
 	public func description(inSource source: String) -> String {
 		
-		switch self {
+		switch self.type {
 		case .unexpectedCommand:
 			return "Found an unexpected command while compiling."
 			

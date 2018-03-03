@@ -20,3 +20,21 @@ public protocol ASTNode: CustomStringConvertible, ASTNodeDescriptor {
 	var range: Range<Int>? { get }
 	
 }
+
+extension ASTNode {
+	
+	func compileError(_ type: CompileErrorType, range: Range<Int>? = nil) -> CompileError {
+		
+		let rangeToUse = range ?? self.range
+		
+		return CompileError(type: type, range: rangeToUse)
+	}
+	
+	static func compileError(_ type: CompileErrorType, range: Range<Int>? = nil) -> CompileError {
+		
+		let rangeToUse = range
+		
+		return CompileError(type: type, range: rangeToUse)
+	}
+	
+}

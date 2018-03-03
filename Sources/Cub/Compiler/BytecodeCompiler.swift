@@ -459,8 +459,8 @@ public class BytecodeCompiler {
 
 	// MARK: -
 
-	private func error(_ type: CompileError) -> Error {
-		return type
+	private func error(_ type: CompileErrorType) -> CompileError {
+		return CompileError(type: type, range: nil)
 	}
 
 }

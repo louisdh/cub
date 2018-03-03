@@ -17,7 +17,7 @@ public struct BreakLoopNode: ASTNode {
 		let label = ctx.nextIndexLabel()
 
 		guard let breakLabel = ctx.peekLoopHeader() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(breakLabel)], comment: "break")]

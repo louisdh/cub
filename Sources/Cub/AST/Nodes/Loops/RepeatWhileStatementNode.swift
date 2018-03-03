@@ -16,13 +16,13 @@ public struct RepeatWhileStatementNode: LoopNode {
 
 	public init(condition: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
-		guard condition.isValidConditionNode else {
-			throw CompileError.unexpectedCommand
-		}
-
 		self.condition = condition
 		self.body = body
 		self.range = range
+		
+		guard condition.isValidConditionNode else {
+			throw compileError(.unexpectedCommand)
+		}
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {
@@ -50,7 +50,7 @@ public struct RepeatWhileStatementNode: LoopNode {
 		bytecode.append(goToStart)
 
 		guard let _ = ctx.popLoopContinue() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		return bytecode

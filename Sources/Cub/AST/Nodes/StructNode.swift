@@ -37,7 +37,7 @@ public struct StructNode: ASTNode {
 		for member in prototype.members.reversed() {
 
 			guard let id = ctx.getStructMemberId(for: member) else {
-				throw CompileError.unexpectedCommand
+				throw compileError(.unexpectedCommand)
 			}
 
 			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structSet, arguments: [.index(id)], comment: "set \(member)")

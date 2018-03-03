@@ -26,7 +26,7 @@ public struct StructMemberNode: ASTNode {
 		bytecode.append(contentsOf: try variable.compile(with: ctx, in: self))
 
 		guard let id = ctx.getStructMemberId(for: name) else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		let getInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structGet, arguments: [.index(id)], comment: "get \(name)")

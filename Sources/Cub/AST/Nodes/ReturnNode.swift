@@ -33,7 +33,7 @@ public struct ReturnNode: ASTNode {
 		let label = ctx.nextIndexLabel()
 
 		guard let cleanupLabel = ctx.peekFunctionExit() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		let exitInstruction = BytecodeInstruction(label: label, type: .goto, arguments: [.index(cleanupLabel)], comment: "return")

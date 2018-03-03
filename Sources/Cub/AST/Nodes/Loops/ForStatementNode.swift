@@ -20,20 +20,20 @@ public struct ForStatementNode: LoopNode {
 
 	public init(assignment: AssignmentNode, condition: ASTNode, interval: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
-		guard condition.isValidConditionNode else {
-			throw CompileError.unexpectedCommand
-		}
-
-		guard interval is AssignmentNode else {
-			throw CompileError.unexpectedCommand
-		}
-
 		self.assignment = assignment
 		self.condition = condition
 		self.interval = interval
 
 		self.body = body
 		self.range = range
+		
+		guard condition.isValidConditionNode else {
+			throw compileError(.unexpectedCommand)
+		}
+		
+		guard interval is AssignmentNode else {
+			throw compileError(.unexpectedCommand)
+		}
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {
@@ -83,7 +83,7 @@ public struct ForStatementNode: LoopNode {
 		// End of loop
 
 		guard let _ = ctx.popLoopContinue() else {
-			throw CompileError.unexpectedCommand
+			throw compileError(.unexpectedCommand)
 		}
 
 		return bytecode
