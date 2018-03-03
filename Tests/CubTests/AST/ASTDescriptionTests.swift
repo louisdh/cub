@@ -31,7 +31,7 @@ class ASTDescriptionTests: BaseTestCase {
 			return
 		}
 		
-		let bodyNode = BodyNode(nodes: parsedAST)
+		let bodyNode = BodyNode(nodes: parsedAST, range: nil)
 		
 		XCTAssert(bodyNode.description == astDescription)
 	}
