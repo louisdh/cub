@@ -28,7 +28,10 @@ public struct FunctionNode: ASTNode {
 
 		let headerIndex = ctx.nextIndexLabel()
 		let functionId = ctx.getFunctionId(for: self)
-		let exitId = try ctx.getExitScopeFunctionId(for: self)
+		
+		guard let exitId = try? ctx.getExitScopeFunctionId(for: self) else {
+			throw compileError(.functionNotFound(prototype.name))
+		}
 
 		let headerComment = "\(prototype.name)(\(prototype.argumentNames.joined(separator: ", ")))"
 

@@ -425,7 +425,7 @@ public class BytecodeCompiler {
 		let name = functionNode.prototype.name
 
 		guard let functionMapped = currentScopeNode.deepFunctionMap()[name] else {
-			throw error(.functionNotFound)
+			throw error(.functionNotFound(name))
 		}
 
 		return functionMapped.exitId
@@ -439,7 +439,7 @@ public class BytecodeCompiler {
 			return functionMapped.id
 		}
 
-		throw error(.functionNotFound)
+		throw error(.functionNotFound(functionName))
 	}
 
 	func doesFunctionReturn(for functionName: String) throws -> Bool {
@@ -448,7 +448,7 @@ public class BytecodeCompiler {
 			return functionMapped.returns
 		}
 
-		throw error(.functionNotFound)
+		throw error(.functionNotFound(functionName))
 
 	}
 
