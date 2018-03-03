@@ -26,7 +26,7 @@ class ASTDescriptionTests: BaseTestCase {
 		}
 
 		let runner = Runner()
-		guard let parsedAST = runner.parseAST(source) else {
+		guard let parsedAST = try? runner.parseAST(source) else {
 			assertionFailure("Compilation failed")
 			return
 		}

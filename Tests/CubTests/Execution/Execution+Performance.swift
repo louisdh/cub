@@ -57,7 +57,7 @@ class Execution_Performance: BaseTestCase {
 			return nil
 		}
 		
-		guard let compiledStdLib = runner.compileCubSourceCode(stdLib) else {
+		guard let compiledStdLib = try? runner.compileCubSourceCode(stdLib) else {
 			XCTFail("Failed to compile stdlib")
 			return nil
 		}
@@ -67,7 +67,7 @@ class Execution_Performance: BaseTestCase {
 			return nil
 		}
 		
-		guard let compiledSource = runner.compileCubSourceCode(source) else {
+		guard let compiledSource = try? runner.compileCubSourceCode(source) else {
 			XCTFail("Failed to compile source code")
 			return nil
 		}
