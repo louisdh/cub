@@ -36,11 +36,11 @@ public struct CallNode: ASTNode {
 
 		}
 
-		let invokeInstruction = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .invokeVirtual, arguments: [.index(id)], comment: "\(callee)")
+		let invokeInstruction = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .invokeVirtual, arguments: [.index(id)], comment: "\(callee)", range: range)
 		bytecode.append(invokeInstruction)
 
 		if try isResultUnused(with: ctx, in: parent) {
-			let popInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .pop, comment: "pop unused function result")
+			let popInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .pop, comment: "pop unused function result", range: range)
 			bytecode.append(popInstr)
 		}
 

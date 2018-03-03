@@ -45,7 +45,7 @@ public struct AssignmentNode: ASTNode {
 
 			let type: BytecodeInstructionType = isNew ? .registerStore : .registerUpdate
 
-			let instruction = BytecodeInstruction(label: label, type: type, arguments: [.index(varReg)], comment: "\(variable.name)")
+			let instruction = BytecodeInstruction(label: label, type: type, arguments: [.index(varReg)], comment: "\(variable.name)", range: range)
 
 			bytecode.append(instruction)
 
@@ -64,11 +64,11 @@ public struct AssignmentNode: ASTNode {
 
 			let membersMapped = members.map { InstructionArgumentType.index($0) }
 
-			let instruction = BytecodeInstruction(label: label, type: .structUpdate, arguments: membersMapped, comment: "\(membersMapped)")
+			let instruction = BytecodeInstruction(label: label, type: .structUpdate, arguments: membersMapped, comment: "\(membersMapped)", range: range)
 
 			bytecode.append(instruction)
 
-			let storeInstruction = BytecodeInstruction(label: label, type: .registerUpdate, arguments: [.index(varReg)], comment: "\(varNode.name)")
+			let storeInstruction = BytecodeInstruction(label: label, type: .registerUpdate, arguments: [.index(varReg)], comment: "\(varNode.name)", range: range)
 
 			bytecode.append(storeInstruction)
 
@@ -82,7 +82,7 @@ public struct AssignmentNode: ASTNode {
 			
 			bytecode.append(contentsOf: try variable.compile(with: ctx, in: self))
 
-			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayUpdate, comment: "update")
+			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayUpdate, comment: "update", range: range)
 			bytecode.append(instr)
 		
 			let (varReg, isNew) = ctx.getRegister(for: variable.name)
@@ -91,7 +91,7 @@ public struct AssignmentNode: ASTNode {
 				throw compileError(.unexpectedCommand)
 			}
 			
-			let instruction = BytecodeInstruction(label: label, type: .registerUpdate, arguments: [.index(varReg)], comment: "\(variable.name)")
+			let instruction = BytecodeInstruction(label: label, type: .registerUpdate, arguments: [.index(varReg)], comment: "\(variable.name)", range: range)
 			
 			bytecode.append(instruction)
 			

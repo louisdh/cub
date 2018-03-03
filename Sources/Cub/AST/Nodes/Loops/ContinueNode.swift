@@ -20,7 +20,7 @@ public struct ContinueNode: ASTNode {
 			throw compileError(.unexpectedCommand)
 		}
 
-		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(continueLabel)], comment: "continue")]
+		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(continueLabel)], comment: "continue", range: range)]
 
 	}
 

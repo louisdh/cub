@@ -67,7 +67,7 @@ public struct ForInLoopNode: LoopNode {
 		
 		ctx.pushLoopContinue(startOfLoopLabel)
 		
-		let skipFirstInterval = BytecodeInstruction(label: skipFirstIntervalLabel, type: .goto, arguments: [.index(skippedIntervalLabel)], comment: "skip first interval")
+		let skipFirstInterval = BytecodeInstruction(label: skipFirstIntervalLabel, type: .goto, arguments: [.index(skippedIntervalLabel)], comment: "skip first interval", range: range)
 		bytecode.append(skipFirstInterval)
 		
 		bytecode.append(contentsOf: intervalInstructions)
@@ -82,12 +82,12 @@ public struct ForInLoopNode: LoopNode {
 
 		var assignArrayValue = [BytecodeInstruction]()
 		
-		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(copiedArrayReg)], comment: "array"))
-		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(varReg)], comment: "index"))
+		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(copiedArrayReg)], comment: "array", range: range))
+		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(varReg)], comment: "index", range: range))
 		
-		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .arrayGet, comment: "array[i]"))
+		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .arrayGet, comment: "array[i]", range: range))
 
-		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(iVarReg)], comment: "set var"))
+		assignArrayValue.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(iVarReg)], comment: "set var", range: range))
 
 		
 		let bodyBytecode = try body.compile(with: ctx, in: self)
@@ -97,13 +97,13 @@ public struct ForInLoopNode: LoopNode {
 		
 		
 		let peekNextLabel = ctx.peekNextIndexLabel()
-		let ifeq = BytecodeInstruction(label: ifeqLabel, type: .ifFalse, arguments: [.index(peekNextLabel)], comment: "if false: exit loop")
+		let ifeq = BytecodeInstruction(label: ifeqLabel, type: .ifFalse, arguments: [.index(peekNextLabel)], comment: "if false: exit loop", range: range)
 		
 		bytecode.append(ifeq)
 		bytecode.append(contentsOf: assignArrayValue)
 		bytecode.append(contentsOf: bodyBytecode)
 
-		let goToStart = BytecodeInstruction(label: goToEndLabel, type: .goto, arguments: [.index(startOfLoopLabel)], comment: "loop")
+		let goToStart = BytecodeInstruction(label: goToEndLabel, type: .goto, arguments: [.index(startOfLoopLabel)], comment: "loop", range: range)
 		bytecode.append(goToStart)
 		
 		guard let _ = ctx.popLoopContinue() else {
@@ -124,20 +124,20 @@ public struct ForInLoopNode: LoopNode {
 		
 		bytecode.append(contentsOf: try arrayNode.compile(with: ctx, in: self))
 		
-		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(arrayCopyReg)], comment: "array copy"))
+		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(arrayCopyReg)], comment: "array copy", range: range))
 
-		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(arrayCopyReg)], comment: "get copied array"))
+		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(arrayCopyReg)], comment: "get copied array", range: range))
 
 
-		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .sizeOf, comment: "size of array"))
+		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .sizeOf, comment: "size of array", range: range))
 		
-		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(arraySizeReg)], comment: "array size"))
+		bytecode.append(.init(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(arraySizeReg)], comment: "array size", range: range))
 
 		
-		let iteratorStartInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .pushConst, arguments: [.value(.number(0.0))], comment: "i = 0")
+		let iteratorStartInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .pushConst, arguments: [.value(.number(0.0))], comment: "i = 0", range: range)
 		bytecode.append(iteratorStartInstr)
 
-		let instruction = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(iteratorReg)], comment: "for in iterator")
+		let instruction = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .registerStore, arguments: [.index(iteratorReg)], comment: "for in iterator", range: range)
 		bytecode.append(instruction)
 		
 		return bytecode
@@ -169,7 +169,7 @@ public struct ForInLoopNode: LoopNode {
 		bytecode.append(contentsOf: v)
 		
 		let label = ctx.nextIndexLabel()
-		let instruction = BytecodeInstruction(label: label, type: .registerStore, arguments: [.index(regName)], comment: "do repeat iterator")
+		let instruction = BytecodeInstruction(label: label, type: .registerStore, arguments: [.index(regName)], comment: "do repeat iterator", range: range)
 		
 		bytecode.append(instruction)
 		

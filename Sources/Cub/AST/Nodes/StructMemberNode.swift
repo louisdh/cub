@@ -29,7 +29,7 @@ public struct StructMemberNode: ASTNode {
 			throw compileError(.unexpectedCommand)
 		}
 
-		let getInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structGet, arguments: [.index(id)], comment: "get \(name)")
+		let getInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structGet, arguments: [.index(id)], comment: "get \(name)", range: range)
 		bytecode.append(getInstr)
 
 		return bytecode

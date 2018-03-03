@@ -24,7 +24,7 @@ public struct InternalVariableNode: ASTNode {
 
 		var bytecode = BytecodeBody()
 
-		let load = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(register)], comment: debugName)
+		let load = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .registerLoad, arguments: [.index(register)], comment: debugName, range: range)
 
 		bytecode.append(load)
 

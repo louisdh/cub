@@ -55,7 +55,7 @@ public struct ForStatementNode: LoopNode {
 
 		ctx.pushLoopContinue(startOfLoopLabel)
 
-		let skipFirstInterval = BytecodeInstruction(label: skipFirstIntervalLabel, type: .goto, arguments: [.index(skippedIntervalLabel)], comment: "skip first interval")
+		let skipFirstInterval = BytecodeInstruction(label: skipFirstIntervalLabel, type: .goto, arguments: [.index(skippedIntervalLabel)], comment: "skip first interval", range: range)
 		bytecode.append(skipFirstInterval)
 
 		bytecode.append(contentsOf: intervalInstructions)
@@ -72,12 +72,12 @@ public struct ForStatementNode: LoopNode {
 		let goToEndLabel = ctx.nextIndexLabel()
 
 		let peekNextLabel = ctx.peekNextIndexLabel()
-		let ifeq = BytecodeInstruction(label: ifeqLabel, type: .ifFalse, arguments: [.index(peekNextLabel)])
+		let ifeq = BytecodeInstruction(label: ifeqLabel, type: .ifFalse, arguments: [.index(peekNextLabel)], range: range)
 
 		bytecode.append(ifeq)
 		bytecode.append(contentsOf: bodyBytecode)
 
-		let goToStart = BytecodeInstruction(label: goToEndLabel, type: .goto, arguments: [.index(startOfLoopLabel)], comment: "go to start of loop")
+		let goToStart = BytecodeInstruction(label: goToEndLabel, type: .goto, arguments: [.index(startOfLoopLabel)], comment: "go to start of loop", range: range)
 		bytecode.append(goToStart)
 
 		// End of loop

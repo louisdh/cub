@@ -35,7 +35,7 @@ public struct FunctionNode: ASTNode {
 
 		let headerComment = "\(prototype.name)(\(prototype.argumentNames.joined(separator: ", ")))"
 
-		let headerInstruction = BytecodeInstruction(label: headerIndex, type: .virtualHeader, arguments: [.index(functionId)], comment: headerComment)
+		let headerInstruction = BytecodeInstruction(label: headerIndex, type: .virtualHeader, arguments: [.index(functionId)], comment: headerComment, range: range)
 
 		bytecode.append(headerInstruction)
 
@@ -51,7 +51,7 @@ public struct FunctionNode: ASTNode {
 
 		let exitHeaderLabel = ctx.nextIndexLabel()
 
-		let exitHeaderInstruction = BytecodeInstruction(label: exitHeaderLabel, type: .privateVirtualHeader, arguments: [.index(exitId)], comment: "cleanup_\(prototype.name)")
+		let exitHeaderInstruction = BytecodeInstruction(label: exitHeaderLabel, type: .privateVirtualHeader, arguments: [.index(exitId)], comment: "cleanup_\(prototype.name)", range: range)
 
 		ctx.popFunctionExit()
 
@@ -61,13 +61,13 @@ public struct FunctionNode: ASTNode {
 
 		let cleanupEndLabel = ctx.nextIndexLabel()
 
-		let skipExitInstruction = BytecodeInstruction(label: skipExitInstrLabel, type: .skipPast, arguments: [.index(exitFunctionInstrLabel)], comment: "skip exit instruction")
+		let skipExitInstruction = BytecodeInstruction(label: skipExitInstrLabel, type: .skipPast, arguments: [.index(exitFunctionInstrLabel)], comment: "skip exit instruction", range: range)
 		bytecode.append(skipExitInstruction)
 
-		let invokeInstruction = BytecodeInstruction(label: cleanupFunctionCallInstrLabel, type: .invokeVirtual, arguments: [.index(exitId)], comment: "cleanup_\(prototype.name)()")
+		let invokeInstruction = BytecodeInstruction(label: cleanupFunctionCallInstrLabel, type: .invokeVirtual, arguments: [.index(exitId)], comment: "cleanup_\(prototype.name)()", range: range)
 		bytecode.append(invokeInstruction)
 
-		let exitFunctionInstruction = BytecodeInstruction(label: exitFunctionInstrLabel, type: .exitVirtual, comment: "exit function")
+		let exitFunctionInstruction = BytecodeInstruction(label: exitFunctionInstrLabel, type: .exitVirtual, comment: "exit function", range: range)
 		bytecode.append(exitFunctionInstruction)
 
 		bytecode.append(contentsOf: compiledFunction)
@@ -77,12 +77,12 @@ public struct FunctionNode: ASTNode {
 		bytecode.append(exitHeaderInstruction)
 		bytecode.append(contentsOf: cleanupInstructions)
 
-		bytecode.append(BytecodeInstruction(label: cleanupEndLabel, type: .privateVirtualEnd))
+		bytecode.append(BytecodeInstruction(label: cleanupEndLabel, type: .privateVirtualEnd, range: range))
 
 		//
 
 		let endLabel = ctx.nextIndexLabel()
-		bytecode.append(BytecodeInstruction(label: endLabel, type: .virtualEnd))
+		bytecode.append(BytecodeInstruction(label: endLabel, type: .virtualEnd, range: range))
 
 		return bytecode
 
@@ -96,7 +96,7 @@ public struct FunctionNode: ASTNode {
 
 			let label = ctx.nextIndexLabel()
 			let (varReg, _) = ctx.getRegister(for: arg)
-			let instruction = BytecodeInstruction(label: label, type: .registerStore, arguments: [.index(varReg)], comment: "\(arg)")
+			let instruction = BytecodeInstruction(label: label, type: .registerStore, arguments: [.index(varReg)], comment: "\(arg)", range: range)
 
 			bytecode.append(instruction)
 

@@ -104,7 +104,7 @@ public struct BinaryOpNode: ASTNode {
 		}
 		
 		// FIXME: comment "op" is wrong for ">" and ">="
-		let operation = BytecodeInstruction(label: label, type: opInstructionType, comment: comment)
+		let operation = BytecodeInstruction(label: label, type: opInstructionType, comment: comment, range: range)
 
 		bytecode.append(operation)
 

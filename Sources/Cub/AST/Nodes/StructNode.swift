@@ -28,10 +28,10 @@ public struct StructNode: ASTNode {
 		let headerLabel = ctx.nextIndexLabel()
 
 		let headerComment = "\(prototype.name)(\(prototype.members.joined(separator: ", ")))"
-		let header = BytecodeInstruction(label: headerLabel, type: .virtualHeader, arguments: [.index(structId)], comment: headerComment)
+		let header = BytecodeInstruction(label: headerLabel, type: .virtualHeader, arguments: [.index(structId)], comment: headerComment, range: range)
 		bytecode.append(header)
 
-		let initInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structInit, comment: "init \(prototype.name)")
+		let initInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structInit, comment: "init \(prototype.name)", range: range)
 		bytecode.append(initInstr)
 
 		for member in prototype.members.reversed() {
@@ -40,12 +40,12 @@ public struct StructNode: ASTNode {
 				throw compileError(.unexpectedCommand)
 			}
 
-			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structSet, arguments: [.index(id)], comment: "set \(member)")
+			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .structSet, arguments: [.index(id)], comment: "set \(member)", range: range)
 			bytecode.append(instr)
 
 		}
 
-		bytecode.append(BytecodeInstruction(label: ctx.nextIndexLabel(), type: .virtualEnd))
+		bytecode.append(BytecodeInstruction(label: ctx.nextIndexLabel(), type: .virtualEnd, range: range))
 
 		return bytecode
 

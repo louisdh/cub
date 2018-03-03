@@ -27,7 +27,7 @@ public struct ArraySubscriptNode: ASTNode {
 		
 		bytecode.append(contentsOf: try name.compile(with: ctx, in: self))
 		
-		let getInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayGet, comment: "get array")
+		let getInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayGet, comment: "get array", range: range)
 		bytecode.append(getInstr)
 		
 		return bytecode

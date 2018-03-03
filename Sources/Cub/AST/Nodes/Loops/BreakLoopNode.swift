@@ -20,7 +20,7 @@ public struct BreakLoopNode: ASTNode {
 			throw compileError(.unexpectedCommand)
 		}
 
-		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(breakLabel)], comment: "break")]
+		return [BytecodeInstruction(label: label, type: .goto, arguments: [.index(breakLabel)], comment: "break", range: range)]
 
 	}
 

@@ -315,7 +315,7 @@ public class BytecodeCompiler {
 				comment = nil
 			}
 			
-			let instr = BytecodeInstruction(label: label, type: .registerClear, arguments: [.index(reg)], comment: comment)
+			let instr = BytecodeInstruction(label: label, type: .registerClear, arguments: [.index(reg)], comment: comment, range: nil)
 			instructions.append(instr)
 
 		}

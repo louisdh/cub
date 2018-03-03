@@ -22,7 +22,7 @@ public struct StringNode: ASTNode {
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {
 		
 		let label = ctx.nextIndexLabel()
-		return [BytecodeInstruction(label: label, type: .pushConst, arguments: [.value(.string(value))])]
+		return [BytecodeInstruction(label: label, type: .pushConst, arguments: [.value(.string(value))], range: range)]
 		
 	}
 	

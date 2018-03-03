@@ -36,7 +36,7 @@ public struct ReturnNode: ASTNode {
 			throw compileError(.unexpectedCommand)
 		}
 
-		let exitInstruction = BytecodeInstruction(label: label, type: .goto, arguments: [.index(cleanupLabel)], comment: "return")
+		let exitInstruction = BytecodeInstruction(label: label, type: .goto, arguments: [.index(cleanupLabel)], comment: "return", range: range)
 
 		bytecode.append(exitInstruction)
 

@@ -22,7 +22,7 @@ public struct NumberNode: ASTNode {
 
 		let i = self.value
 		let label = ctx.nextIndexLabel()
-		return [BytecodeInstruction(label: label, type: .pushConst, arguments: [.value(.number(i))])]
+		return [BytecodeInstruction(label: label, type: .pushConst, arguments: [.value(.number(i))], range: range)]
 
 	}
 

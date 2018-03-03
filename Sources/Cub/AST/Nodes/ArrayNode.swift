@@ -23,7 +23,7 @@ public struct ArrayNode: ASTNode {
 		
 		var bytecode = BytecodeBody()
 		
-		let initInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayInit, arguments: [.index(values.count)], comment: "init array")
+		let initInstr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arrayInit, arguments: [.index(values.count)], comment: "init array", range: range)
 		bytecode.append(initInstr)
 		
 		var i = 0
@@ -33,7 +33,7 @@ public struct ArrayNode: ASTNode {
 			let valueBytecode = try value.compile(with: ctx, in: parent)
 			bytecode.append(contentsOf: valueBytecode)
 
-			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arraySet, arguments: [.index(i)], comment: "set \(i)")
+			let instr = BytecodeInstruction(label: ctx.nextIndexLabel(), type: .arraySet, arguments: [.index(i)], comment: "set \(i)", range: range)
 			bytecode.append(instr)
 			
 			i += 1
