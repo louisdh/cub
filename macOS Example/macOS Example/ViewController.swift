@@ -34,12 +34,26 @@ class ViewController: NSViewController, RunnerDelegate {
 
 		print(path)
 
+		guard let source = try? String(contentsOfFile: path, encoding: .utf8) else {
+			return
+		}
+		
 		do {
 
-			try runner.runSource(at: path)
+			try runner.run(source)
 
 		} catch {
-			print("error: \(error)")
+			
+			if let displayableError = error as? DisplayableError {
+				
+				print(displayableError.description(inSource: source))
+				
+			} else {
+				
+				print("Unknown error: \(error)")
+
+			}
+			
 			return
 		}
 
@@ -60,7 +74,7 @@ class ViewController: NSViewController, RunnerDelegate {
 		let parser = Parser(tokens: tokens)
 		let ast = try! parser.parse()
 
-		let visualizer = ASTVisualizer(body: BodyNode(nodes: ast))
+		let visualizer = ASTVisualizer(body: BodyNode(nodes: ast, range: nil))
 
 		if let image = visualizer.draw() {
 			print(image)
