@@ -92,6 +92,14 @@ struct InterpreterError {
 
 }
 
+extension InterpreterError: Equatable {
+	
+	static func ==(lhs: InterpreterError, rhs: InterpreterError) -> Bool {
+		return lhs.type == rhs.type && lhs.range == rhs.range
+	}
+	
+}
+
 extension InterpreterError: DisplayableError {
 	
 	public func description(inSource source: String) -> String {
