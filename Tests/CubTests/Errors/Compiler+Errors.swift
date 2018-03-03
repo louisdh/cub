@@ -16,6 +16,12 @@ class CompilerErrors: BaseTestCase {
 		let error = "Cannot assign FunctionNode(prototype: FunctionPrototypeNode(name: bar, argumentNames: [], returns: false), \n    ) on line 4"
 		assertCompileError(in: "AssignFunctionToVar", expectedError: error)
 	}
+	
+	func testFunctionNotFound() {
+		
+		assertCompileError(in: "FunctionNotFound", expectedError: "Function \"test\" not found on line 3.")
+
+	}
 
 	func assertCompileError(in file: String, expectedError: String, useStdLib: Bool = false) {
 

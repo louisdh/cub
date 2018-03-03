@@ -113,6 +113,7 @@
 		BE3F27C01EE0AF7300D58C83 /* Arithmetic.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */; };
 		BE3F27C31EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
 		BE3F27C41EE0AF7300D58C83 /* Graphics.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */; };
+		BE401FC7204B295A002DD201 /* FunctionNotFound.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE401FC6204B2959002DD201 /* FunctionNotFound.cub */; };
 		BE42802F20378F8500C8FE24 /* ForInArray.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE42802E20378F8500C8FE24 /* ForInArray.cub */; };
 		BE4280322038B8B800C8FE24 /* AutoCompletor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4280312038B8B800C8FE24 /* AutoCompletor.swift */; };
 		BE4280332038B8B800C8FE24 /* AutoCompletor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4280312038B8B800C8FE24 /* AutoCompletor.swift */; };
@@ -248,6 +249,7 @@
 		BE3F271C1EE0A97400D58C83 /* StdLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdLib.swift; sourceTree = "<group>"; };
 		BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Arithmetic.cub; sourceTree = "<group>"; };
 		BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Graphics.cub; sourceTree = "<group>"; };
+		BE401FC6204B2959002DD201 /* FunctionNotFound.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionNotFound.cub; sourceTree = "<group>"; };
 		BE42802E20378F8500C8FE24 /* ForInArray.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ForInArray.cub; sourceTree = "<group>"; };
 		BE4280312038B8B800C8FE24 /* AutoCompletor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletor.swift; sourceTree = "<group>"; };
 		BE58C14C1E16D77900BC73CA /* Cub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -633,6 +635,7 @@
 				BE882FA72048870500F4A194 /* StringSubscriptGetError.cub */,
 				BE882FA82048870600F4A194 /* StringSubscriptSetError.cub */,
 				BE64E1D62025DE8200D4A6FF /* FunctionReturnGlobalVar.cub */,
+				BE401FC6204B2959002DD201 /* FunctionNotFound.cub */,
 				BE42802E20378F8500C8FE24 /* ForInArray.cub */,
 				BE64E1D72025DE8200D4A6FF /* InnerWhileLoops.cub */,
 				BE64E1D82025DE8200D4A6FF /* MinMax.cub */,
@@ -853,6 +856,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE401FC7204B295A002DD201 /* FunctionNotFound.cub in Resources */,
 				BE64E2062025DE8200D4A6FF /* MinMax.cub in Resources */,
 				BE882FA92048870600F4A194 /* StringSubscriptGetError.cub in Resources */,
 				BE64E1FC2025DE8200D4A6FF /* BinaryOp.cub in Resources */,
