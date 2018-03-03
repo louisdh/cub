@@ -13,10 +13,12 @@ public struct CallNode: ASTNode {
 
 	public let callee: String
 	public let arguments: [ASTNode]
-
-	public init(callee: String, arguments: [ASTNode]) {
+	public let range: Range<Int>?
+	
+	public init(callee: String, arguments: [ASTNode], range: Range<Int>?) {
 		self.callee = callee
 		self.arguments = arguments
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

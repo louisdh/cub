@@ -16,4 +16,7 @@ public protocol ASTNode: CustomStringConvertible, ASTNodeDescriptor {
 
 	var childNodes: [ASTNode] { get }
 
+	/// The range of the node in the original source code
+	var range: Range<Int>? { get }
+	
 }

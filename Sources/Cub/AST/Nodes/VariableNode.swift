@@ -11,9 +11,11 @@ import Foundation
 public struct VariableNode: ASTNode {
 
 	public let name: String
-
-	public init(name: String) {
+	public let range: Range<Int>?
+	
+	public init(name: String, range: Range<Int>?) {
 		self.name = name
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

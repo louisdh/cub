@@ -12,10 +12,12 @@ public struct ArraySubscriptNode: ASTNode {
 	
 	public let variable: ASTNode
 	public let name: ASTNode
-	
-	public init(variable: ASTNode, name: ASTNode) {
+	public let range: Range<Int>?
+
+	public init(variable: ASTNode, name: ASTNode, range: Range<Int>?) {
 		self.variable = variable
 		self.name = name
+		self.range = range
 	}
 	
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

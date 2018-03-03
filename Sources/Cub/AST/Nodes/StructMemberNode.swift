@@ -12,10 +12,12 @@ public struct StructMemberNode: ASTNode {
 
 	public let variable: ASTNode
 	public let name: String
+	public let range: Range<Int>?
 
-	public init(variable: ASTNode, name: String) {
+	public init(variable: ASTNode, name: String, range: Range<Int>?) {
 		self.variable = variable
 		self.name = name
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

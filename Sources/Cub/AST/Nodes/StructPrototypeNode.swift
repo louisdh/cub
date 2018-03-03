@@ -13,7 +13,9 @@ public struct StructPrototypeNode: ASTNode {
 	public let name: String
 	public let members: [String]
 
-	public init(name: String, members: [String]) throws {
+	public let range: Range<Int>?
+
+	public init(name: String, members: [String], range: Range<Int>?) throws {
 
 		guard members.count > 0 else {
 			throw CompileError.emptyStruct
@@ -21,6 +23,7 @@ public struct StructPrototypeNode: ASTNode {
 
 		self.name = name
 		self.members = members
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

@@ -16,7 +16,9 @@ public struct ForStatementNode: LoopNode {
 
 	public let body: BodyNode
 
-	public init(assignment: AssignmentNode, condition: ASTNode, interval: ASTNode, body: BodyNode) throws {
+	public let range: Range<Int>?
+
+	public init(assignment: AssignmentNode, condition: ASTNode, interval: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
 		guard condition.isValidConditionNode else {
 			throw CompileError.unexpectedCommand
@@ -31,6 +33,7 @@ public struct ForStatementNode: LoopNode {
 		self.interval = interval
 
 		self.body = body
+		self.range = range
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {

@@ -11,10 +11,12 @@ import Foundation
 public struct StringNode: ASTNode {
 	
 	public let value: String
-
-	public init(value: String) {
+	public let range: Range<Int>?
+	
+	public init(value: String, range: Range<Int>?) {
 		
 		self.value = value
+		self.range = range
 	}
 	
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

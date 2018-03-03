@@ -14,13 +14,15 @@ public struct DoStatementNode: LoopNode {
 
 	public let body: BodyNode
 
+	public let range: Range<Int>?
+
 	/// Do statement
 	///
 	/// - Parameters:
 	///   - amount: Amount should either be a NumberNode or VariableNode
 	///   - body: BodyNode to execute `amount` of times
 	/// - Throws: CompileError
-	public init(amount: ASTNode, body: BodyNode) throws {
+	public init(amount: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
 		guard amount is NumberNode || amount is VariableNode || amount is BinaryOpNode else {
 			throw CompileError.unexpectedCommand
@@ -34,6 +36,7 @@ public struct DoStatementNode: LoopNode {
 
 		self.amount = amount
 		self.body = body
+		self.range = range
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {
@@ -119,8 +122,8 @@ public struct DoStatementNode: LoopNode {
 
 	private func conditionInstructions(with ctx: BytecodeCompiler, and regName: Int) throws -> BytecodeBody {
 
-		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator")
-		let conditionNode = try BinaryOpNode(op: ">", lhs: varNode, rhs: NumberNode(value: 0.0))
+		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator", range: range)
+		let conditionNode = try BinaryOpNode(op: ">", lhs: varNode, rhs: NumberNode(value: 0.0, range: range), range: range)
 
 		let bytecode = try conditionNode.compile(with: ctx, in: self)
 
@@ -130,8 +133,8 @@ public struct DoStatementNode: LoopNode {
 
 	private func decrementInstructions(with ctx: BytecodeCompiler, and regName: Int) throws -> BytecodeBody {
 
-		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator")
-		let decrementNode = try BinaryOpNode(op: "-", lhs: varNode, rhs: NumberNode(value: 1.0))
+		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator", range: range)
+		let decrementNode = try BinaryOpNode(op: "-", lhs: varNode, rhs: NumberNode(value: 1.0, range: range), range: range)
 
 		let v = try decrementNode.compile(with: ctx, in: self)
 

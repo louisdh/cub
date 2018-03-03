@@ -12,10 +12,12 @@ public struct InternalVariableNode: ASTNode {
 
 	public let register: Int
 	public let debugName: String?
+	public let range: Range<Int>?
 
-	public init(register: Int, debugName: String? = nil) {
+	public init(register: Int, debugName: String? = nil, range: Range<Int>?) {
 		self.register = register
 		self.debugName = debugName
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

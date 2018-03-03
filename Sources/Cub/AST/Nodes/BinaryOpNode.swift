@@ -10,6 +10,8 @@ import Foundation
 
 public struct BinaryOpNode: ASTNode {
 
+	public let range: Range<Int>?
+
 	// TODO: add BinaryOpType enum
 	
 	static var opTypes: [String: BytecodeInstructionType] {
@@ -36,7 +38,7 @@ public struct BinaryOpNode: ASTNode {
 	/// Can be nil, e.g. for 'not' operation
 	public let rhs: ASTNode?
 
-	public init(op: String, lhs: ASTNode, rhs: ASTNode? = nil) throws {
+	public init(op: String, lhs: ASTNode, rhs: ASTNode? = nil, range: Range<Int>?) throws {
 		self.op = op
 
 		guard lhs.isValidBinaryOpNode else {
@@ -57,6 +59,7 @@ public struct BinaryOpNode: ASTNode {
 
 		self.lhs = lhs
 		self.rhs = rhs
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

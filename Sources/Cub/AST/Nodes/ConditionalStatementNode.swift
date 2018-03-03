@@ -13,11 +13,13 @@ public struct ConditionalStatementNode: ASTNode {
 	public let condition: ASTNode
 	public let body: BodyNode
 	public let elseBody: BodyNode?
+	public let range: Range<Int>?
 
-	public init(condition: ASTNode, body: BodyNode, elseBody: BodyNode? = nil) {
+	public init(condition: ASTNode, body: BodyNode, elseBody: BodyNode? = nil, range: Range<Int>?) {
 		self.condition = condition
 		self.body = body
 		self.elseBody = elseBody
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {

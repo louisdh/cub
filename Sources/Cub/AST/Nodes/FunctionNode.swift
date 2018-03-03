@@ -12,10 +12,12 @@ public struct FunctionNode: ASTNode {
 
 	public let prototype: FunctionPrototypeNode
 	public let body: BodyNode
+	public let range: Range<Int>?
 
-	public init(prototype: FunctionPrototypeNode, body: BodyNode) {
+	public init(prototype: FunctionPrototypeNode, body: BodyNode, range: Range<Int>?) {
 		self.prototype = prototype
 		self.body = body
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {
@@ -100,7 +102,7 @@ public struct FunctionNode: ASTNode {
 		bytecode.append(contentsOf: try body.compile(with: ctx, in: self))
 
 		if !prototype.returns {
-			let returnNode = ReturnNode()
+			let returnNode = ReturnNode(range: range)
 			bytecode.append(contentsOf: try returnNode.compile(with: ctx, in: self))
 		}
 

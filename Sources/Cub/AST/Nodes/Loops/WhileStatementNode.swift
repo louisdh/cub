@@ -12,8 +12,9 @@ public struct WhileStatementNode: LoopNode {
 
 	public let condition: ASTNode
 	public let body: BodyNode
+	public let range: Range<Int>?
 
-	public init(condition: ASTNode, body: BodyNode) throws {
+	public init(condition: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 
 		guard condition.isValidConditionNode else {
 			throw CompileError.unexpectedCommand
@@ -21,6 +22,7 @@ public struct WhileStatementNode: LoopNode {
 
 		self.condition = condition
 		self.body = body
+		self.range = range
 	}
 
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {

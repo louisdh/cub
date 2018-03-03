@@ -10,6 +10,8 @@ import Foundation
 
 public struct ContinueNode: ASTNode {
 
+	public let range: Range<Int>?
+
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {
 
 		let label = ctx.nextIndexLabel()

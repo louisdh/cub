@@ -16,13 +16,16 @@ public struct ForInLoopNode: LoopNode {
 	
 	public let body: BodyNode
 	
-	public init(iteratorVarNode: VariableNode, arrayNode: ASTNode, body: BodyNode) throws {
+	public let range: Range<Int>?
+
+	public init(iteratorVarNode: VariableNode, arrayNode: ASTNode, body: BodyNode, range: Range<Int>?) throws {
 		
 		self.iteratorVarNode = iteratorVarNode
 		
 		self.arrayNode = arrayNode
 		
 		self.body = body
+		self.range = range
 	}
 	
 	func compileLoop(with ctx: BytecodeCompiler, scopeStart: Int) throws -> BytecodeBody {
@@ -143,10 +146,10 @@ public struct ForInLoopNode: LoopNode {
 	
 	private func conditionInstructions(with ctx: BytecodeCompiler, iteratorReg: Int, sizeReg: Int) throws -> BytecodeBody {
 		
-		let varNode = InternalVariableNode(register: iteratorReg, debugName: "iterator")
-		let sizeNode = InternalVariableNode(register: sizeReg, debugName: "size")
+		let varNode = InternalVariableNode(register: iteratorReg, debugName: "iterator", range: range)
+		let sizeNode = InternalVariableNode(register: sizeReg, debugName: "size", range: range)
 		
-		let conditionNode = try BinaryOpNode(op: "<", lhs: varNode, rhs: sizeNode)
+		let conditionNode = try BinaryOpNode(op: "<", lhs: varNode, rhs: sizeNode, range: range)
 		
 		let bytecode = try conditionNode.compile(with: ctx, in: self)
 		
@@ -156,8 +159,8 @@ public struct ForInLoopNode: LoopNode {
 	
 	private func incrementInstructions(with ctx: BytecodeCompiler, and regName: Int) throws -> BytecodeBody {
 		
-		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator")
-		let decrementNode = try BinaryOpNode(op: "+", lhs: varNode, rhs: NumberNode(value: 1.0))
+		let varNode = InternalVariableNode(register: regName, debugName: "do repeat iterator", range: range)
+		let decrementNode = try BinaryOpNode(op: "+", lhs: varNode, rhs: NumberNode(value: 1.0, range: range), range: range)
 		
 		let v = try decrementNode.compile(with: ctx, in: self)
 		

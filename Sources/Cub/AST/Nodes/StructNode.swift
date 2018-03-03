@@ -12,8 +12,11 @@ public struct StructNode: ASTNode {
 
 	public let prototype: StructPrototypeNode
 
-	init(prototype: StructPrototypeNode) {
+	public let range: Range<Int>?
+
+	init(prototype: StructPrototypeNode, range: Range<Int>?) {
 		self.prototype = prototype
+		self.range = range
 	}
 
 	public func compile(with ctx: BytecodeCompiler, in parent: ASTNode?) throws -> BytecodeBody {
