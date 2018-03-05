@@ -1,5 +1,5 @@
 //
-//  AutoCompletor.swift
+//  AutoCompleter.swift
 //  Cub
 //
 //  Created by Louis D'hauwe on 17/02/2018.
@@ -24,7 +24,7 @@ extension CompletionSuggestion: Equatable {
 	
 }
 
-public class AutoCompletor {
+public class AutoCompleter {
 	
 	public init() {
 		

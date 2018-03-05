@@ -1,5 +1,5 @@
 //
-//  AutoCompletor.swift
+//  AutoCompleter.swift
 //  Cub macOS Tests
 //
 //  Created by Louis D'hauwe on 02/03/2018.
@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Cub
 
-class AutoCompletorTestCase: BaseTestCase {
+class AutoCompleterTestCase: BaseTestCase {
 	
 	func testIdentifier() {
 		
@@ -21,8 +21,8 @@ class AutoCompletorTestCase: BaseTestCase {
 					f
 					"""
 		
-		let completor = AutoCompletor()
-		let suggestions = completor.completionSuggestions(for: source, cursor: 17)
+		let completer = AutoCompleter()
+		let suggestions = completer.completionSuggestions(for: source, cursor: 17)
 		
 		let expectedSuggestions = [CompletionSuggestion(title: "func", content: "unc", insertionIndex: 17),
 								   CompletionSuggestion(title: "false", content: "alse", insertionIndex: 17),
