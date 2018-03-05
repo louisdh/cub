@@ -10,6 +10,7 @@ import Foundation
 
 public struct CompletionSuggestion {
 	
+	public let title: String
 	public let content: String
 	public let insertionIndex: Int
 	
@@ -18,7 +19,7 @@ public struct CompletionSuggestion {
 extension CompletionSuggestion: Equatable {
 	
 	public static func ==(lhs: CompletionSuggestion, rhs: CompletionSuggestion) -> Bool {
-		return lhs.content == rhs.content && lhs.insertionIndex == rhs.insertionIndex
+		return lhs.content == rhs.content && lhs.insertionIndex == rhs.insertionIndex && lhs.title == rhs.title
 	}
 	
 }
@@ -64,7 +65,7 @@ public class AutoCompletor {
 						let startIndex = keyword.index(keyword.startIndex, offsetBy: identifier.count)
 						let content = String(keyword[startIndex...])
 						
-						let suggestion = CompletionSuggestion(content: content, insertionIndex: cursor)
+						let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor)
 						suggestions.append(suggestion)
 						
 					}

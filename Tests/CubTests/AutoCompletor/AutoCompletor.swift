@@ -24,9 +24,9 @@ class AutoCompletorTestCase: BaseTestCase {
 		let completor = AutoCompletor()
 		let suggestions = completor.completionSuggestions(for: source, cursor: 17)
 		
-		let expectedSuggestions = [CompletionSuggestion(content: "unc", insertionIndex: 17),
-								   CompletionSuggestion(content: "alse", insertionIndex: 17),
-								   CompletionSuggestion(content: "or", insertionIndex: 17)]
+		let expectedSuggestions = [CompletionSuggestion(title: "func", content: "unc", insertionIndex: 17),
+								   CompletionSuggestion(title: "false", content: "alse", insertionIndex: 17),
+								   CompletionSuggestion(title: "for", content: "or", insertionIndex: 17)]
 		
 		print(suggestions)
 		
