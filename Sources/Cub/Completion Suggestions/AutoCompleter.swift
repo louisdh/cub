@@ -38,6 +38,7 @@ public class AutoCompleter {
 		
 		let tokens = lexer.tokenize()
 		
+//		var previousToken: Token?
 		var currentToken: Token?
 		
 		for token in tokens {
@@ -78,6 +79,16 @@ public class AutoCompleter {
 			
 		}
 		
+		var ifContent = ""
+		ifContent += "if <#condition"
+		ifContent += "#> {\n"
+		ifContent += "\t<#body"
+		ifContent += "#>\n"
+		ifContent += "}"
+
+		let ifStatement = CompletionSuggestion(title: "if ...", content: ifContent, insertionIndex: cursor)
+		suggestions.append(ifStatement)
+
 		return suggestions
 	}
 
