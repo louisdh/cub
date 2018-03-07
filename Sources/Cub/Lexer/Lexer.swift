@@ -98,6 +98,7 @@ public class Lexer {
 	private var isInIdentifier = false
 	private var isInNumber = false
 	private var isInString = false
+	private var isInEditorPlaceholder = false
 
 	private var charIndex = 0
 
@@ -130,6 +131,7 @@ public class Lexer {
 
 		isInLineComment = false
 		isInBlockComment = false
+		isInEditorPlaceholder = false
 
 		charIndex = 0
 
@@ -187,6 +189,11 @@ public class Lexer {
 					continue
 				}
 				
+				if !isInEditorPlaceholder && currentString == "<#" {
+					isInEditorPlaceholder = true
+					continue
+				}
+				
 				if currentString.isEmpty && !isInNumber && (!isInLineComment && content.hasPrefix("//")) {
 					
 					isInLineComment = true
@@ -201,6 +208,13 @@ public class Lexer {
 					continue
 				}
 				
+				if currentString.isEmpty && !isInNumber && (!isInEditorPlaceholder && content.hasPrefix("<#")) {
+					
+					isInEditorPlaceholder = true
+					consumeCharactersAtStart(2)
+					continue
+				}
+				
 				if currentString.isEmpty && !isInString && (!isInLineComment && content.hasPrefix("\"")) {
 					
 					isInString = true
@@ -210,7 +224,7 @@ public class Lexer {
 				
 			}
 
-			if !isInBlockComment && !isInLineComment && !isInString {
+			if !isInBlockComment && !isInLineComment && !isInString && !isInEditorPlaceholder {
 				
 				if isInNumber {
 
@@ -318,6 +332,13 @@ public class Lexer {
 				continue
 			}
 
+			if !isInEditorPlaceholder && nextString == "<#" {
+				
+				isInEditorPlaceholder = true
+				consumeCharactersAtStart(1)
+				continue
+			}
+			
 			if isInString && content.hasPrefix("\"") {
 				
 				consumeCharactersAtStart(1, updateCurrentString: true)
@@ -335,6 +356,19 @@ public class Lexer {
 				consumeCharactersAtStart(2)
 				isInBlockComment = false
 				addToken(type: .comment)
+				continue
+			}
+			
+			if isInEditorPlaceholder && content.hasPrefix("#>") {
+				
+				consumeCharactersAtStart(2)
+				isInEditorPlaceholder = false
+				
+				var rawString = currentString
+				rawString.removeFirst(2)
+				rawString.removeLast(2)
+
+				addToken(type: .editorPlaceholder(rawString))
 				continue
 			}
 
