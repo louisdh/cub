@@ -46,6 +46,48 @@ public struct ParseError: DisplayableError, CustomStringConvertible {
 
 extension String {
 
+	func getLine(_ index: Int) -> String {
+		
+		if self.isEmpty && index == 1 {
+			return ""
+		}
+		
+		let newLineIndices = [0] + self.indices(of: "\n").map { (index) -> Int in
+			return self.distance(from: self.startIndex, to: index)
+		}
+		
+		if self.hasSuffix("\n") && index == newLineIndices.count + 1 {
+			return ""
+		}
+
+		let startI = newLineIndices[index - 1]
+
+		let startIndex = self.index(self.startIndex, offsetBy: startI)
+		
+		if let endI = newLineIndices[safe: index] {
+			
+			let endIndex = self.index(self.startIndex, offsetBy: endI)
+
+			var line = String(self[startIndex..<endIndex])
+			
+			if line.hasPrefix("\n") {
+				line.removeCharactersAtStart(1)
+			}
+			
+			return line
+
+		} else {
+			
+			var line = String(self[startIndex...])
+			
+			if line.hasPrefix("\n") {
+				line.removeCharactersAtStart(1)
+			}
+			
+			return line
+		}
+	}
+	
 	func lineNumber(of index: Int) -> Int {
 
 		let i = self.distance(from: self.startIndex, to: self.index(self.startIndex, offsetBy: index))

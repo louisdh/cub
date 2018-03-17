@@ -101,6 +101,7 @@ public class Lexer {
 	private var isInEditorPlaceholder = false
 
 	private var charIndex = 0
+	private var tokenCharIndex = 0
 
 	private var currentString = ""
 	private var currentStringLength = 0
@@ -134,6 +135,7 @@ public class Lexer {
 		isInEditorPlaceholder = false
 
 		charIndex = 0
+		tokenCharIndex = 0
 
 		currentString = ""
 		currentStringLength = 0
@@ -525,8 +527,8 @@ public class Lexer {
 
 	func addToken(type: TokenType) {
 
-		let start = charIndex - currentStringLength
-		let end = charIndex
+		let start = tokenCharIndex - currentStringLength
+		let end = tokenCharIndex
 		
 		let range: Range<Int> = start..<end
 
@@ -536,7 +538,7 @@ public class Lexer {
 
 		currentString = ""
 		currentStringLength = 0
-
+		tokenCharIndex = charIndex
 	}
 
 	func consumeCharactersAtStart(_ n: Int, updateCurrentString: Bool = true) {
@@ -545,11 +547,12 @@ public class Lexer {
 
 		if updateCurrentString {
 			currentString += content[..<index]
+			currentStringLength += n
+			tokenCharIndex += n
 		}
 		
-		currentStringLength += n
-
 		charIndex += n
+
 		content.removeCharacters(to: index)
 
 		if updateCurrentString {

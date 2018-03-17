@@ -8,18 +8,32 @@
 
 import Foundation
 
+/// A completion suggestion describes source code
+/// that can be inserted in a user's source code.
 public struct CompletionSuggestion {
 	
+	/// A title describing the suggestion.
 	public let title: String
+	
+	/// The source code to be inserted.
 	public let content: String
+	
+	/// Where this suggestion's content should be inserted,
+	/// in the source code.
 	public let insertionIndex: Int
+	
+	/// Relative to the suggestion.
+	public let cursorAfterInsertion: Int
 	
 }
 
 extension CompletionSuggestion: Equatable {
 	
 	public static func ==(lhs: CompletionSuggestion, rhs: CompletionSuggestion) -> Bool {
-		return lhs.content == rhs.content && lhs.insertionIndex == rhs.insertionIndex && lhs.title == rhs.title
+		return lhs.content == rhs.content &&
+			lhs.insertionIndex == rhs.insertionIndex &&
+			lhs.title == rhs.title &&
+			lhs.cursorAfterInsertion == rhs.cursorAfterInsertion
 	}
 	
 }
@@ -47,10 +61,12 @@ public class AutoCompleter {
 				continue
 			}
 			
-			if range.contains(cursor) {
+			if range.lowerBound > cursor || range.contains(cursor) {
 				currentToken = token
+				break
 			}
 			
+//			previousToken = token
 		}
 		
 		if let currentToken = currentToken {
@@ -66,7 +82,7 @@ public class AutoCompleter {
 						let startIndex = keyword.index(keyword.startIndex, offsetBy: identifier.count)
 						let content = String(keyword[startIndex...])
 						
-						let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor)
+						let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
 						suggestions.append(suggestion)
 						
 					}
@@ -79,17 +95,69 @@ public class AutoCompleter {
 			
 		}
 		
+		let currentLineIndex = source.lineNumber(of: cursor)
+		
+		let currentLine = source.getLine(currentLineIndex)
+		
+		var indexInLine = cursor
+		
+		if currentLineIndex > 1 {
+			for i in 1..<currentLineIndex {
+				// count + 1 because of "\n"
+				indexInLine -= (source.getLine(i).count + 1)
+			}
+		}
+		
+		var textOnLineBeforeCursor = currentLine[currentLine.startIndex..<currentLine.index(currentLine.startIndex, offsetBy: indexInLine)]
+		
+		if let currentToken = currentToken {
+			
+			if case .editorPlaceholder = currentToken.type {
+				
+				if let range = currentToken.range, range.contains(cursor) {
+					
+					textOnLineBeforeCursor.removeLast(cursor - range.lowerBound)
+					
+				}
+				
+			}
+			
+		}
+		
+		if textOnLineBeforeCursor.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+			let statementSuggestions = self.statementSuggestions(cursor: cursor, prefix: String(textOnLineBeforeCursor))
+			suggestions.append(contentsOf: statementSuggestions)
+		}
+
+		return suggestions
+	}
+	
+	private func statementSuggestions(cursor: Int, prefix: String) -> [CompletionSuggestion] {
+		
+		var suggestions = [CompletionSuggestion]()
+
 		var ifContent = ""
 		ifContent += "if <#condition"
 		ifContent += "#> {\n"
-		ifContent += "\t<#body"
+		ifContent += "\(prefix)\t<#body"
 		ifContent += "#>\n"
-		ifContent += "}"
-
-		let ifStatement = CompletionSuggestion(title: "if ...", content: ifContent, insertionIndex: cursor)
+		ifContent += "\(prefix)}"
+		
+		let ifStatement = CompletionSuggestion(title: "if ...", content: ifContent, insertionIndex: cursor, cursorAfterInsertion: 4)
 		suggestions.append(ifStatement)
-
+		
+		var whileContent = ""
+		whileContent += "while <#condition"
+		whileContent += "#> {\n"
+		whileContent += "\(prefix)\t<#body"
+		whileContent += "#>\n"
+		whileContent += "\(prefix)}"
+		
+		let whileStatement = CompletionSuggestion(title: "while ...", content: whileContent, insertionIndex: cursor, cursorAfterInsertion: 6)
+		suggestions.append(whileStatement)
+		
 		return suggestions
+
 	}
 
 }
