@@ -22,13 +22,15 @@ class AutoCompleterTestCase: BaseTestCase {
 					"""
 		
 		let completer = AutoCompleter()
-		let suggestions = completer.completionSuggestions(for: source, cursor: 17)
+		let suggestions = completer.completionSuggestions(for: source, cursor: 18)
 		
-		let expectedSuggestions = [CompletionSuggestion(title: "func", content: "unc", insertionIndex: 17, cursorAfterInsertion: 3),
-								   CompletionSuggestion(title: "false", content: "alse", insertionIndex: 17, cursorAfterInsertion: 4),
-								   CompletionSuggestion(title: "for", content: "or", insertionIndex: 17, cursorAfterInsertion: 2),
-								   CompletionSuggestion(title: "if ...", content: "if <#condition#> {\n\t<#body#>\n}", insertionIndex: 17, cursorAfterInsertion: 4),
-								   CompletionSuggestion(title: "while ...", content: "while <#condition#> {\n\t<#body#>\n}", insertionIndex: 17, cursorAfterInsertion: 6)]
+		let expectedSuggestions = [CompletionSuggestion(title: "func", content: "unc", insertionIndex: 18, cursorAfterInsertion: 3),
+								   CompletionSuggestion(title: "false", content: "alse", insertionIndex: 18, cursorAfterInsertion: 4),
+								   CompletionSuggestion(title: "for", content: "or", insertionIndex: 18, cursorAfterInsertion: 2)]
+
+		
+		// CompletionSuggestion(title: "if ...", content: "if <#condition#> {\n\t<#body#>\n}", insertionIndex: 18, cursorAfterInsertion: 4),
+		// CompletionSuggestion(title: "while ...", content: "while <#condition#> {\n\t<#body#>\n}", insertionIndex: 18, cursorAfterInsertion: 6)
 		
 		print(suggestions)
 		

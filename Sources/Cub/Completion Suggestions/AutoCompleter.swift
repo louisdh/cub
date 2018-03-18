@@ -69,32 +69,6 @@ public class AutoCompleter {
 //			previousToken = token
 		}
 		
-		if let currentToken = currentToken {
-			
-			switch currentToken.type {
-				
-			case .identifier(let identifier):
-				
-				for keyword in Lexer.keywordTokens.keys {
-					
-					if keyword.hasPrefix(identifier) {
-						
-						let startIndex = keyword.index(keyword.startIndex, offsetBy: identifier.count)
-						let content = String(keyword[startIndex...])
-						
-						let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
-						suggestions.append(suggestion)
-						
-					}
-					
-				}
-				
-			default:
-				break
-			}
-			
-		}
-		
 		let currentLineIndex = source.lineNumber(of: cursor)
 		
 		let currentLine = source.getLine(currentLineIndex)
@@ -109,6 +83,24 @@ public class AutoCompleter {
 		}
 		
 		var textOnLineBeforeCursor = currentLine[currentLine.startIndex..<currentLine.index(currentLine.startIndex, offsetBy: indexInLine)]
+		
+		if !textOnLineBeforeCursor.isEmpty {
+			
+			for keyword in Lexer.keywordTokens.keys {
+				
+				if keyword.hasPrefix(String(textOnLineBeforeCursor)) {
+					
+					let startIndex = keyword.index(keyword.startIndex, offsetBy: textOnLineBeforeCursor.count)
+					let content = String(keyword[startIndex...])
+					
+					let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
+					suggestions.append(suggestion)
+					
+				}
+				
+			}
+			
+		}
 		
 		if let currentToken = currentToken {
 			
