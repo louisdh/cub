@@ -68,7 +68,11 @@ extension String {
 			
 			let endIndex = self.index(self.startIndex, offsetBy: endI)
 
-			var line = String(self[startIndex..<endIndex])
+			#if os(Linux)
+				var line = String(self[startIndex..<endIndex]) ?? ""
+			#else
+				var line = String(self[startIndex..<endIndex])
+			#endif
 			
 			if line.hasPrefix("\n") {
 				line.removeCharactersAtStart(1)
@@ -78,7 +82,11 @@ extension String {
 
 		} else {
 			
-			var line = String(self[startIndex...])
+			#if os(Linux)
+				var line = String(self[startIndex...]) ?? ""
+			#else
+				var line = String(self[startIndex...])
+			#endif
 			
 			if line.hasPrefix("\n") {
 				line.removeCharactersAtStart(1)
