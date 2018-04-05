@@ -48,7 +48,7 @@ extension String {
 
 	func getLine(_ index: Int) -> String {
 		
-		if self.isEmpty && index == 1 {
+		if self.isEmpty && index <= 1 {
 			return ""
 		}
 		
@@ -97,7 +97,9 @@ extension String {
 	}
 	
 	func lineNumber(of index: Int) -> Int {
-
+		
+		assert(index <= self.count, "Invalid index")
+		
 		let i = self.distance(from: self.startIndex, to: self.index(self.startIndex, offsetBy: index))
 
 		let newLineIndices = self.indices(of: "\n").map { (index) -> Int in
