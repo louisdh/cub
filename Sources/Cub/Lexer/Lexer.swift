@@ -417,48 +417,40 @@ public class Lexer {
 
 	}
 
-	func removeNewLineControlChar() -> Bool {
-
-		let keyword = "\n"
-
-		if content.hasPrefix(keyword) {
-
-			let temp = currentString
-			let keywordLength = keyword.count
-			consumeCharactersAtStart(keywordLength)
-			currentString = temp
-
-			return true
-		}
-
-		return false
-	}
-
 	func removeControlChar() -> Bool {
-
-		let updateCurrentString = isInString
 		
 		if content.hasPrefix(" ") {
 		
+			let updateCurrentString = isInString || isInLineComment || isInBlockComment
+
 			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
 		
 		if content.hasPrefix("\n") {
 			
+			let updateCurrentString = isInString || isInBlockComment
+
+			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
+			
 			if isInLineComment {
 				
 				isInLineComment = false
 				addToken(type: .comment)
 				
+			}			
+			
+			if !updateCurrentString {				
+				tokenCharIndex = charIndex
 			}
 			
-			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
 		
 		if content.hasPrefix("\t") {
 			
+			let updateCurrentString = isInString || isInLineComment || isInBlockComment
+
 			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
 			return true
 		}
@@ -550,7 +542,7 @@ public class Lexer {
 			currentStringLength += n
 			tokenCharIndex += n
 		}
-		
+
 		charIndex += n
 
 		content.removeCharacters(to: index)

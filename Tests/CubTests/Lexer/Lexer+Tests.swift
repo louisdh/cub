@@ -30,6 +30,52 @@ class Lexer_Tests: BaseTestCase {
 		
 	}
 	
+	func testNewLineLexing() {
+		
+		let source = """
+					//t
+
+					print(1)
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .comment, range: 0..<3))
+		expectedTokens.append(.init(type: .identifier("print"), range: 5..<10))
+		expectedTokens.append(.init(type: .parensOpen, range: 10..<11))
+		expectedTokens.append(.init(type: .number(1), range: 11..<12))
+		expectedTokens.append(.init(type: .parensClose, range: 12..<13))
+
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+	
+	func testSpaceInCommentLexing() {
+		
+		let source = """
+					// test 123 hello
+
+					print(1)
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .comment, range: 0..<17))
+		expectedTokens.append(.init(type: .identifier("print"), range: 19..<24))
+		expectedTokens.append(.init(type: .parensOpen, range: 24..<25))
+		expectedTokens.append(.init(type: .number(1), range: 25..<26))
+		expectedTokens.append(.init(type: .parensClose, range: 26..<27))
+		
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+	
 	/// Test Lexer with input: "a = 0.3"
 	func testLexerAssignment(withSource source: String) {
 		
