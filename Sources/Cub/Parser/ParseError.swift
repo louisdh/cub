@@ -99,8 +99,6 @@ extension String {
 	func lineNumber(of index: Int) -> Int {
 		
 		assert(index <= self.count, "Invalid index")
-		
-		let i = self.distance(from: self.startIndex, to: self.index(self.startIndex, offsetBy: index))
 
 		let newLineIndices = self.indices(of: "\n").map { (index) -> Int in
 			return self.distance(from: self.startIndex, to: index)
@@ -110,7 +108,7 @@ extension String {
 
 		for newLineIndex in newLineIndices {
 
-			if i > newLineIndex {
+			if index > newLineIndex {
 
 				lineNumber += 1
 
