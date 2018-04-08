@@ -38,22 +38,52 @@ extension CompletionSuggestion: Equatable {
 	
 }
 
-public class AutoCompleter {
+struct SourceInformation {
 	
-	public init() {
-		
-	}
+	let source: String
+	let globalCursor: Int
+	let lineNumber: Int
+	let lineCursor: Int
+	let lineSource: String
 	
-	public func completionSuggestions(for source: String, cursor: Int) -> [CompletionSuggestion] {
+	let newLineIndices: [Int]
+	
+	var textOnLineBeforeCursor: String
+	
+	let lexer: Lexer
+	
+	let tokens: [Token]
+
+	var currentToken: Token?
+
+	init(source: String, cursor: Int) {
+		self.source = source
+		globalCursor = cursor
 		
-		var suggestions = [CompletionSuggestion]()
+		lexer = Lexer(input: source)
+		tokens = lexer.tokenize()
 		
-		let lexer = Lexer(input: source)
+		newLineIndices = source.newLineIndices
 		
-		let tokens = lexer.tokenize()
+		lineNumber = source.lineNumber(of: cursor)
+		
+		lineSource = source.getLine(lineNumber, newLineIndices: newLineIndices)
+		
+		var indexInLine = cursor
+		
+		if lineNumber > 1 {
+			for i in 1..<lineNumber {
+				// count + 1 because of "\n"
+				indexInLine -= (source.getLine(i, newLineIndices: newLineIndices).count + 1)
+			}
+		}
+		
+		lineCursor = indexInLine
+		
+		textOnLineBeforeCursor = String(lineSource[lineSource.startIndex..<lineSource.index(lineSource.startIndex, offsetBy: indexInLine)])
+
 		
 //		var previousToken: Token?
-		var currentToken: Token?
 		
 		for token in tokens {
 			
@@ -67,39 +97,6 @@ public class AutoCompleter {
 			}
 			
 //			previousToken = token
-		}
-		
-		let currentLineIndex = source.lineNumber(of: cursor)
-		
-		let currentLine = source.getLine(currentLineIndex)
-		
-		var indexInLine = cursor
-		
-		if currentLineIndex > 1 {
-			for i in 1..<currentLineIndex {
-				// count + 1 because of "\n"
-				indexInLine -= (source.getLine(i).count + 1)
-			}
-		}
-		
-		var textOnLineBeforeCursor = currentLine[currentLine.startIndex..<currentLine.index(currentLine.startIndex, offsetBy: indexInLine)]
-		
-		if !textOnLineBeforeCursor.isEmpty {
-			
-			for keyword in Lexer.keywordTokens.keys {
-				
-				if keyword.hasPrefix(String(textOnLineBeforeCursor)) {
-					
-					let startIndex = keyword.index(keyword.startIndex, offsetBy: textOnLineBeforeCursor.count)
-					let content = String(keyword[startIndex...])
-					
-					let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
-					suggestions.append(suggestion)
-					
-				}
-				
-			}
-			
 		}
 		
 		if let currentToken = currentToken {
@@ -116,8 +113,42 @@ public class AutoCompleter {
 			
 		}
 		
-		if textOnLineBeforeCursor.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-			let statementSuggestions = self.statementSuggestions(cursor: cursor, prefix: String(textOnLineBeforeCursor))
+	}
+	
+}
+
+public class AutoCompleter {
+	
+	public init() {
+		
+	}
+	
+	public func completionSuggestions(for source: String, cursor: Int) -> [CompletionSuggestion] {
+		
+		var suggestions = [CompletionSuggestion]()
+		
+		let sourceInfo = SourceInformation(source: source, cursor: cursor)
+		
+		if !sourceInfo.textOnLineBeforeCursor.isEmpty {
+			
+			for keyword in Lexer.keywordTokens.keys {
+				
+				if keyword.hasPrefix(String(sourceInfo.textOnLineBeforeCursor)) {
+					
+					let startIndex = keyword.index(keyword.startIndex, offsetBy: sourceInfo.textOnLineBeforeCursor.count)
+					let content = String(keyword[startIndex...])
+					
+					let suggestion = CompletionSuggestion(title: keyword, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
+					suggestions.append(suggestion)
+					
+				}
+				
+			}
+			
+		}
+		
+		if sourceInfo.textOnLineBeforeCursor.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+			let statementSuggestions = self.statementSuggestions(cursor: cursor, prefix: sourceInfo.textOnLineBeforeCursor)
 			suggestions.append(contentsOf: statementSuggestions)
 		}
 

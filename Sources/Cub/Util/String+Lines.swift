@@ -9,15 +9,11 @@
 import Foundation
 
 extension String {
-	
-	func getLine(_ index: Int) -> String {
-		
+
+	func getLine(_ index: Int, newLineIndices: [Int]) -> String {
+
 		if self.isEmpty && index <= 1 {
 			return ""
-		}
-		
-		let newLineIndices = [0] + self.indices(of: "\n").map { (index) -> Int in
-			return self.distance(from: self.startIndex, to: index)
 		}
 		
 		if self.hasSuffix("\n") && index == newLineIndices.count + 1 {
@@ -57,6 +53,24 @@ extension String {
 			}
 			
 			return line
+		}
+		
+	}
+	
+	func getLine(_ index: Int) -> String {
+		
+		if self.isEmpty && index <= 1 {
+			return ""
+		}
+		
+		let newLineIndices = self.newLineIndices
+		
+		return getLine(index, newLineIndices: newLineIndices)
+	}
+	
+	var newLineIndices: [Int] {
+		return [0] + self.indices(of: "\n").map { (index) -> Int in
+			return self.distance(from: self.startIndex, to: index)
 		}
 	}
 	
