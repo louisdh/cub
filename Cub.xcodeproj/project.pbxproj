@@ -158,6 +158,8 @@
 		BE64E21B2025DE8200D4A6FF /* Compiler+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64E1F42025DE8200D4A6FF /* Compiler+Errors.swift */; };
 		BE64E21F2026414700D4A6FF /* StringNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64E21C2026414200D4A6FF /* StringNode.swift */; };
 		BE64E2202026414800D4A6FF /* StringNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE64E21C2026414200D4A6FF /* StringNode.swift */; };
+		BE68CCDB207A9BFA00E73A94 /* String+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68CCDA207A9BFA00E73A94 /* String+Lines.swift */; };
+		BE68CCDC207A9BFA00E73A94 /* String+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68CCDA207A9BFA00E73A94 /* String+Lines.swift */; };
 		BE71CB8F1F12A23300C6B93E /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE71CB8E1F12A23300C6B93E /* TokenType.swift */; };
 		BE71CB901F12A23300C6B93E /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE71CB8E1F12A23300C6B93E /* TokenType.swift */; };
 		BE759C6520331FEB001E814D /* StructDeepUpdate.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE759C6420331FEB001E814D /* StructDeepUpdate.cub */; };
@@ -294,6 +296,7 @@
 		BE64E1F22025DE8200D4A6FF /* Stdlib+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stdlib+Tests.swift"; sourceTree = "<group>"; };
 		BE64E1F42025DE8200D4A6FF /* Compiler+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Compiler+Errors.swift"; sourceTree = "<group>"; };
 		BE64E21C2026414200D4A6FF /* StringNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNode.swift; sourceTree = "<group>"; };
+		BE68CCDA207A9BFA00E73A94 /* String+Lines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Lines.swift"; sourceTree = "<group>"; };
 		BE71CB8E1F12A23300C6B93E /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		BE759C6420331FEB001E814D /* StructDeepUpdate.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructDeepUpdate.cub; sourceTree = "<group>"; };
 		BE759C6620332044001E814D /* StructDeepGet.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructDeepGet.cub; sourceTree = "<group>"; };
@@ -374,8 +377,8 @@
 		BE3F26DD1EE0A97300D58C83 /* Cub */ = {
 			isa = PBXGroup;
 			children = (
+				BE68CCD9207A9BE500E73A94 /* Util */,
 				BE4280302038B59A00C8FE24 /* Completion Suggestions */,
-				BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */,
 				BE3F26DF1EE0A97300D58C83 /* AST */,
 				BE3F26FC1EE0A97400D58C83 /* Bytecode */,
 				BE3F27021EE0A97400D58C83 /* Compiler */,
@@ -712,6 +715,15 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		BE68CCD9207A9BE500E73A94 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */,
+				BE68CCDA207A9BFA00E73A94 /* String+Lines.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		BEDC79BF2049C8D700EF3588 /* AutoCompleter */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +964,7 @@
 				BE3F273F1EE0A97400D58C83 /* ForStatementNode.swift in Sources */,
 				BE3F271F1EE0A97400D58C83 /* ASTChildNode.swift in Sources */,
 				BE3F274F1EE0A97400D58C83 /* StructPrototypeNode.swift in Sources */,
+				BE68CCDB207A9BFA00E73A94 /* String+Lines.swift in Sources */,
 				BE3F27591EE0A97400D58C83 /* BytecodeInstructionType.swift in Sources */,
 				BE3F272B1EE0A97400D58C83 /* BodyNode.swift in Sources */,
 				BE3F27791EE0A97400D58C83 /* RunnerDelegate.swift in Sources */,
@@ -1035,6 +1048,7 @@
 				BE3F27401EE0A97400D58C83 /* ForStatementNode.swift in Sources */,
 				BE3F27201EE0A97400D58C83 /* ASTChildNode.swift in Sources */,
 				BE3F27501EE0A97400D58C83 /* StructPrototypeNode.swift in Sources */,
+				BE68CCDC207A9BFA00E73A94 /* String+Lines.swift in Sources */,
 				BE3F275A1EE0A97400D58C83 /* BytecodeInstructionType.swift in Sources */,
 				BE3F272C1EE0A97400D58C83 /* BodyNode.swift in Sources */,
 				BE3F277A1EE0A97400D58C83 /* RunnerDelegate.swift in Sources */,
