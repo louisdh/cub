@@ -76,6 +76,29 @@ class Lexer_Tests: BaseTestCase {
 		
 	}
 	
+	func testNewLinesAfterStatementLexing() {
+		
+		let source = """
+					a = myVar
+
+					
+					
+
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .identifier("a"), range: 0..<1))
+		expectedTokens.append(.init(type: .equals, range: 2..<3))
+		expectedTokens.append(.init(type: .identifier("myVar"), range: 4..<9))
+
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+	
 	/// Test Lexer with input: "a = 0.3"
 	func testLexerAssignment(withSource source: String) {
 		
