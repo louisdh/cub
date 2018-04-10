@@ -10,7 +10,7 @@ import Foundation
 
 /// A completion suggestion describes source code
 /// that can be inserted in a user's source code.
-public struct CompletionSuggestion {
+public struct CompletionSuggestion: Equatable {
 	
 	/// A title describing the suggestion.
 	public let title: String
@@ -24,17 +24,6 @@ public struct CompletionSuggestion {
 	
 	/// Relative to the suggestion.
 	public let cursorAfterInsertion: Int
-	
-}
-
-extension CompletionSuggestion: Equatable {
-	
-	public static func ==(lhs: CompletionSuggestion, rhs: CompletionSuggestion) -> Bool {
-		return lhs.content == rhs.content &&
-			lhs.insertionIndex == rhs.insertionIndex &&
-			lhs.title == rhs.title &&
-			lhs.cursorAfterInsertion == rhs.cursorAfterInsertion
-	}
 	
 }
 
