@@ -9,24 +9,24 @@ matrix:
       env: 
         - JOB=Linux
     - os: osx
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       env: 
         - JOB=OSX DESTINATION="OS=9.0,name=iPhone 6" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
     - os: osx
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       env: 
         - JOB=OSX DESTINATION="arch=x86_64" SCHEME="Cub macOS Release [Double]" RUN_TESTS="YES" BUILD_EXAMPLE="NO" CODE_COV="YES"
     - os: osx
-      osx_image: xcode9.2
+      osx_image: xcode9.3
       env: 
-        - JOB=OSX DESTINATION="OS=11.2,name=iPhone 7 Plus" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
+        - JOB=OSX DESTINATION="OS=11.3,name=iPhone 7 Plus" SCHEME="Cub iOS [Double]" RUN_TESTS="NO" BUILD_EXAMPLE="NO" CODE_COV="NO"
 
 before_install:
   if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
     DIR="$(pwd)";
     cd ..;
-    export SWIFT_VERSION=swift-4.0.3-RELEASE;
-    wget https://swift.org/builds/swift-4.0.3-release/ubuntu1404/$SWIFT_VERSION/$SWIFT_VERSION-ubuntu14.04.tar.gz;
+    export SWIFT_VERSION=swift-4.1-RELEASE;
+    wget https://swift.org/builds/swift-4.1-release/ubuntu1404/$SWIFT_VERSION/$SWIFT_VERSION-ubuntu14.04.tar.gz;
     tar xzf $SWIFT_VERSION-ubuntu14.04.tar.gz;
     export PATH="${PWD}/${SWIFT_VERSION}-ubuntu14.04/usr/bin:${PATH}";
     cd "$DIR";
