@@ -53,6 +53,79 @@ public class StdLib {
 	}
 	
 	func registerExternalFunctions(_ runner: Runner) {
+
+		runner.registerExternalFunction(name: "dateByAdding", argumentNames: ["value", "unit", "date"], returns: true) { (arguments, callback) in
+			
+			guard case let .number(value)? = arguments["value"],
+				case let .string(unit)? = arguments["unit"],
+				case let .number(dateString)? = arguments["date"] else {
+				_ = callback(.number(0))
+				return
+			}
+			
+			let date = Date(timeIntervalSince1970: dateString)
+
+			let intValue = Int(value)
+			
+			let componentMapping: [String: Calendar.Component] = ["second": .second,
+																  "minute": .minute,
+																  "hour": .hour,
+																  "day": .day,
+																  "month": .month,
+																  "year": .year]
+
+			guard let component = componentMapping[unit] else {
+				_ = callback(.number(0))
+				return
+			}
+			
+			guard let newDate = Calendar.current.date(byAdding: component, value: intValue, to: date) else {
+				_ = callback(.number(0))
+				return
+			}
+			
+			_ = callback(.number(newDate.timeIntervalSince1970))
+
+		}
+		
+		runner.registerExternalFunction(name: "currentDate", argumentNames: [], returns: true) { (arguments, callback) in
+			_ = callback(.number(Date().timeIntervalSince1970))
+		}
+		
+		runner.registerExternalFunction(name: "dateFromFormat", argumentNames: ["dateString", "format"], returns: true) { (arguments, callback) in
+			
+			guard case let .string(dateString)? = arguments["dateString"], case let .string(format)? = arguments["format"] else {
+				_ = callback(.number(0))
+				return
+			}
+			
+			let formatter = DateFormatter()
+			formatter.dateFormat = format
+			
+			if let timeInterval = formatter.date(from: dateString)?.timeIntervalSince1970 {
+				_ = callback(.number(timeInterval))
+			} else {
+				_ = callback(.number(0))
+			}
+			
+		}
+		
+		runner.registerExternalFunction(name: "formattedDate", argumentNames: ["date", "format"], returns: true) { (arguments, callback) in
+
+			guard case let .number(timeInterval)? = arguments["date"], case let .string(format)? = arguments["format"] else {
+				_ = callback(.number(0))
+				return
+			}
+			
+			let formatter = DateFormatter()
+			formatter.dateFormat = format
+			
+			let date = Date(timeIntervalSince1970: timeInterval)
+			
+			_ = callback(.string(formatter.string(from: date)))
+			
+		}
+		
 		// Can't support the randomNumber command on Linux at the moment,
 		// since arc4random_uniform is not available.
 		#if !os(Linux)
