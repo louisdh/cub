@@ -53,6 +53,9 @@ public class StdLib {
 	}
 	
 	func registerExternalFunctions(_ runner: Runner) {
+		// Can't support the randomNumber command on Linux at the moment,
+		// since arc4random_uniform is not available.
+		#if !os(Linux)
 		
 		runner.registerExternalFunction(name: "randomNumber", argumentNames: ["min", "max"], returns: true) { (arguments, callback) in
 			
@@ -71,7 +74,8 @@ public class StdLib {
 			
 		}
 		
-		
+		#endif
+
 		// Can't support the format command on Linux at the moment,
 		// since String does not conform to CVarArg.
 		#if !os(Linux)
