@@ -54,6 +54,24 @@ public class StdLib {
 	
 	func registerExternalFunctions(_ runner: Runner) {
 		
+		runner.registerExternalFunction(name: "randomNumber", argumentNames: ["min", "max"], returns: true) { (arguments, callback) in
+			
+			func randomInt(min: Int, max: Int) -> Int {
+				return min + Int(arc4random_uniform(UInt32(max - min + 1)))
+			}
+			
+			guard case let .number(min)? = arguments["min"], case let .number(max)? = arguments["max"] else {
+				let randomNumber = NumberType(arc4random_uniform(1))
+				
+				_ = callback(.number(randomNumber))
+				return
+			}
+			
+			_ = callback(.number(NumberType(randomInt(min: Int(min), max: Int(max)))))
+			
+		}
+		
+		
 		// Can't support the format command on Linux at the moment,
 		// since String does not conform to CVarArg.
 		#if !os(Linux)
