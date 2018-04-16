@@ -106,7 +106,16 @@ struct SourceInformation {
 	
 }
 
+fileprivate struct Cached<T> {
+	
+	let source: String
+	let cache: T
+	
+}
+
 public class AutoCompleter {
+	
+	fileprivate var cachedSourceInfo: Cached<SourceInformation>?
 	
 	public init() {
 		
@@ -114,9 +123,20 @@ public class AutoCompleter {
 	
 	public func completionSuggestions(for source: String, cursor: Int) -> [CompletionSuggestion] {
 		
-		var suggestions = [CompletionSuggestion]()
+		let sourceInfo: SourceInformation
 		
-		let sourceInfo = SourceInformation(source: source, cursor: cursor)
+		if let cached = cachedSourceInfo, cached.source == source {
+			
+			sourceInfo = cached.cache
+			
+		} else {
+			
+			sourceInfo = SourceInformation(source: source, cursor: cursor)
+			cachedSourceInfo = Cached(source: source, cache: sourceInfo)
+			
+		}
+		
+		var suggestions = [CompletionSuggestion]()
 		
 		if !sourceInfo.textOnLineBeforeCursor.isEmpty {
 			
