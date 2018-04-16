@@ -187,6 +187,18 @@ public class AutoCompleter {
 		
 		let whileStatement = CompletionSuggestion(title: "while ...", content: whileContent, insertionIndex: cursor, cursorAfterInsertion: 6)
 		suggestions.append(whileStatement)
+	
+		var forContent = ""
+		forContent += "for <#initialization"
+		forContent += "#>, <#condition"
+		forContent += "#>, <#increment"
+		forContent += "#> {\n"
+		forContent += "\(prefix)\t<#body"
+		forContent += "#>\n"
+		forContent += "\(prefix)}"
+		
+		let forStatement = CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: cursor, cursorAfterInsertion: 4)
+		suggestions.append(forStatement)
 		
 		return suggestions
 
