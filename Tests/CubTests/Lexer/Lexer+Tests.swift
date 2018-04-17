@@ -99,6 +99,27 @@ class Lexer_Tests: BaseTestCase {
 		
 	}
 	
+	func testLineComments() {
+		
+		let source = """
+						// test
+					    // hello
+					    // world
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .comment, range: 1..<8))
+		expectedTokens.append(.init(type: .comment, range: 13..<21))
+		expectedTokens.append(.init(type: .comment, range: 26..<34))
+		
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+	
 	/// Test Lexer with input: "a = 0.3"
 	func testLexerAssignment(withSource source: String) {
 		

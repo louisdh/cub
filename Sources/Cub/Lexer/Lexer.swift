@@ -424,6 +424,11 @@ public class Lexer {
 			let updateCurrentString = isInString || isInLineComment || isInBlockComment
 
 			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
+			
+			if currentStringLength == 0 {
+				tokenCharIndex = charIndex
+			}
+			
 			return true
 		}
 		
@@ -452,6 +457,11 @@ public class Lexer {
 			let updateCurrentString = isInString || isInLineComment || isInBlockComment
 
 			consumeCharactersAtStart(1, updateCurrentString: updateCurrentString)
+			
+			if currentStringLength == 0 {
+				tokenCharIndex = charIndex
+			}
+			
 			return true
 		}
 		
