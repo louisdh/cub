@@ -41,8 +41,6 @@ public class Runner {
 
 	public let compiler: BytecodeCompiler
 	
-	public var executionFinishedCallback: (() -> Void)?
-
 	// MARK: -
 
 	public init(logDebug: Bool = false, logTime: Bool = false) {
@@ -326,8 +324,6 @@ public class Runner {
 		for (id, callback) in externalFunctions {
 			interpreter.registerExternalFunction(id: id, callback: callback)
 		}
-		
-		interpreter.executionFinishedCallback = executionFinishedCallback
 		
 		self.interpreter = interpreter
 		
