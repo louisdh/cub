@@ -43,7 +43,7 @@ class Lexer_Tests: BaseTestCase {
 
 		var expectedTokens = [Token]()
 		
-		expectedTokens.append(.init(type: .comment, range: 0..<3))
+		expectedTokens.append(.init(type: .comment("//t"), range: 0..<3))
 		expectedTokens.append(.init(type: .identifier("print"), range: 5..<10))
 		expectedTokens.append(.init(type: .parensOpen, range: 10..<11))
 		expectedTokens.append(.init(type: .number(1), range: 11..<12))
@@ -66,7 +66,7 @@ class Lexer_Tests: BaseTestCase {
 		
 		var expectedTokens = [Token]()
 		
-		expectedTokens.append(.init(type: .comment, range: 0..<17))
+		expectedTokens.append(.init(type: .comment("// test 123 hello"), range: 0..<17))
 		expectedTokens.append(.init(type: .identifier("print"), range: 19..<24))
 		expectedTokens.append(.init(type: .parensOpen, range: 24..<25))
 		expectedTokens.append(.init(type: .number(1), range: 25..<26))
@@ -112,9 +112,9 @@ class Lexer_Tests: BaseTestCase {
 		
 		var expectedTokens = [Token]()
 		
-		expectedTokens.append(.init(type: .comment, range: 1..<8))
-		expectedTokens.append(.init(type: .comment, range: 13..<21))
-		expectedTokens.append(.init(type: .comment, range: 26..<34))
+		expectedTokens.append(.init(type: .comment("// test"), range: 1..<8))
+		expectedTokens.append(.init(type: .comment("// hello"), range: 13..<21))
+		expectedTokens.append(.init(type: .comment("// world"), range: 26..<34))
 		
 		XCTAssertEqual(expectedTokens, tokens)
 		

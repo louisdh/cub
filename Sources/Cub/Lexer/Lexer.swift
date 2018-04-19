@@ -357,7 +357,7 @@ public class Lexer {
 
 				consumeCharactersAtStart(2)
 				isInBlockComment = false
-				addToken(type: .comment)
+				addToken(type: .comment(currentString))
 				continue
 			}
 			
@@ -377,7 +377,7 @@ public class Lexer {
 			if !content.isEmpty {
 				consumeCharactersAtStart(1)
 			} else if isInBlockComment || isInLineComment {
-				addToken(type: .comment)
+				addToken(type: .comment(currentString))
 			}
 
 		}
@@ -441,7 +441,7 @@ public class Lexer {
 			if isInLineComment {
 				
 				isInLineComment = false
-				addToken(type: .comment)
+				addToken(type: .comment(currentString))
 				
 			}			
 			
