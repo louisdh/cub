@@ -11,6 +11,10 @@
 		BE21555E20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */; };
 		BE21555F20360FCD00C4B9E5 /* ForInLoopNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */; };
 		BE25B21A2089052F00AD74B6 /* TypeCheck.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE25B2192089052F00AD74B6 /* TypeCheck.cub */; };
+		BE25B21D208913A000AD74B6 /* CommentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21C208913A000AD74B6 /* CommentNode.swift */; };
+		BE25B21E208913A000AD74B6 /* CommentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21C208913A000AD74B6 /* CommentNode.swift */; };
+		BE25B220208919B900AD74B6 /* DocumentationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */; };
+		BE25B221208919B900AD74B6 /* DocumentationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */; };
 		BE3F26A81EE0969A00D58C83 /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE3F26A61EE0969A00D58C83 /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE3F271D1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
 		BE3F271E1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
@@ -198,6 +202,8 @@
 		BE21555D20360FCD00C4B9E5 /* ForInLoopNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForInLoopNode.swift; sourceTree = "<group>"; };
 		BE2296281DB16EE800EA477A /* Cub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE25B2192089052F00AD74B6 /* TypeCheck.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = TypeCheck.cub; sourceTree = "<group>"; };
+		BE25B21C208913A000AD74B6 /* CommentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNode.swift; sourceTree = "<group>"; };
+		BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationGenerator.swift; sourceTree = "<group>"; };
 		BE295CE81DB14DCE0019EC57 /* Cub macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cub macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3F26A51EE0969A00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub macOS/Info.plist"; sourceTree = "<group>"; };
 		BE3F26A61EE0969A00D58C83 /* Cub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cub.h; path = "Cub macOS/Cub.h"; sourceTree = "<group>"; };
@@ -359,6 +365,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE25B21B2089076B00AD74B6 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		BE3F25F71EE0963800D58C83 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +393,7 @@
 		BE3F26DD1EE0A97300D58C83 /* Cub */ = {
 			isa = PBXGroup;
 			children = (
+				BE25B21B2089076B00AD74B6 /* Documentation */,
 				BE68CCD9207A9BE500E73A94 /* Util */,
 				BE4280302038B59A00C8FE24 /* Completion Suggestions */,
 				BE3F26DF1EE0A97300D58C83 /* AST */,
@@ -416,6 +431,7 @@
 				BE3F26E71EE0A97300D58C83 /* BodyNode.swift */,
 				BE3F26E81EE0A97300D58C83 /* BooleanNode.swift */,
 				BE3F26E91EE0A97300D58C83 /* CallNode.swift */,
+				BE25B21C208913A000AD74B6 /* CommentNode.swift */,
 				BE3F26EA1EE0A97300D58C83 /* ConditionalStatementNode.swift */,
 				BE3F26EB1EE0A97300D58C83 /* FunctionNode.swift */,
 				BE3F26EC1EE0A97300D58C83 /* FunctionPrototypeNode.swift */,
@@ -938,6 +954,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE25B21D208913A000AD74B6 /* CommentNode.swift in Sources */,
 				BE3F277B1EE0A97400D58C83 /* RunnerError.swift in Sources */,
 				BE3F27471EE0A97400D58C83 /* NumberNode.swift in Sources */,
 				BE3F27211EE0A97400D58C83 /* ASTNode+Validation.swift in Sources */,
@@ -957,6 +974,7 @@
 				BE3F27371EE0A97400D58C83 /* InternalVariableNode.swift in Sources */,
 				BE3F27331EE0A97400D58C83 /* FunctionNode.swift in Sources */,
 				BE3F27671EE0A97400D58C83 /* Counter.swift in Sources */,
+				BE25B220208919B900AD74B6 /* DocumentationGenerator.swift in Sources */,
 				BE3F27411EE0A97400D58C83 /* LoopNode.swift in Sources */,
 				BE64E2202026414800D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */,
@@ -1022,6 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE25B21E208913A000AD74B6 /* CommentNode.swift in Sources */,
 				BE3F277C1EE0A97400D58C83 /* RunnerError.swift in Sources */,
 				BE3F27481EE0A97400D58C83 /* NumberNode.swift in Sources */,
 				BE3F27221EE0A97400D58C83 /* ASTNode+Validation.swift in Sources */,
@@ -1041,6 +1060,7 @@
 				BE3F27381EE0A97400D58C83 /* InternalVariableNode.swift in Sources */,
 				BE3F27341EE0A97400D58C83 /* FunctionNode.swift in Sources */,
 				BE3F27681EE0A97400D58C83 /* Counter.swift in Sources */,
+				BE25B221208919B900AD74B6 /* DocumentationGenerator.swift in Sources */,
 				BE3F27421EE0A97400D58C83 /* LoopNode.swift in Sources */,
 				BE64E21F2026414700D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */,

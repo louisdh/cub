@@ -54,7 +54,7 @@ public class Runner {
 	public func registerExternalFunction(name: String, argumentNames: [String], returns: Bool, callback: @escaping ExternalFunc) {
 
 		let prototype = FunctionPrototypeNode(name: name, argumentNames: argumentNames, returns: returns, range: nil)
-		let node = FunctionNode(prototype: prototype, body: BodyNode(nodes: [], range: nil), range: nil)
+		let node = FunctionNode(prototype: prototype, body: BodyNode(nodes: [], range: nil), range: nil, documentation: nil)
 		let id = compiler.getFunctionId(for: node)
 		
 		externalFunctions[id] = (argumentNames, callback)

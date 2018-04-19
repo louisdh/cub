@@ -10,6 +10,8 @@ import Foundation
 
 public class Parser {
 
+	private var potentialDocComments = [String]()
+	
 	private let tokens: [Token]
 
 	/// Token index
@@ -17,13 +19,7 @@ public class Parser {
 
 	public init(tokens: [Token]) {
 
-		self.tokens = tokens.filter {
-			if case .comment = $0.type {
-				return false
-			}
-
-			return true
-		}
+		self.tokens = tokens
 
 	}
 
@@ -586,6 +582,14 @@ public class Parser {
 		guard let currentToken = peekCurrentToken() else {
 			throw error(.unexpectedToken)
 		}
+		
+		if case .comment = currentToken.type {
+			
+		} else if case .function = currentToken.type {
+			
+		} else {
+			potentialDocComments = []
+		}
 
 		switch currentToken.type {
 			case .identifier:
@@ -639,10 +643,24 @@ public class Parser {
 			case .struct:
 				return try parseStruct()
 
+			case .comment:
+				return try parseComment()
+			
 			default:
 				throw error(.expectedExpression, token: currentToken)
 		}
 
+	}
+	
+	private func parseComment() throws -> CommentNode {
+		
+		guard let token = popCurrentToken(), case let .comment(commentString) = token.type else {
+			throw error(.internalInconsistencyOccurred, token: nil)
+		}
+		
+		potentialDocComments.append(commentString)
+		
+		return CommentNode(comment: commentString, range: token.range)
 	}
 
 	private func parseContinue() throws -> ContinueNode {
@@ -996,14 +1014,22 @@ public class Parser {
 	private func parseFunction() throws -> FunctionNode {
 
 		try popCurrentToken(andExpect: .function)
+		
+		var documentation: String? = nil
+		
+		if !potentialDocComments.isEmpty {
+			documentation = potentialDocComments.joined(separator: "\n")
+		}
+		
+		potentialDocComments = []
 
 		let prototype = try parseFunctionPrototype()
 
 		let body = try parseBody()
 
 		try popCurrentToken(andExpect: .curlyClose, "}")
-
-		return FunctionNode(prototype: prototype, body: body, range: currentTokenRange())
+			
+		return FunctionNode(prototype: prototype, body: body, range: currentTokenRange(), documentation: documentation)
 	}
 
 	private func parseArray() throws -> ArrayNode {
