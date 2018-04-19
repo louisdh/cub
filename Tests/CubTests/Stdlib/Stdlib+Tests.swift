@@ -26,6 +26,14 @@ class Stdlib_Tests: BaseTestCase {
 		super.tearDown()
 	}
 	
+	func testTypeCheck() {
+		assert(in: "TypeCheck", that: "numberCheck", equals: .bool(true))
+		assert(in: "TypeCheck", that: "stringCheck", equals: .bool(true))
+		assert(in: "TypeCheck", that: "boolCheck", equals: .bool(true))
+		assert(in: "TypeCheck", that: "arrayCheck", equals: .bool(true))
+		assert(in: "TypeCheck", that: "structCheck", equals: .bool(true))
+	}
+	
 	func testFloor() {
 		assert(in: "Floor", that: "a", equals: .number(2))
 		assert(in: "Floor", that: "b", equals: .number(-2))

@@ -1,0 +1,18 @@
+a = 1
+numberCheck = isNumber(a)
+
+b = "test"
+stringCheck = isString(b)
+
+c = true
+boolCheck = isBool(c)
+
+d = [1, 2, 3]
+arrayCheck = isArray(d)
+
+struct S {
+	a, b
+}
+
+e = S(1, 2)
+structCheck = isStruct(e)

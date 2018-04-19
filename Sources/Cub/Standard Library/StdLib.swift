@@ -53,7 +53,62 @@ public class StdLib {
 	}
 	
 	func registerExternalFunctions(_ runner: Runner) {
+		
+		runner.registerExternalFunction(name: "isNumber", argumentNames: ["value"], returns: true) { (arguments, callback) in
 
+			guard let value = arguments["value"] else {
+				_ = callback(.bool(false))
+				return
+			}
+			
+			_ = callback(.bool(value.isNumber))
+			
+		}
+		
+		runner.registerExternalFunction(name: "isString", argumentNames: ["value"], returns: true) { (arguments, callback) in
+			
+			guard let value = arguments["value"] else {
+				_ = callback(.bool(false))
+				return
+			}
+			
+			_ = callback(.bool(value.isString))
+			
+		}
+		
+		runner.registerExternalFunction(name: "isBool", argumentNames: ["value"], returns: true) { (arguments, callback) in
+			
+			guard let value = arguments["value"] else {
+				_ = callback(.bool(false))
+				return
+			}
+			
+			_ = callback(.bool(value.isBool))
+			
+		}
+		
+		runner.registerExternalFunction(name: "isArray", argumentNames: ["value"], returns: true) { (arguments, callback) in
+			
+			guard let value = arguments["value"] else {
+				_ = callback(.bool(false))
+				return
+			}
+			
+			_ = callback(.bool(value.isArray))
+			
+		}
+		
+		runner.registerExternalFunction(name: "isStruct", argumentNames: ["value"], returns: true) { (arguments, callback) in
+			
+			guard let value = arguments["value"] else {
+				_ = callback(.bool(false))
+				return
+			}
+			
+			_ = callback(.bool(value.isStruct))
+			
+		}
+		
 		runner.registerExternalFunction(name: "dateByAdding", argumentNames: ["value", "unit", "date"], returns: true) { (arguments, callback) in
 			
 			guard case let .number(value)? = arguments["value"],
@@ -202,4 +257,48 @@ public class StdLib {
 		case resourceNotFound
 	}
 
+}
+
+extension ValueType {
+	
+	var isNumber: Bool {
+		if case .number = self {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	var isString: Bool {
+		if case .string = self {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	var isBool: Bool {
+		if case .bool = self {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	var isArray: Bool {
+		if case .array = self {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	var isStruct: Bool {
+		if case .struct = self {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 }
