@@ -14,10 +14,31 @@ class ViewController: NSViewController, RunnerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let runner = Runner(logDebug: false, logTime: false)
+		guard let path = stringPath(for: "A") else {
+			return
+		}
+		
+		print(path)
+		
+		guard let source = try? String(contentsOfFile: path, encoding: .utf8) else {
+			return
+		}
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+//		print(tokens)
+//		
+//		return;
+		
+		let runner = Runner(logDebug: true, logTime: true)
 		runner.delegate = self
 		
-		runner.registerExternalFunction(name: "print", argumentNames: ["input"], returns: true) { (arguments, callback) in
+		let docGen = DocumentationGenerator()
+		let items = docGen.items(runner: runner)
+		print(items)
+		
+		runner.registerExternalFunction(documentation: nil, name: "print", argumentNames: ["input"], returns: true) { (arguments, callback) in
 			
 			for (_, arg) in arguments {
 				
@@ -27,19 +48,10 @@ class ViewController: NSViewController, RunnerDelegate {
 			
 			_ = callback(.number(0))
 		}
-
-		guard let path = stringPath(for: "A") else {
-			return
-		}
-
-		print(path)
-
-		guard let source = try? String(contentsOfFile: path, encoding: .utf8) else {
-			return
-		}
 		
 		do {
 
+//			try runner.runWithoutStdlib(source)
 			try runner.run(source)
 
 		} catch {
