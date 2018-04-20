@@ -13,7 +13,7 @@
     ReturnNode
 ])
     ReturnNode
-    documentation: Optional("//\n//  Fibonacci.cub\n//"))
+    documentation: nil)
     VariableNode(a) = CallNode(name: fibonacci, argument: 
     NumberNode(10.0))
     CommentNode(// a = 55)

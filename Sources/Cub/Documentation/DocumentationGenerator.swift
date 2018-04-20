@@ -57,7 +57,11 @@ public class DocumentationGenerator {
 			if let functionNode = node as? FunctionNode {
 				
 				let args = functionNode.prototype.argumentNames.joined(separator: ", ")
-				let definition = "func \(functionNode.prototype.name)(\(args))"
+				var definition = "func \(functionNode.prototype.name)(\(args))"
+				
+				if functionNode.prototype.returns {
+					definition += " returns"
+				}
 				
 				let functionItem = DocumentationItem(definition: definition, documentation: functionNode.documentation, type: .function)
 				

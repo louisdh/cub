@@ -10,7 +10,7 @@ import Foundation
 
 public class Parser {
 
-	private var potentialDocComments = [String]()
+	private var potentialDocNodes = [CommentNode]()
 	
 	private let tokens: [Token]
 
@@ -588,7 +588,7 @@ public class Parser {
 		} else if case .function = currentToken.type {
 			
 		} else {
-			potentialDocComments = []
+			potentialDocNodes = []
 		}
 
 		switch currentToken.type {
@@ -658,9 +658,11 @@ public class Parser {
 			throw error(.internalInconsistencyOccurred, token: nil)
 		}
 		
-		potentialDocComments.append(commentString)
+		let node = CommentNode(comment: commentString, range: token.range)
 		
-		return CommentNode(comment: commentString, range: token.range)
+		potentialDocNodes.append(node)
+		
+		return node
 	}
 
 	private func parseContinue() throws -> ContinueNode {
@@ -1013,15 +1015,42 @@ public class Parser {
 
 	private func parseFunction() throws -> FunctionNode {
 
-		try popCurrentToken(andExpect: .function)
+		let funcToken = try popCurrentToken(andExpect: .function)
 		
 		var documentation: String? = nil
 		
-		if !potentialDocComments.isEmpty {
-			documentation = potentialDocComments.joined(separator: "\n")
+		if !potentialDocNodes.isEmpty, let funcTokenRange = funcToken.range {
+			var docNodes = [CommentNode]()
+			
+			var currentLowerboundCheck = funcTokenRange.lowerBound
+			
+			for docCommentNode in potentialDocNodes.reversed() {
+				
+				guard docCommentNode.comment.hasPrefix("///") else {
+					break
+				}
+				
+				guard let range = docCommentNode.range else {
+					continue
+				}
+
+				// +1 for new line
+				guard range.upperBound + 1 == currentLowerboundCheck else {
+					break
+				}
+				
+				docNodes.insert(docCommentNode, at: 0)
+				currentLowerboundCheck = range.lowerBound
+				
+			}
+			
+			if !docNodes.isEmpty {
+				documentation = docNodes.map({ $0.comment }).joined(separator: "\n")
+			}
+			
 		}
 		
-		potentialDocComments = []
+		potentialDocNodes = []
 
 		let prototype = try parseFunctionPrototype()
 
