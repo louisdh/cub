@@ -15,6 +15,13 @@
 		BE25B21E208913A000AD74B6 /* CommentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21C208913A000AD74B6 /* CommentNode.swift */; };
 		BE25B220208919B900AD74B6 /* DocumentationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */; };
 		BE25B221208919B900AD74B6 /* DocumentationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */; };
+		BE3A62D0208A8A170014A498 /* DocumentationItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62CE208A8A120014A498 /* DocumentationItemType.swift */; };
+		BE3A62D1208A8A170014A498 /* DocumentationItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62CE208A8A120014A498 /* DocumentationItemType.swift */; };
+		BE3A62D3208A8A290014A498 /* FunctionDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */; };
+		BE3A62D4208A8A290014A498 /* FunctionDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */; };
+		BE3A62D6208A8A350014A498 /* DocumentationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D5208A8A350014A498 /* DocumentationItem.swift */; };
+		BE3A62D7208A8A350014A498 /* DocumentationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D5208A8A350014A498 /* DocumentationItem.swift */; };
+		BE3A62DA208A8A970014A498 /* DocumentationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */; };
 		BE3F26A81EE0969A00D58C83 /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE3F26A61EE0969A00D58C83 /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE3F271D1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
 		BE3F271E1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
@@ -191,7 +198,7 @@
 		BEC8665E204732D400761E36 /* ArrayAdd1.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665B204732D300761E36 /* ArrayAdd1.cub */; };
 		BEC8665F204732D400761E36 /* ArrayAdd3.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665C204732D300761E36 /* ArrayAdd3.cub */; };
 		BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665D204732D300761E36 /* ArrayAdd2.cub */; };
-		BEDC79C12049C8EF00EF3588 /* AutoCompleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDC79C02049C8EF00EF3588 /* AutoCompleter.swift */; };
+		BEDC79C12049C8EF00EF3588 /* AutoCompleterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */; };
 		BEEB790E1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 		BEEB790F1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 /* End PBXBuildFile section */
@@ -205,6 +212,10 @@
 		BE25B21C208913A000AD74B6 /* CommentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNode.swift; sourceTree = "<group>"; };
 		BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationGenerator.swift; sourceTree = "<group>"; };
 		BE295CE81DB14DCE0019EC57 /* Cub macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cub macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3A62CE208A8A120014A498 /* DocumentationItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationItemType.swift; sourceTree = "<group>"; };
+		BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionDocumentation.swift; sourceTree = "<group>"; };
+		BE3A62D5208A8A350014A498 /* DocumentationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationItem.swift; sourceTree = "<group>"; };
+		BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationTestCase.swift; sourceTree = "<group>"; };
 		BE3F26A51EE0969A00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub macOS/Info.plist"; sourceTree = "<group>"; };
 		BE3F26A61EE0969A00D58C83 /* Cub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cub.h; path = "Cub macOS/Cub.h"; sourceTree = "<group>"; };
 		BE3F26AD1EE0A3FE00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -327,7 +338,7 @@
 		BEC8665B204732D300761E36 /* ArrayAdd1.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd1.cub; sourceTree = "<group>"; };
 		BEC8665C204732D300761E36 /* ArrayAdd3.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd3.cub; sourceTree = "<group>"; };
 		BEC8665D204732D300761E36 /* ArrayAdd2.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd2.cub; sourceTree = "<group>"; };
-		BEDC79C02049C8EF00EF3588 /* AutoCompleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleter.swift; sourceTree = "<group>"; };
+		BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleterTestCase.swift; sourceTree = "<group>"; };
 		BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytecodeDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,6 +380,17 @@
 			isa = PBXGroup;
 			children = (
 				BE25B21F208919B900AD74B6 /* DocumentationGenerator.swift */,
+				BE3A62CE208A8A120014A498 /* DocumentationItemType.swift */,
+				BE3A62D5208A8A350014A498 /* DocumentationItem.swift */,
+				BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		BE3A62D8208A8A740014A498 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -606,8 +628,9 @@
 		BE64E1C52025DE8200D4A6FF /* CubTests */ = {
 			isa = PBXGroup;
 			children = (
-				BEDC79BF2049C8D700EF3588 /* AutoCompleter */,
 				BE64E1C62025DE8200D4A6FF /* Test source files */,
+				BEDC79BF2049C8D700EF3588 /* AutoCompleter */,
+				BE3A62D8208A8A740014A498 /* Documentation */,
 				BE64E1E42025DE8200D4A6FF /* Lexer */,
 				BE64E1E72025DE8200D4A6FF /* Runner */,
 				BE64E1EA2025DE8200D4A6FF /* BaseTestCase.swift */,
@@ -746,7 +769,7 @@
 		BEDC79BF2049C8D700EF3588 /* AutoCompleter */ = {
 			isa = PBXGroup;
 			children = (
-				BEDC79C02049C8EF00EF3588 /* AutoCompleter.swift */,
+				BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */,
 			);
 			path = AutoCompleter;
 			sourceTree = "<group>";
@@ -979,6 +1002,7 @@
 				BE64E2202026414800D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */,
 				BE7C81771F1AA5E100FAF195 /* ParseErrorType.swift in Sources */,
+				BE3A62D0208A8A170014A498 /* DocumentationItemType.swift in Sources */,
 				BE3F273B1EE0A97400D58C83 /* ContinueNode.swift in Sources */,
 				BE3F27611EE0A97400D58C83 /* ScopeNode.swift in Sources */,
 				BE3F275F1EE0A97400D58C83 /* CompileError.swift in Sources */,
@@ -992,6 +1016,7 @@
 				BE3F27791EE0A97400D58C83 /* RunnerDelegate.swift in Sources */,
 				BE3F276F1EE0A97400D58C83 /* Lexer.swift in Sources */,
 				BE3F276D1EE0A97400D58C83 /* ValueType.swift in Sources */,
+				BE3A62D6208A8A350014A498 /* DocumentationItem.swift in Sources */,
 				BE3F27831EE0A97400D58C83 /* StdLib.swift in Sources */,
 				BE3F27691EE0A97400D58C83 /* InterpreterError.swift in Sources */,
 				BE3F27571EE0A97400D58C83 /* BytecodeInstructionError.swift in Sources */,
@@ -1007,6 +1032,7 @@
 				BE3F27631EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27651EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
 				BE3F274B1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
+				BE3A62D3208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
 				BE3F27311EE0A97400D58C83 /* ConditionalStatementNode.swift in Sources */,
 				BE71CB8F1F12A23300C6B93E /* TokenType.swift in Sources */,
 				BE3F27451EE0A97400D58C83 /* WhileStatementNode.swift in Sources */,
@@ -1021,8 +1047,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEDC79C12049C8EF00EF3588 /* AutoCompleter.swift in Sources */,
+				BEDC79C12049C8EF00EF3588 /* AutoCompleterTestCase.swift in Sources */,
 				BE64E2132025DE8200D4A6FF /* Lexer+Tests.swift in Sources */,
+				BE3A62DA208A8A970014A498 /* DocumentationTestCase.swift in Sources */,
 				BE64E2152025DE8200D4A6FF /* Runner+Tests.swift in Sources */,
 				BE64E2162025DE8200D4A6FF /* BaseTestCase.swift in Sources */,
 				BE64E2192025DE8200D4A6FF /* ASTDescriptionTests.swift in Sources */,
@@ -1065,6 +1092,7 @@
 				BE64E21F2026414700D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */,
 				BE7C81781F1AA5E100FAF195 /* ParseErrorType.swift in Sources */,
+				BE3A62D1208A8A170014A498 /* DocumentationItemType.swift in Sources */,
 				BE3F273C1EE0A97400D58C83 /* ContinueNode.swift in Sources */,
 				BE3F27621EE0A97400D58C83 /* ScopeNode.swift in Sources */,
 				BE3F27601EE0A97400D58C83 /* CompileError.swift in Sources */,
@@ -1078,6 +1106,7 @@
 				BE3F277A1EE0A97400D58C83 /* RunnerDelegate.swift in Sources */,
 				BE3F27701EE0A97400D58C83 /* Lexer.swift in Sources */,
 				BE3F276E1EE0A97400D58C83 /* ValueType.swift in Sources */,
+				BE3A62D7208A8A350014A498 /* DocumentationItem.swift in Sources */,
 				BE3F27841EE0A97400D58C83 /* StdLib.swift in Sources */,
 				BE3F276A1EE0A97400D58C83 /* InterpreterError.swift in Sources */,
 				BE3F27581EE0A97400D58C83 /* BytecodeInstructionError.swift in Sources */,
@@ -1093,6 +1122,7 @@
 				BE3F27641EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27661EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
 				BE3F274C1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
+				BE3A62D4208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
 				BE3F27321EE0A97400D58C83 /* ConditionalStatementNode.swift in Sources */,
 				BE71CB901F12A23300C6B93E /* TokenType.swift in Sources */,
 				BE3F27461EE0A97400D58C83 /* WhileStatementNode.swift in Sources */,
