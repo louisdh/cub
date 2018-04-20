@@ -1,4 +1,7 @@
 
+    CommentNode(//)
+    CommentNode(//  Fibonacci.cub)
+    CommentNode(//)
     FunctionNode(prototype: FunctionPrototypeNode(name: fibonacci, argumentNames: ["n"], returns: true), 
     
     ConditionalStatementNode(condition: BinaryOpNode(==, lhs: VariableNode(n), rhs: Optional(NumberNode(0.0))), body: [
@@ -9,6 +12,8 @@
     
     ReturnNode
 ])
-    ReturnNode)
+    ReturnNode
+    documentation: Optional("//\n//  Fibonacci.cub\n//"))
     VariableNode(a) = CallNode(name: fibonacci, argument: 
     NumberNode(10.0))
+    CommentNode(// a = 55)

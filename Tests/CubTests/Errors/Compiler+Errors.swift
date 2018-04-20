@@ -13,7 +13,7 @@ import XCTest
 class CompilerErrors: BaseTestCase {
 
 	func testAssignFunctionToVar() {
-		let error = "Cannot assign FunctionNode(prototype: FunctionPrototypeNode(name: bar, argumentNames: [], returns: false), \n    ) on line 4"
+		let error = "Cannot assign FunctionNode(prototype: FunctionPrototypeNode(name: bar, argumentNames: [], returns: false), \n    \n    documentation: nil) on line 4"
 		assertCompileError(in: "AssignFunctionToVar", expectedError: error)
 	}
 	
@@ -35,7 +35,7 @@ class CompilerErrors: BaseTestCase {
 		}
 
 		guard error == expectedError else {
-			let message = "[\(file).cub]: Expected error \"\(expectedError)\""
+			let message = "[\(file).cub]: Expected error \"\(expectedError)\", found: \(error)"
 			XCTFail(message)
 			return
 		}
