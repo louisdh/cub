@@ -22,6 +22,8 @@
 		BE3A62D6208A8A350014A498 /* DocumentationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D5208A8A350014A498 /* DocumentationItem.swift */; };
 		BE3A62D7208A8A350014A498 /* DocumentationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D5208A8A350014A498 /* DocumentationItem.swift */; };
 		BE3A62DA208A8A970014A498 /* DocumentationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */; };
+		BE3A62EC208BC3DC0014A498 /* VariableDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */; };
+		BE3A62ED208BC3DC0014A498 /* VariableDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */; };
 		BE3F26A81EE0969A00D58C83 /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE3F26A61EE0969A00D58C83 /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE3F271D1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
 		BE3F271E1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
@@ -216,6 +218,7 @@
 		BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionDocumentation.swift; sourceTree = "<group>"; };
 		BE3A62D5208A8A350014A498 /* DocumentationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationItem.swift; sourceTree = "<group>"; };
 		BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationTestCase.swift; sourceTree = "<group>"; };
+		BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableDocumentation.swift; sourceTree = "<group>"; };
 		BE3F26A51EE0969A00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub macOS/Info.plist"; sourceTree = "<group>"; };
 		BE3F26A61EE0969A00D58C83 /* Cub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cub.h; path = "Cub macOS/Cub.h"; sourceTree = "<group>"; };
 		BE3F26AD1EE0A3FE00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,6 +386,7 @@
 				BE3A62CE208A8A120014A498 /* DocumentationItemType.swift */,
 				BE3A62D5208A8A350014A498 /* DocumentationItem.swift */,
 				BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */,
+				BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -1031,6 +1035,7 @@
 				BE3F273D1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27631EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27651EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
+				BE3A62EC208BC3DC0014A498 /* VariableDocumentation.swift in Sources */,
 				BE3F274B1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
 				BE3A62D3208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
 				BE3F27311EE0A97400D58C83 /* ConditionalStatementNode.swift in Sources */,
@@ -1121,6 +1126,7 @@
 				BE3F273E1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27641EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27661EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
+				BE3A62ED208BC3DC0014A498 /* VariableDocumentation.swift in Sources */,
 				BE3F274C1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
 				BE3A62D4208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
 				BE3F27321EE0A97400D58C83 /* ConditionalStatementNode.swift in Sources */,

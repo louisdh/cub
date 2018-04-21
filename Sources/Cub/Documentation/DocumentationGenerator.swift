@@ -57,9 +57,43 @@ public class DocumentationGenerator {
 				items.append(functionItem)
 			}
 			
+			if let assignmentNode = node as? AssignmentNode {
+
+				if let item = parsedDocumentation(for: assignmentNode) {
+					items.append(item)
+				}
+				
+			}
+			
 		}
 		
 		return items
+	}
+	
+	private func parsedDocumentation(for assignmentNode: AssignmentNode) -> DocumentationItem? {
+		
+		guard let varNode = assignmentNode.variable as? VariableNode else {
+			return nil
+		}
+		
+		let definition = varNode.name
+		let title = varNode.name
+		
+		let variableDocumentation: VariableDocumentation?
+		
+		let rawDocumentation = assignmentNode.documentation
+		if let rawDocumentation = rawDocumentation {
+			
+			variableDocumentation = parsedVariableDocumentation(rawDocumentation: rawDocumentation)
+			
+		} else {
+			
+			variableDocumentation = nil
+		}
+		
+		let varItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .variable, functionDocumentation: nil, variableDocumentation: variableDocumentation, title: title)
+		
+		return varItem
 	}
 
 	private func parsedDocumentation(for externalFunctionDefinition: ExternalFunctionDefinition) -> DocumentationItem {
@@ -85,7 +119,7 @@ public class DocumentationGenerator {
 			functionDocumentation = nil
 		}
 		
-		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, title: title)
+		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, variableDocumentation: nil, title: title)
 		
 		return functionItem
 		
@@ -114,7 +148,7 @@ public class DocumentationGenerator {
 			functionDocumentation = nil
 		}
 		
-		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, title: title)
+		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, variableDocumentation: nil, title: title)
 		
 		return functionItem
 	}
@@ -192,6 +226,39 @@ public class DocumentationGenerator {
 		}
 		
 		return FunctionDocumentation(description: description, argumentDescriptions: argumentDescriptions, returnDescription: returnDescription)
+	}
+	
+	private func parsedVariableDocumentation(rawDocumentation: String) -> VariableDocumentation? {
+		
+		let rawDocLines = rawDocumentation.split(separator: "\n").map({ String($0) })
+		
+		let cleanedUpRawDocLines: [String] = rawDocLines.map({
+			var cleanedUp = $0
+			if cleanedUp.hasPrefix("///") {
+				cleanedUp.removeFirst(3)
+			}
+			
+			cleanedUp = cleanedUp.trimmingCharacters(in: .whitespaces)
+			
+			return cleanedUp
+		})
+		
+		var description: String? = nil
+		
+		for line in cleanedUpRawDocLines {
+			
+			if description == nil {
+				description = line
+			} else {
+				
+				description?.append("\n")
+				description?.append(line)
+				
+			}
+			
+		}
+		
+		return VariableDocumentation(description: description)
 	}
 	
 }

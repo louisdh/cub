@@ -14,6 +14,7 @@ public struct DocumentationItem: Equatable, Codable {
 	public let rawDocumentation: String?
 	public let type: DocumentationItemType
 	public let functionDocumentation: FunctionDocumentation?
+	public let variableDocumentation: VariableDocumentation?
 	public let title: String
 
 }
