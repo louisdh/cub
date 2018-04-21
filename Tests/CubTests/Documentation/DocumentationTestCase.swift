@@ -29,9 +29,11 @@ class DocumentationTestCase: BaseTestCase {
 											 rawDocumentation: "/// This is a test",
 											 type: .function,
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
+																						  arguments: [],
 																						  argumentDescriptions: [:],
 																						  returnDescription: nil),
 											 variableDocumentation: nil,
+											 structDocumentation: nil,
 											 title: "test()")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -55,9 +57,11 @@ class DocumentationTestCase: BaseTestCase {
 											 rawDocumentation: "/// This is a test\n/// - Returns: this returns something",
 											 type: .function,
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
+																						  arguments: [],
 																						  argumentDescriptions: [:],
 																						  returnDescription: "this returns something"),
 											 variableDocumentation: nil,
+											 structDocumentation: nil,
 											 title: "test() returns")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -82,10 +86,12 @@ class DocumentationTestCase: BaseTestCase {
 											 rawDocumentation: "/// This is a test\n/// - Parameter a: the first argument\n/// - Parameter b: the second argument",
 											 type: .function,
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
+																						  arguments: ["a", "b"],
 																						  argumentDescriptions: ["a": "the first argument",
 																												 "b": "the second argument"],
 																						  returnDescription: nil),
 											 variableDocumentation: nil,
+											 structDocumentation: nil,
 											 title: "test(a, b)")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -107,7 +113,34 @@ class DocumentationTestCase: BaseTestCase {
 											 type: .variable,
 											 functionDocumentation: nil,
 											 variableDocumentation: VariableDocumentation(description: "A magic number."),
+											 structDocumentation: nil,
 											 title: "a")
+		
+		XCTAssertEqual(items, [expectedItem])
+	}
+	
+	func testStructDoc() {
+		
+		let source = """
+					/// A point in 2D space.
+					/// - x: the x coordinate
+					/// - y: the y coordinate
+					struct Point {
+						x, y
+					}
+					"""
+		
+		let docGenerator = DocumentationGenerator()
+		
+		let items = try! docGenerator.items(for: source)
+		
+		let expectedItem = DocumentationItem(definition: "struct Point(x, y)",
+											 rawDocumentation: "/// A point in 2D space.\n/// - x: the x coordinate\n/// - y: the y coordinate",
+											 type: .struct,
+											 functionDocumentation: nil,
+											 variableDocumentation: nil,
+											 structDocumentation: StructDocumentation(description: "A point in 2D space.", members: ["x", "y"], memberDescriptions: ["x": "the x coordinate", "y": "the y coordinate"]),
+											 title: "Point(x, y)")
 		
 		XCTAssertEqual(items, [expectedItem])
 	}

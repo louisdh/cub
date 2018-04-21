@@ -24,6 +24,8 @@
 		BE3A62DA208A8A970014A498 /* DocumentationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */; };
 		BE3A62EC208BC3DC0014A498 /* VariableDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */; };
 		BE3A62ED208BC3DC0014A498 /* VariableDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */; };
+		BE3A62EF208BD5030014A498 /* StructDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EE208BD5030014A498 /* StructDocumentation.swift */; };
+		BE3A62F0208BD5030014A498 /* StructDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3A62EE208BD5030014A498 /* StructDocumentation.swift */; };
 		BE3F26A81EE0969A00D58C83 /* Cub.h in Headers */ = {isa = PBXBuildFile; fileRef = BE3F26A61EE0969A00D58C83 /* Cub.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE3F271D1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
 		BE3F271E1EE0A97400D58C83 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F26DE1EE0A97300D58C83 /* Array+Safe.swift */; };
@@ -219,6 +221,7 @@
 		BE3A62D5208A8A350014A498 /* DocumentationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationItem.swift; sourceTree = "<group>"; };
 		BE3A62D9208A8A970014A498 /* DocumentationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationTestCase.swift; sourceTree = "<group>"; };
 		BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableDocumentation.swift; sourceTree = "<group>"; };
+		BE3A62EE208BD5030014A498 /* StructDocumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDocumentation.swift; sourceTree = "<group>"; };
 		BE3F26A51EE0969A00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Cub macOS/Info.plist"; sourceTree = "<group>"; };
 		BE3F26A61EE0969A00D58C83 /* Cub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cub.h; path = "Cub macOS/Cub.h"; sourceTree = "<group>"; };
 		BE3F26AD1EE0A3FE00D58C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -387,6 +390,7 @@
 				BE3A62D5208A8A350014A498 /* DocumentationItem.swift */,
 				BE3A62D2208A8A290014A498 /* FunctionDocumentation.swift */,
 				BE3A62EB208BC3DC0014A498 /* VariableDocumentation.swift */,
+				BE3A62EE208BD5030014A498 /* StructDocumentation.swift */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -1005,6 +1009,7 @@
 				BE3F27411EE0A97400D58C83 /* LoopNode.swift in Sources */,
 				BE64E2202026414800D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDD2030804000AB7351 /* ArrayNode.swift in Sources */,
+				BE3A62EF208BD5030014A498 /* StructDocumentation.swift in Sources */,
 				BE7C81771F1AA5E100FAF195 /* ParseErrorType.swift in Sources */,
 				BE3A62D0208A8A170014A498 /* DocumentationItemType.swift in Sources */,
 				BE3F273B1EE0A97400D58C83 /* ContinueNode.swift in Sources */,
@@ -1096,6 +1101,7 @@
 				BE3F27421EE0A97400D58C83 /* LoopNode.swift in Sources */,
 				BE64E21F2026414700D4A6FF /* StringNode.swift in Sources */,
 				BEA14DDE2030804000AB7351 /* ArrayNode.swift in Sources */,
+				BE3A62F0208BD5030014A498 /* StructDocumentation.swift in Sources */,
 				BE7C81781F1AA5E100FAF195 /* ParseErrorType.swift in Sources */,
 				BE3A62D1208A8A170014A498 /* DocumentationItemType.swift in Sources */,
 				BE3F273C1EE0A97400D58C83 /* ContinueNode.swift in Sources */,

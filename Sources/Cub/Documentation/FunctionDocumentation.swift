@@ -11,6 +11,7 @@ import Foundation
 public struct FunctionDocumentation: Equatable, Codable {
 	
 	public let description: String?
+	public let arguments: [String]
 	public let argumentDescriptions: [String: String?]
 	public let returnDescription: String?
 	

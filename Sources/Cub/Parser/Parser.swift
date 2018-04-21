@@ -597,6 +597,8 @@ public class Parser {
 
 		} else if case .identifier = currentToken.type {
 
+		} else if case .struct = currentToken.type {
+
 		} else {
 			potentialDocNodes = []
 		}
@@ -1117,7 +1119,15 @@ public class Parser {
 	
 	private func parseStruct() throws -> StructNode {
 
-		try popCurrentToken(andExpect: .struct)
+		let structToken = try popCurrentToken(andExpect: .struct)
+		
+		var documentation: String? = nil
+		
+		if !potentialDocNodes.isEmpty, let structTokenRange = structToken.range {
+			documentation = getDocumentation(for: structTokenRange)
+		}
+		
+		potentialDocNodes = []
 
 		guard let idToken = popCurrentToken() else {
 			throw error(.expectedFunctionName)
@@ -1152,7 +1162,7 @@ public class Parser {
 
 		try popCurrentToken(andExpect: .curlyClose, "}")
 
-		return StructNode(prototype: prototype, range: idToken.range)
+		return StructNode(prototype: prototype, range: idToken.range, documentation: documentation)
 	}
 
 	// MARK: -
