@@ -30,7 +30,8 @@ class DocumentationTestCase: BaseTestCase {
 											 type: .function,
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
 																						  argumentDescriptions: [:],
-																						  returnDescription: nil))
+																						  returnDescription: nil),
+											 title: "test()")
 		
 		XCTAssertEqual(items, [expectedItem])
 	}
@@ -54,7 +55,8 @@ class DocumentationTestCase: BaseTestCase {
 											 type: .function,
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
 																						  argumentDescriptions: [:],
-																						  returnDescription: "this returns something"))
+																						  returnDescription: "this returns something"),
+											 title: "test() returns")
 		
 		XCTAssertEqual(items, [expectedItem])
 	}
@@ -80,7 +82,8 @@ class DocumentationTestCase: BaseTestCase {
 											 functionDocumentation: FunctionDocumentation(description: "This is a test",
 																						  argumentDescriptions: ["a": "the first argument",
 																												 "b": "the second argument"],
-																						  returnDescription: nil))
+																						  returnDescription: nil),
+											 title: "test(a, b)")
 		
 		XCTAssertEqual(items, [expectedItem])
 	}

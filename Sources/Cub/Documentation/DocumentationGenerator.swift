@@ -66,9 +66,11 @@ public class DocumentationGenerator {
 
 		let args = externalFunctionDefinition.argumentNames.joined(separator: ", ")
 		var definition = "func \(externalFunctionDefinition.name)(\(args))"
-		
+		var title = "\(externalFunctionDefinition.name)(\(args))"
+
 		if externalFunctionDefinition.returns {
 			definition += " returns"
+			title += " returns"
 		}
 		
 		let functionDocumentation: FunctionDocumentation?
@@ -83,7 +85,7 @@ public class DocumentationGenerator {
 			functionDocumentation = nil
 		}
 		
-		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation)
+		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, title: title)
 		
 		return functionItem
 		
@@ -93,9 +95,11 @@ public class DocumentationGenerator {
 		
 		let args = functionNode.prototype.argumentNames.joined(separator: ", ")
 		var definition = "func \(functionNode.prototype.name)(\(args))"
-		
+		var title = "\(functionNode.prototype.name)(\(args))"
+
 		if functionNode.prototype.returns {
 			definition += " returns"
+			title += " returns"
 		}
 		
 		let functionDocumentation: FunctionDocumentation?
@@ -110,7 +114,7 @@ public class DocumentationGenerator {
 			functionDocumentation = nil
 		}
 		
-		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation)
+		let functionItem = DocumentationItem(definition: definition, rawDocumentation: rawDocumentation, type: .function, functionDocumentation: functionDocumentation, title: title)
 		
 		return functionItem
 	}
