@@ -4,6 +4,10 @@
 //
 
 /// A struct that stores color data in RGBA.
+/// - r: the red component, in range 0...1
+/// - g: the green component, in range 0...1
+/// - b: the blue component, in range 0...1
+/// - a: the alpha component, in range 0...1
 struct Color {
 	r, g, b, a
 }
