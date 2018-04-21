@@ -10,9 +10,9 @@ import Foundation
 
 public struct DocumentationItem: Equatable, Codable {
 	
-	let definition: String
-	let rawDocumentation: String?
-	let type: DocumentationItemType
-	let functionDocumentation: FunctionDocumentation?
+	public let definition: String
+	public let rawDocumentation: String?
+	public let type: DocumentationItemType
+	public let functionDocumentation: FunctionDocumentation?
 	
 }
