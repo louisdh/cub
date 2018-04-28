@@ -61,7 +61,7 @@ extension ParseErrorType {
 			return "Expected character \"\(c)\""
 			
 		case .expectedCharacterButFound(let c1, let c2):
-			return "Expected character \"\(c1)\" but found \"\(c2)\""
+			return "Expected character \"\(c1)\" but found \"\(c2.type)\""
 			
 		case .expectedExpression:
 			return "Expected expression"
