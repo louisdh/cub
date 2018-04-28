@@ -13,7 +13,7 @@ import XCTest
 class CompilerErrors: BaseTestCase {
 
 	func testAssignFunctionToVar() {
-		let error = "Cannot assign FunctionNode(prototype: FunctionPrototypeNode(name: bar, argumentNames: [], returns: false), \n    \n    documentation: nil) on line 4"
+		let error = "Error on line 4: Cannot assign bar()"
 		assertCompileError(in: "AssignFunctionToVar", expectedError: error)
 	}
 	
