@@ -241,7 +241,7 @@ public class AutoCompleter {
 		forContent += "#>\n"
 		forContent += "\(prefix)}"
 		
-		let forStatement = CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: cursor, cursorAfterInsertion: 4)
+		let forStatement = CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: cursor, cursorAfterInsertion: 5)
 		suggestions.append(forStatement)
 		
 		return suggestions
