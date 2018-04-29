@@ -19,7 +19,7 @@ class CompilerErrors: BaseTestCase {
 	
 	func testFunctionNotFound() {
 		
-		assertCompileError(in: "FunctionNotFound", expectedError: "Function \"test\" not found on line 3.")
+		assertCompileError(in: "FunctionNotFound", expectedError: "Error on line 3: Function \"test\" not found.")
 
 	}
 
