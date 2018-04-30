@@ -244,6 +244,14 @@ public class AutoCompleter {
 		let forStatement = CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: cursor, cursorAfterInsertion: 5)
 		suggestions.append(forStatement)
 		
+		var varContent = ""
+		varContent += "<#name"
+		varContent += "#> = <#value"
+		varContent += "#>"
+		
+		let varStatement = CompletionSuggestion(title: "var ...", content: varContent, insertionIndex: cursor, cursorAfterInsertion: 1)
+		suggestions.append(varStatement)
+		
 		return suggestions
 
 	}
