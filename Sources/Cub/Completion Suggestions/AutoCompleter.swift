@@ -200,11 +200,19 @@ public class AutoCompleter {
 			
 		}
 		
-		if cursorInfo.textOnLineBeforeCursor.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-			let statementSuggestions = self.statementSuggestions(cursor: cursor, prefix: cursorInfo.textOnLineBeforeCursor)
-			suggestions.append(contentsOf: statementSuggestions)
+		var editorPlaceholderTitle: String?
+		
+		if let currentToken = cursorInfo.currentToken, case let .editorPlaceholder(value) = currentToken.type {
+			editorPlaceholderTitle = value
 		}
-
+		
+		if editorPlaceholderTitle != "name" {
+			if cursorInfo.textOnLineBeforeCursor.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+				let statementSuggestions = self.statementSuggestions(cursor: cursor, prefix: cursorInfo.textOnLineBeforeCursor)
+				suggestions.append(contentsOf: statementSuggestions)
+			}
+		}
+		
 		return suggestions
 	}
 	
