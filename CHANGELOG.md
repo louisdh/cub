@@ -13,4 +13,4 @@ CHANGELOG
 
 Cub 0.6
 -----------
-Initial open source release, based in Lioness.
+Initial open source release, based on Lioness.
