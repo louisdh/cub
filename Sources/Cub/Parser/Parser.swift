@@ -658,10 +658,24 @@ public class Parser {
 			case .comment:
 				return try parseComment()
 			
+			case .nil:
+				return try parseNil()
+			
 			default:
 				throw error(.expectedExpression, token: currentToken)
 		}
 
+	}
+	
+	private func parseNil() throws -> NilNode {
+		
+		guard let token = popCurrentToken(), case .nil = token.type else {
+			throw error(.internalInconsistencyOccurred, token: nil)
+		}
+		
+		let node = NilNode(range: token.range)
+		
+		return node
 	}
 	
 	private func parseComment() throws -> CommentNode {

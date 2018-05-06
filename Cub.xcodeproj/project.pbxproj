@@ -205,6 +205,8 @@
 		BEDC79C12049C8EF00EF3588 /* AutoCompleterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */; };
 		BEEB790E1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 		BEEB790F1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
+		BEED01B0209F7A5C0058219D /* NilNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED01AF209F7A5C0058219D /* NilNode.swift */; };
+		BEED01B1209F7A5C0058219D /* NilNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED01AF209F7A5C0058219D /* NilNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -346,6 +348,7 @@
 		BEC8665D204732D300761E36 /* ArrayAdd2.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd2.cub; sourceTree = "<group>"; };
 		BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleterTestCase.swift; sourceTree = "<group>"; };
 		BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytecodeDescriptor.swift; sourceTree = "<group>"; };
+		BEED01AF209F7A5C0058219D /* NilNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +470,7 @@
 				BE3F26EC1EE0A97300D58C83 /* FunctionPrototypeNode.swift */,
 				BE3F26ED1EE0A97300D58C83 /* InternalVariableNode.swift */,
 				BE3F26EE1EE0A97300D58C83 /* Loops */,
+				BEED01AF209F7A5C0058219D /* NilNode.swift */,
 				BE3F26F61EE0A97400D58C83 /* NumberNode.swift */,
 				BE3F26F71EE0A97400D58C83 /* ReturnNode.swift */,
 				BE64E21C2026414200D4A6FF /* StringNode.swift */,
@@ -1040,6 +1044,7 @@
 				BE3F273D1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27631EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27651EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
+				BEED01B0209F7A5C0058219D /* NilNode.swift in Sources */,
 				BE3A62EC208BC3DC0014A498 /* VariableDocumentation.swift in Sources */,
 				BE3F274B1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
 				BE3A62D3208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
@@ -1132,6 +1137,7 @@
 				BE3F273E1EE0A97400D58C83 /* DoStatementNode.swift in Sources */,
 				BE3F27641EE0A97400D58C83 /* Config.swift in Sources */,
 				BE3F27661EE0A97400D58C83 /* BytecodeInterpreter.swift in Sources */,
+				BEED01B1209F7A5C0058219D /* NilNode.swift in Sources */,
 				BE3A62ED208BC3DC0014A498 /* VariableDocumentation.swift in Sources */,
 				BE3F274C1EE0A97400D58C83 /* StructMemberNode.swift in Sources */,
 				BE3A62D4208A8A290014A498 /* FunctionDocumentation.swift in Sources */,
