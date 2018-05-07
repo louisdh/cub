@@ -20,11 +20,11 @@ public struct CompletionSuggestion: Equatable {
 	
 	/// Where this suggestion's content should be inserted,
 	/// in the source code.
-	/// This index is in UTF8.
+	/// This index is in terms of Swift characters.
 	public let insertionIndex: Int
 	
 	/// Relative to the suggestion.
-	/// This index is in UTF8.
+	/// This index is in terms of Swift characters.
 	public let cursorAfterInsertion: Int
 	
 }
