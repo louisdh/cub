@@ -25,17 +25,16 @@ class DocumentationTestCase: BaseTestCase {
 		
 		let items = try! docGenerator.items(for: source)
 		
+		let funcDoc = FunctionDocumentation(name: "test",
+											arguments: [],
+											returns: false,
+											description: "This is a test",
+											argumentDescriptions: [:],
+											returnDescription: nil)
+		
 		let expectedItem = DocumentationItem(definition: "func test()",
 											 rawDocumentation: "/// This is a test",
-											 type: .function,
-											 functionDocumentation: FunctionDocumentation(name: "test",
-																						  arguments: [],
-																						  returns: false,
-																						  description: "This is a test",
-																						  argumentDescriptions: [:],
-																						  returnDescription: nil),
-											 variableDocumentation: nil,
-											 structDocumentation: nil,
+											 type: .function(funcDoc),
 											 title: "test()")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -55,17 +54,16 @@ class DocumentationTestCase: BaseTestCase {
 		
 		let items = try! docGenerator.items(for: source)
 		
+		let funcDoc = FunctionDocumentation(name: "test",
+											arguments: [],
+											returns: true,
+											description: "This is a test",
+											argumentDescriptions: [:],
+											returnDescription: "this returns something")
+		
 		let expectedItem = DocumentationItem(definition: "func test() returns",
 											 rawDocumentation: "/// This is a test\n/// - Returns: this returns something",
-											 type: .function,
-											 functionDocumentation: FunctionDocumentation(name: "test",
-																						  arguments: [],
-																						  returns: true,
-																						  description: "This is a test",
-																						  argumentDescriptions: [:],
-																						  returnDescription: "this returns something"),
-											 variableDocumentation: nil,
-											 structDocumentation: nil,
+											 type: .function(funcDoc),
 											 title: "test() returns")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -86,18 +84,17 @@ class DocumentationTestCase: BaseTestCase {
 		
 		let items = try! docGenerator.items(for: source)
 		
+		let funcDoc = FunctionDocumentation(name: "test",
+											arguments: ["a", "b"],
+											returns: false,
+											description: "This is a test",
+											argumentDescriptions: ["a": "the first argument",
+																   "b": "the second argument"],
+											returnDescription: nil)
+		
 		let expectedItem = DocumentationItem(definition: "func test(a, b)",
 											 rawDocumentation: "/// This is a test\n/// - Parameter a: the first argument\n/// - Parameter b: the second argument",
-											 type: .function,
-											 functionDocumentation: FunctionDocumentation(name: "test",
-																						  arguments: ["a", "b"],
-																						  returns: false,
-																						  description: "This is a test",
-																						  argumentDescriptions: ["a": "the first argument",
-																												 "b": "the second argument"],
-																						  returnDescription: nil),
-											 variableDocumentation: nil,
-											 structDocumentation: nil,
+											 type: .function(funcDoc),
 											 title: "test(a, b)")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -114,13 +111,12 @@ class DocumentationTestCase: BaseTestCase {
 		
 		let items = try! docGenerator.items(for: source)
 		
+		let varDoc = VariableDocumentation(name: "a",
+										   description: "A magic number.")
+		
 		let expectedItem = DocumentationItem(definition: "a",
 											 rawDocumentation: "/// A magic number.",
-											 type: .variable,
-											 functionDocumentation: nil,
-											 variableDocumentation: VariableDocumentation(name: "a",
-																						  description: "A magic number."),
-											 structDocumentation: nil,
+											 type: .variable(varDoc),
 											 title: "a")
 		
 		XCTAssertEqual(items, [expectedItem])
@@ -141,15 +137,14 @@ class DocumentationTestCase: BaseTestCase {
 		
 		let items = try! docGenerator.items(for: source)
 		
+		let structDoc = StructDocumentation(name: "Point",
+											description: "A point in 2D space.",
+											members: ["x", "y"],
+											memberDescriptions: ["x": "the x coordinate", "y": "the y coordinate"])
+		
 		let expectedItem = DocumentationItem(definition: "struct Point(x, y)",
 											 rawDocumentation: "/// A point in 2D space.\n/// - x: the x coordinate\n/// - y: the y coordinate",
-											 type: .struct,
-											 functionDocumentation: nil,
-											 variableDocumentation: nil,
-											 structDocumentation: StructDocumentation(name: "Point",
-																					  description: "A point in 2D space.",
-																					  members: ["x", "y"],
-																					  memberDescriptions: ["x": "the x coordinate", "y": "the y coordinate"]),
+											 type: .struct(structDoc),
 											 title: "Point(x, y)")
 		
 		XCTAssertEqual(items, [expectedItem])

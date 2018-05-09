@@ -266,7 +266,8 @@ public class AutoCompleter {
 
 	private func documentationSuggestions(cursor: Int, docItem: DocumentationItem) -> CompletionSuggestion {
 
-		if let funcDoc = docItem.functionDocumentation {
+		switch docItem.type {
+		case .function(let funcDoc):
 			
 			var content = funcDoc.name + "("
 			
@@ -289,17 +290,15 @@ public class AutoCompleter {
 			}
 			
 			return CompletionSuggestion(title: funcDoc.name + "(...)", content: content, insertionIndex: cursor, cursorAfterInsertion: cursorAfterInsertion)
-		}
 		
-		if let varDoc = docItem.variableDocumentation {
-			
+		case .variable(let varDoc):
+
 			let content = varDoc.name
 			
 			return CompletionSuggestion(title: varDoc.name, content: content, insertionIndex: cursor, cursorAfterInsertion: content.count)
-		}
 		
-		if let structDoc = docItem.structDocumentation {
-			
+		case .struct(let structDoc):
+
 			var content = structDoc.name + "("
 			
 			let memberPlaceholders = structDoc.members.map({
@@ -323,7 +322,6 @@ public class AutoCompleter {
 			return CompletionSuggestion(title: structDoc.name + "(...)", content: content, insertionIndex: cursor, cursorAfterInsertion: cursorAfterInsertion)
 		}
 		
-		fatalError("Unreachable")
 	}
 	
 	private func statementSuggestions(cursor: Int, prefix: String) -> [CompletionSuggestion] {
