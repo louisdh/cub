@@ -16,7 +16,7 @@ public struct CompletionSuggestion: Equatable {
 	public let title: String
 	
 	/// The source code to be inserted.
-	public let content: String
+	public var content: String
 	
 	/// Where this suggestion's content should be inserted,
 	/// in the source code.
@@ -25,7 +25,7 @@ public struct CompletionSuggestion: Equatable {
 	
 	/// Relative to the suggestion.
 	/// This index is in terms of Swift characters.
-	public let cursorAfterInsertion: Int
+	public var cursorAfterInsertion: Int
 	
 }
 
@@ -109,7 +109,7 @@ struct CursorInformation {
 			
 			textInWordBeforeCursor += String(char)
 			
-			if char == " " {
+			if char == " " || char  == "\t" {
 				textInWordBeforeCursor = ""
 			}
 		}
@@ -225,13 +225,13 @@ public class AutoCompleter {
 			editorPlaceholderTitle = value
 		}
 		
-		let illegalEditorPlaceholdersForStatements = ["name", "condition", "value"]
+		let legalEditorPlaceholdersForStatements = ["body"]
 		
 		let suggestStatements: Bool
 
 		if let editorPlaceholderTitle = editorPlaceholderTitle {
 			
-			suggestStatements = !illegalEditorPlaceholdersForStatements.contains(editorPlaceholderTitle)
+			suggestStatements = legalEditorPlaceholdersForStatements.contains(editorPlaceholderTitle)
 			
 		} else {
 			
@@ -246,8 +246,10 @@ public class AutoCompleter {
 				
 				if char == "\t" {
 					indentationWhitespace += "\t"
-				} else {
+				} else if char == " " {
 					indentationWhitespace += " "
+				} else {
+					break
 				}
 				
 			}
@@ -261,11 +263,18 @@ public class AutoCompleter {
 			suggestions.append(documentationSuggestions(cursor: cursor, docItem: docItem))
 		}
 		
-		return suggestions
+		var filteredSuggestions = suggestions.filter({ $0.content.hasPrefix(cursorInfo.textInWordBeforeCursor) && $0.content != cursorInfo.textInWordBeforeCursor })
+		
+		for idx in filteredSuggestions.indices {
+			filteredSuggestions[idx].content.removeFirst(cursorInfo.textInWordBeforeCursor.count)
+			filteredSuggestions[idx].cursorAfterInsertion -= cursorInfo.textInWordBeforeCursor.count
+		}
+		
+		return filteredSuggestions
 	}
 
 	private func documentationSuggestions(cursor: Int, docItem: DocumentationItem) -> CompletionSuggestion {
-
+		
 		switch docItem.type {
 		case .function(let funcDoc):
 			

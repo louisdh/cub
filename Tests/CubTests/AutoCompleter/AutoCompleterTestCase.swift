@@ -25,22 +25,15 @@ class AutoCompleterTestCase: BaseTestCase {
 		let suggestions = completer.completionSuggestions(for: source, cursor: 18)
 		
 		var forContent = ""
-		forContent += "for <#initialization"
+		forContent += "or <#initialization"
 		forContent += "#>, <#condition"
 		forContent += "#>, <#increment"
 		forContent += "#> {\n"
-		forContent += " \t<#body"
-		forContent += "#>\n }"
+		forContent += "\t<#body"
+		forContent += "#>\n}"
 		
-		let expectedSuggestions = [CompletionSuggestion(title: "func", content: "unc", insertionIndex: 18, cursorAfterInsertion: 3),
-								   CompletionSuggestion(title: "false", content: "alse", insertionIndex: 18, cursorAfterInsertion: 4),
-								   CompletionSuggestion(title: "for", content: "or", insertionIndex: 18, cursorAfterInsertion: 2),
-								   CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: 18, cursorAfterInsertion: 5)]
+		let expectedSuggestions = [CompletionSuggestion(title: "for ...", content: forContent, insertionIndex: 18, cursorAfterInsertion: 4)]
 
-		
-		// CompletionSuggestion(title: "if ...", content: "if <#condition#> {\n\t<#body#>\n}", insertionIndex: 18, cursorAfterInsertion: 4),
-		// CompletionSuggestion(title: "while ...", content: "while <#condition#> {\n\t<#body#>\n}", insertionIndex: 18, cursorAfterInsertion: 6)
-		
 		print(suggestions)
 		
 		XCTAssertEqual(expectedSuggestions, suggestions)
