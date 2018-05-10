@@ -583,10 +583,22 @@ public class Parser {
 		return CallNode(callee: name, arguments: arguments, range: currentToken.range)
 	}
 
+	var stackDepth = 0
+	
 	/// Primary can be seen as the start of an operation 
 	/// (e.g. boolean operation), where this function returns the first term
 	private func parsePrimary() throws -> ASTNode {
 
+		stackDepth += 1
+		
+		if stackDepth > 20 {
+			throw error(.stackOverflow)
+		}
+		
+		defer {
+			stackDepth -= 1
+		}
+		
 		guard let currentToken = peekCurrentToken() else {
 			throw error(.unexpectedToken)
 		}
@@ -664,7 +676,7 @@ public class Parser {
 			default:
 				throw error(.expectedExpression, token: currentToken)
 		}
-
+		
 	}
 	
 	private func parseNil() throws -> NilNode {
