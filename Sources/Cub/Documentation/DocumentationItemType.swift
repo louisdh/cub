@@ -30,9 +30,10 @@ public enum DocumentationItemType: Equatable, Codable {
 			self = .variable(variableDoc)
 		} else if let structDoc = try container.decodeIfPresent(StructDocumentation.self, forKey: .struct) {
 			self = .struct(structDoc)
+		} else {
+			throw DocumentationItemTypeDecodingError.invalidValue
 		}
 		
-		throw DocumentationItemTypeDecodingError.invalidValue
 	}
 	
 	public func encode(to encoder: Encoder) throws {
