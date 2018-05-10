@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Cub'
-  s.version = '0.9.0'
+  s.version = '0.9.1'
   s.license = 'MIT'
   s.summary = 'The Cub Programming Language'
   s.homepage = 'https://github.com/louisdh/cub'
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/louisdh/cub.git', :tag => s.version }
   s.module_name  = 'Cub'
 
-  s.ios.deployment_target = '8.0'
-  s.osx.deployment_target  = '10.12'
+  s.ios.deployment_target = '11.0'
+  s.osx.deployment_target  = '10.13'
 
   s.source_files = 'Sources/**/*.swift'
   s.resources = 'Sources/**/*.cub'
