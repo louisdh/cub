@@ -202,6 +202,8 @@
 		BEC8665E204732D400761E36 /* ArrayAdd1.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665B204732D300761E36 /* ArrayAdd1.cub */; };
 		BEC8665F204732D400761E36 /* ArrayAdd3.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665C204732D300761E36 /* ArrayAdd3.cub */; };
 		BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665D204732D300761E36 /* ArrayAdd2.cub */; };
+		BECF68C220A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */; };
+		BECF68C320A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */; };
 		BEDC79C12049C8EF00EF3588 /* AutoCompleterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */; };
 		BEEB790E1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 		BEEB790F1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
@@ -346,6 +348,7 @@
 		BEC8665B204732D300761E36 /* ArrayAdd1.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd1.cub; sourceTree = "<group>"; };
 		BEC8665C204732D300761E36 /* ArrayAdd3.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd3.cub; sourceTree = "<group>"; };
 		BEC8665D204732D300761E36 /* ArrayAdd2.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd2.cub; sourceTree = "<group>"; };
+		BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavannaKitBridge.swift; sourceTree = "<group>"; };
 		BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleterTestCase.swift; sourceTree = "<group>"; };
 		BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytecodeDescriptor.swift; sourceTree = "<group>"; };
 		BEED01AF209F7A5C0058219D /* NilNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilNode.swift; sourceTree = "<group>"; };
@@ -438,6 +441,7 @@
 				BE3F27111EE0A97400D58C83 /* Parser */,
 				BE3F27141EE0A97400D58C83 /* Runner */,
 				BE3F27181EE0A97400D58C83 /* Standard Library */,
+				BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */,
 			);
 			path = Cub;
 			sourceTree = "<group>";
@@ -1006,6 +1010,7 @@
 				BE3F27771EE0A97400D58C83 /* Runner.swift in Sources */,
 				BE3F27711EE0A97400D58C83 /* Token.swift in Sources */,
 				BE4280322038B8B800C8FE24 /* AutoCompleter.swift in Sources */,
+				BECF68C220A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */,
 				BE3F27371EE0A97400D58C83 /* InternalVariableNode.swift in Sources */,
 				BE3F27331EE0A97400D58C83 /* FunctionNode.swift in Sources */,
 				BE3F27671EE0A97400D58C83 /* Counter.swift in Sources */,
@@ -1099,6 +1104,7 @@
 				BE3F27781EE0A97400D58C83 /* Runner.swift in Sources */,
 				BE3F27721EE0A97400D58C83 /* Token.swift in Sources */,
 				BE4280332038B8B800C8FE24 /* AutoCompleter.swift in Sources */,
+				BECF68C320A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */,
 				BE3F27381EE0A97400D58C83 /* InternalVariableNode.swift in Sources */,
 				BE3F27341EE0A97400D58C83 /* FunctionNode.swift in Sources */,
 				BE3F27681EE0A97400D58C83 /* Counter.swift in Sources */,
@@ -1252,7 +1258,7 @@
 				INFOPLIST_FILE = "Cub macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
 				PRODUCT_NAME = Cub;
@@ -1284,7 +1290,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Cub iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
@@ -1319,7 +1325,7 @@
 				INFOPLIST_FILE = "Cub macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
 				PRODUCT_NAME = Cub;
@@ -1352,7 +1358,7 @@
 				INFOPLIST_FILE = "Cub macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
 				PRODUCT_NAME = Cub;
@@ -1533,7 +1539,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Cub iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
@@ -1566,7 +1572,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Cub iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.cub;
 				PRODUCT_MODULE_NAME = Cub;
