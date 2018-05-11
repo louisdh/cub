@@ -54,6 +54,25 @@ public class StdLib {
 	
 	func registerExternalFunctions(_ runner: Runner) {
 
+		let splitDoc = """
+						Split a string in smaller strings.
+						- Parameter string: the string to split.
+						- Parameter separator: the separator to split by.
+						- Returns: an array of strings.
+						"""
+		
+		runner.registerExternalFunction(documentation: splitDoc, name: "split", argumentNames: ["string", "separator"], returns: true) { (arguments, callback) in
+			
+			guard case let .string(value)? = arguments["string"], case let .string(separator)? = arguments["separator"]  else {
+				_ = callback(.nil)
+				return
+			}
+			
+			let splitted = value.components(separatedBy: separator)
+			_ = callback(.array(splitted.map({ ValueType.string($0) })))
+
+		}
+		
 		let exitDoc = """
 						Terminate the program.
 						"""
