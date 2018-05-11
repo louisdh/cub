@@ -54,6 +54,17 @@ public class StdLib {
 	
 	func registerExternalFunctions(_ runner: Runner) {
 
+		let exitDoc = """
+						Terminate the program.
+						"""
+		
+		runner.registerExternalFunction(documentation: exitDoc, name: "exit", argumentNames: [], returns: true) { (arguments, callback) in
+			
+			runner.interpreter?.isManuallyTerminated = true
+			_ = callback(.nil)
+			
+		}
+		
 		let parseNumberDoc = """
 						Parses a string to a number.
 						- Parameter value: the string to parse.
