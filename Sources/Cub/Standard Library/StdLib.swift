@@ -53,6 +53,27 @@ public class StdLib {
 	}
 	
 	func registerExternalFunctions(_ runner: Runner) {
+
+		let parseNumberDoc = """
+						Parses a string to a number.
+						- Parameter value: the string to parse.
+						- Returns: a number if the string could be parsed, otherwise nil.
+						"""
+		
+		runner.registerExternalFunction(documentation: parseNumberDoc, name: "parseNumber", argumentNames: ["string"], returns: true) { (arguments, callback) in
+			
+			guard case let .string(value)? = arguments["value"] else {
+				_ = callback(.nil)
+				return
+			}
+			
+			if let numberValue = NumberType(value) {
+				_ = callback(.number(numberValue))
+			} else {
+				_ = callback(.nil)
+			}
+				
+		}
 		
 		let isNumberDoc = """
 						Checks if the value is a number.
