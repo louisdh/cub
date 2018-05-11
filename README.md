@@ -24,12 +24,11 @@
 <a href="https://paypal.me/louisdhauwe"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat" alt="Donate via PayPal"/></a>
 </p>
 
-Cub is an **interpreted** scripting language inspired by Swift. This project includes a lexer, parser, compiler and interpreter. All of these are 100% written in Swift without dependencies. 
+Cub is an interpreted, dynamically typed, scripting language inspired by Swift. This project includes a lexer, parser, compiler and interpreter, all written in Swift.
 
 Cub was derived from [Lioness](https://github.com/louisdh/lioness) (my first programming language).
 
-The standard library (abbreviated: stdlib) contains basic functions for number manipulation, including: max/min, ceil, floor, trigonometry, etc.
-
+The standard library (abbreviated: stdlib) contains basic utility functions, for example to convert from/to dates.
 
 ## Source examples
 The following Cub code calculates factorials recursively:
@@ -122,7 +121,7 @@ print("Hello world")
 Since the project does not rely on any dependencies, running it requires no setup. 
 
 ### macOS
-Open ```Cub.xcworkspace``` (preferably in the latest non-beta version of Xcode) and run the ```macOS Example``` target. The example will run the code in ```A.lion```. The output will be printed to the console.
+Open ```Cub.xcworkspace``` (preferably in the latest non-beta version of Xcode) and run the ```macOS Example``` target. The example will run the code in ```A.cub```. The output will be printed to the console.
 
 ## Installing framework
  
@@ -150,12 +149,6 @@ Add the following line to your ```Cartfile```:
 github "louisdh/cub" ~> 0.9
 ```
 Run ```carthage update``` to build the framework and drag the built ```Cub.framework``` into your Xcode project.
-
-
-## Standard Library
-*Please note: Cub is currently in beta*
-
-The Standard Library is currently under active development. There currently is no one document with everything from the stdlib. The best place to look for what's available is in [the source files](Sources/Cub/Standard%20Library/Sources/).
 
 ## Roadmap
 - [x] Structs
