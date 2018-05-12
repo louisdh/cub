@@ -87,7 +87,7 @@ public class StdLib {
 				return
 			}
 			
-			let splitted = value.components(separatedBy: separator)
+			let splitted = value.unescaped.components(separatedBy: separator.unescaped)
 			_ = callback(.array(splitted.map({ ValueType.string($0) })))
 
 		}
@@ -408,7 +408,7 @@ public class StdLib {
 				
 			}
 			
-			let output = String(format: inputStr, arguments: varArgs)
+			let output = String(format: inputStr.unescaped, arguments: varArgs)
 			
 			_ = callback(.string(output))
 			return
