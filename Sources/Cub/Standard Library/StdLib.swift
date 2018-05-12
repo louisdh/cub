@@ -54,6 +54,25 @@ public class StdLib {
 	
 	func registerExternalFunctions(_ runner: Runner) {
 
+		let sizeOfDoc = """
+						Get the size of a value.
+						For arrays this returns the number of elements in the array.
+						For strings this returns the length.
+						- Parameter value: the value to get the size of.
+						- Returns: size of value.
+						"""
+		
+		runner.registerExternalFunction(documentation: sizeOfDoc, name: "sizeOf", argumentNames: ["value"], returns: true) { (arguments, callback) in
+			
+			guard let value = arguments["value"] else {
+				_ = callback(.nil)
+				return
+			}
+			
+			_ = callback(.number(value.size))
+			
+		}
+		
 		let splitDoc = """
 						Split a string in smaller strings.
 						- Parameter string: the string to split.
@@ -63,7 +82,7 @@ public class StdLib {
 		
 		runner.registerExternalFunction(documentation: splitDoc, name: "split", argumentNames: ["string", "separator"], returns: true) { (arguments, callback) in
 			
-			guard case let .string(value)? = arguments["string"], case let .string(separator)? = arguments["separator"]  else {
+			guard case let .string(value)? = arguments["string"], case let .string(separator)? = arguments["separator"] else {
 				_ = callback(.nil)
 				return
 			}

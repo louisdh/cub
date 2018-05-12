@@ -904,29 +904,8 @@ public class BytecodeInterpreter {
 
 		let value = try popStack()
 		
-		let size: NumberType
-		
-		switch value {
-		case .array(let array):
-			size = NumberType(array.count)
-			
-		case .bool:
-			size = 1
-			
-		case .number(let number):
-			size = number
-			
-		case .string(let string):
-			size = NumberType(string.count)
-			
-		case .struct(let stru):
-			size = NumberType(stru.count)
-			
-		case .nil:
-			size = 0
-
-		}
-		
+		let size = value.size
+	
 		try stack.push(.number(size))
 		
 		return pc + 1
