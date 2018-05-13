@@ -204,6 +204,7 @@
 		BEC86660204732D400761E36 /* ArrayAdd2.cub in Resources */ = {isa = PBXBuildFile; fileRef = BEC8665D204732D300761E36 /* ArrayAdd2.cub */; };
 		BECF68C220A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */; };
 		BECF68C320A4A99B00EC4B14 /* SavannaKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */; };
+		BED848A620A8B894003660A7 /* ArraySubscriptInBinaryOp.cub in Resources */ = {isa = PBXBuildFile; fileRef = BED848A520A8B894003660A7 /* ArraySubscriptInBinaryOp.cub */; };
 		BEDC79C12049C8EF00EF3588 /* AutoCompleterTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */; };
 		BEEB790E1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
 		BEEB790F1EF4609000485334 /* BytecodeDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */; };
@@ -349,6 +350,7 @@
 		BEC8665C204732D300761E36 /* ArrayAdd3.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd3.cub; sourceTree = "<group>"; };
 		BEC8665D204732D300761E36 /* ArrayAdd2.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ArrayAdd2.cub; sourceTree = "<group>"; };
 		BECF68C120A4A99B00EC4B14 /* SavannaKitBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavannaKitBridge.swift; sourceTree = "<group>"; };
+		BED848A520A8B894003660A7 /* ArraySubscriptInBinaryOp.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = ArraySubscriptInBinaryOp.cub; sourceTree = "<group>"; };
 		BEDC79C02049C8EF00EF3588 /* AutoCompleterTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleterTestCase.swift; sourceTree = "<group>"; };
 		BEEB790D1EF4609000485334 /* BytecodeDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BytecodeDescriptor.swift; sourceTree = "<group>"; };
 		BEED01AF209F7A5C0058219D /* NilNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilNode.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 				BE64E1E22025DE8200D4A6FF /* CommentBlockAfterAssignment.cub */,
 				BE64E1E32025DE8200D4A6FF /* UnusedFunctionResult.cub */,
 				BE25B2192089052F00AD74B6 /* TypeCheck.cub */,
+				BED848A520A8B894003660A7 /* ArraySubscriptInBinaryOp.cub */,
 			);
 			path = "Test source files";
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				BE759C6820332045001E814D /* StructDeepGet.cub in Resources */,
 				BE64E20C2025DE8200D4A6FF /* LargeMathOperation.cub in Resources */,
 				BE882FA52048844500F4A194 /* StringSubscriptSet.cub in Resources */,
+				BED848A620A8B894003660A7 /* ArraySubscriptInBinaryOp.cub in Resources */,
 				BE64E20B2025DE8200D4A6FF /* Fibonacci.cub in Resources */,
 				BE64E2042025DE8200D4A6FF /* FunctionReturnGlobalVar.cub in Resources */,
 				BE64E20A2025DE8200D4A6FF /* LargeSource.cub in Resources */,

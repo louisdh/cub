@@ -165,4 +165,8 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "RepeatWhileStatement", that: "i", equals: .number(16))
 	}
 
+	func testArraySubscriptInBinaryOp() {
+		assert(in: "ArraySubscriptInBinaryOp", that: "b", equals: .number(5))
+	}
+	
 }
