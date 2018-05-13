@@ -20,7 +20,45 @@ class Lexer_Tests: BaseTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-	
+
+	func testStringEscapeLexer() {
+		
+		// Note: "\\" in Swift string literal is "\" in Cub source code.
+		let source = """
+					a = "\\"hello"
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .identifier("a"), range: 0..<1))
+		expectedTokens.append(.init(type: .equals, range: 2..<3))
+		expectedTokens.append(.init(type: .string("\"hello"), range: 4..<13))
+		
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+
+	func testStringLexer() {
+		
+		let source = """
+					a = "hello"
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		var expectedTokens = [Token]()
+		
+		expectedTokens.append(.init(type: .identifier("a"), range: 0..<1))
+		expectedTokens.append(.init(type: .equals, range: 2..<3))
+		expectedTokens.append(.init(type: .string("hello"), range: 4..<11))
+		
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
 	func testLexerAssignment() {
 		
 		// Test "a = 0.3" lexing in various number notations

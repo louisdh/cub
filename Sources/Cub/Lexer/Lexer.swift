@@ -367,8 +367,9 @@ public class Lexer {
 
 				isInEscapedSubstring = true
 			
-				consumeCharactersAtStart(1, updateCurrentString: false)
-
+				consumeCharactersAtStart(1, updateCurrentString: true)
+				currentString.removeLast()
+				
 				continue
 			}
 			
