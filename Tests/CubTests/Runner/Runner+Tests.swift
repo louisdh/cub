@@ -168,5 +168,13 @@ class Runner_Tests: BaseTestCase {
 	func testArraySubscriptInBinaryOp() {
 		assert(in: "ArraySubscriptInBinaryOp", that: "b", equals: .number(5))
 	}
+
+	func testStringEscapeBackslash() {
+		assert(in: "StringEscapeBackslash", that: "str", equals: .string("\\hello world\\"))
+	}
+	
+	func testStringEscapeDoubleQuote() {
+		assert(in: "StringEscapeDoubleQuote", that: "str", equals: .string("\"hello world\""))
+	}
 	
 }
