@@ -53,19 +53,19 @@ class Runner_Tests: BaseTestCase {
 	}
 	
 	func testStructUpdate() {
-		let expectedStruct = ValueType.struct([1: .number(3), 2: .number(2), 3: .number(3)])
+		let expectedStruct = ValueType.struct(StructData(members: [1: .number(3), 2: .number(2), 3: .number(3)]))
 		assert(in: "StructUpdate", that: "bar", equals: expectedStruct, useStdLib: false)
 	}
 	
 	func testStructDeepUpdate() {
-		let bStruct = ValueType.struct([1: .number(3), 2: .number(2), 3: .number(3)])
-		let expectedStruct = ValueType.struct([1: .number(1), 2: bStruct, 3: .number(3)])
+		let bStruct = ValueType.struct(StructData(members: [1: .number(3), 2: .number(2), 3: .number(3)]))
+		let expectedStruct = ValueType.struct(StructData(members: [1: .number(1), 2: bStruct, 3: .number(3)]))
 		assert(in: "StructDeepUpdate", that: "bar", equals: expectedStruct, useStdLib: false)
 	}
 	
 	func testStructDeepAssign() {
-		let bStruct = ValueType.struct([1: .number(2), 2: .number(2), 3: .number(3)])
-		let expectedStruct = ValueType.struct([1: .number(1), 2: bStruct, 3: .number(3)])
+		let bStruct = ValueType.struct(StructData(members: [1: .number(2), 2: .number(2), 3: .number(3)]))
+		let expectedStruct = ValueType.struct(StructData(members: [1: .number(1), 2: bStruct, 3: .number(3)]))
 		assert(in: "StructDeepAssign", that: "bar", equals: expectedStruct, useStdLib: false)
 	}
 	
