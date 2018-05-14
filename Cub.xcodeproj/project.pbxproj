@@ -139,6 +139,9 @@
 		BE5F123020AA0E15005024A3 /* StringEscapeT.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F122B20AA0E14005024A3 /* StringEscapeT.cub */; };
 		BE5F123120AA0E15005024A3 /* StringEscapeNewLine.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F122C20AA0E14005024A3 /* StringEscapeNewLine.cub */; };
 		BE5F123220AA0E15005024A3 /* StringEscapeZero.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */; };
+		BE5F123420AA16D4005024A3 /* String.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123320AA16D4005024A3 /* String.cub */; };
+		BE5F123520AA16D4005024A3 /* String.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123320AA16D4005024A3 /* String.cub */; };
+		BE5F123720AA2123005024A3 /* HTMLRegex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123620AA2123005024A3 /* HTMLRegex.cub */; };
 		BE64E1F52025DE8200D4A6FF /* FunctionGlobalVar.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */; };
 		BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C82025DE8200D4A6FF /* Complex.cub */; };
 		BE64E1F72025DE8200D4A6FF /* EmptyOneLineComment.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */; };
@@ -299,6 +302,8 @@
 		BE5F122B20AA0E14005024A3 /* StringEscapeT.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringEscapeT.cub; sourceTree = "<group>"; };
 		BE5F122C20AA0E14005024A3 /* StringEscapeNewLine.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringEscapeNewLine.cub; sourceTree = "<group>"; };
 		BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringEscapeZero.cub; sourceTree = "<group>"; };
+		BE5F123320AA16D4005024A3 /* String.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = String.cub; sourceTree = "<group>"; };
+		BE5F123620AA2123005024A3 /* HTMLRegex.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = HTMLRegex.cub; sourceTree = "<group>"; };
 		BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionGlobalVar.cub; sourceTree = "<group>"; };
 		BE64E1C82025DE8200D4A6FF /* Complex.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Complex.cub; sourceTree = "<group>"; };
 		BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyOneLineComment.cub; sourceTree = "<group>"; };
@@ -604,6 +609,7 @@
 			children = (
 				BE3F27BC1EE0AF7300D58C83 /* Arithmetic.cub */,
 				BE3F27BE1EE0AF7300D58C83 /* Graphics.cub */,
+				BE5F123320AA16D4005024A3 /* String.cub */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -733,6 +739,7 @@
 				BE5F122920AA0E14005024A3 /* StringEscapeR.cub */,
 				BE5F122A20AA0E14005024A3 /* StringEscapeSingleQuote.cub */,
 				BE5F122B20AA0E14005024A3 /* StringEscapeT.cub */,
+				BE5F123620AA2123005024A3 /* HTMLRegex.cub */,
 				BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */,
 			);
 			path = "Test source files";
@@ -943,6 +950,7 @@
 			files = (
 				BE3F27C31EE0AF7300D58C83 /* Graphics.cub in Resources */,
 				BE3F27BF1EE0AF7300D58C83 /* Arithmetic.cub in Resources */,
+				BE5F123420AA16D4005024A3 /* String.cub in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +984,7 @@
 				BEC8665F204732D400761E36 /* ArrayAdd3.cub in Resources */,
 				BE759C6F203331FE001E814D /* ArrayUpdate.cub in Resources */,
 				BE64E2102025DE8200D4A6FF /* CommentBlockAfterAssignment.cub in Resources */,
+				BE5F123720AA2123005024A3 /* HTMLRegex.cub in Resources */,
 				BE759C7320333465001E814D /* StringInit.cub in Resources */,
 				BE64E1F92025DE8200D4A6FF /* CommentLineAndBlock.cub in Resources */,
 				BE64E1FA2025DE8200D4A6FF /* Fibonacci.scorp in Resources */,
@@ -1015,6 +1024,7 @@
 			files = (
 				BE3F27C41EE0AF7300D58C83 /* Graphics.cub in Resources */,
 				BE3F27C01EE0AF7300D58C83 /* Arithmetic.cub in Resources */,
+				BE5F123520AA16D4005024A3 /* String.cub in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

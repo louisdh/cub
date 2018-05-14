@@ -1,0 +1,5 @@
+
+html = "test<h1>hello world</h1>test"
+
+rangesMatched = regex("<([a-z][a-z0-9]*)\\b[^>]*>(.*?)</\\1>", html)
+h1Tag = stringAtRange(html, rangesMatched[0])

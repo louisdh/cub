@@ -197,4 +197,8 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "StringEscapeZero", that: "str", equals: .string("\0"))
 	}
 	
+	func testHTMLRegex() {
+		assert(in: "HTMLRegex", that: "h1Tag", equals: .string("<h1>hello world</h1>"), useStdLib: true)
+	}
+	
 }
