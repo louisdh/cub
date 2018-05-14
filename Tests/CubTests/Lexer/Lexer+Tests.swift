@@ -35,7 +35,7 @@ class Lexer_Tests: BaseTestCase {
 		
 		expectedTokens.append(.init(type: .identifier("a"), range: 0..<1))
 		expectedTokens.append(.init(type: .equals, range: 2..<3))
-		expectedTokens.append(.init(type: .string("\"hello"), range: 4..<13))
+		expectedTokens.append(.init(type: .string("\"\\\"hello\""), range: 4..<13))
 		
 		XCTAssertEqual(expectedTokens, tokens)
 		
@@ -54,7 +54,7 @@ class Lexer_Tests: BaseTestCase {
 		
 		expectedTokens.append(.init(type: .identifier("a"), range: 0..<1))
 		expectedTokens.append(.init(type: .equals, range: 2..<3))
-		expectedTokens.append(.init(type: .string("hello"), range: 4..<11))
+		expectedTokens.append(.init(type: .string("\"hello\""), range: 4..<11))
 		
 		XCTAssertEqual(expectedTokens, tokens)
 		

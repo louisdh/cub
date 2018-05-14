@@ -177,4 +177,24 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "StringEscapeDoubleQuote", that: "str", equals: .string("\"hello world\""))
 	}
 	
+	func testStringEscapeNewLine() {
+		assert(in: "StringEscapeNewLine", that: "str", equals: .string("\n"))
+	}
+	
+	func testStringEscapeR() {
+		assert(in: "StringEscapeR", that: "str", equals: .string("\r"))
+	}
+	
+	func testStringEscapeSingleQuote() {
+		assert(in: "StringEscapeSingleQuote", that: "str", equals: .string("\'hello world\'"))
+	}
+	
+	func testStringEscapeT() {
+		assert(in: "StringEscapeT", that: "str", equals: .string("\t"))
+	}
+	
+	func testStringEscapeZero() {
+		assert(in: "StringEscapeZero", that: "str", equals: .string("\0"))
+	}
+	
 }
