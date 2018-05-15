@@ -55,7 +55,10 @@ public class StdLib {
 	func registerExternalFunctions(_ runner: Runner) {
 		
 		let stringAtRangeDoc = """
-							Returns part of string, given a range.
+							Returns part of a string, given a range.
+							- Parameter string: the string to get a part from.
+							- Parameter range: the range of the part in the string you want.
+							- Returns: the part of the string, for the given range.
 							"""
 		runner.registerExternalFunction(documentation: stringAtRangeDoc, name: "stringAtRange", argumentNames: ["string", "range"], returns: true) { (arguments, callback) in
 			
@@ -111,7 +114,10 @@ public class StdLib {
 		#if !os(Linux)
 		
 			let regexDoc = """
-							Returns an array of ranges for all the matches of the regular expression in the string.
+							Get an array of ranges for all the matches of a regular expression in a given string.
+							- Parameter pattern: the regular expression pattern. Cub uses the same regular expressions as Apple does, more info can be found here: https://developer.apple.com/documentation/foundation/nsregularexpression#1965589.
+							- Parameter string: the string to match the regular expression on.
+							- Returns: an array of ranges for all the matches of the regular expression in the provided string.
 							"""
 		
 			runner.registerExternalFunction(documentation: regexDoc, name: "regex", argumentNames: ["pattern", "string"], returns: true) { (arguments, callback) in
@@ -157,7 +163,7 @@ public class StdLib {
 		
 		let isEmptyDoc = """
 						Check if a value is empty.
-						- Parameter value: the value to check if it's empty.
+						- Parameter value: the value to check wether it's empty.
 						- Returns: true if the value is empty, false otherwise.
 						"""
 		
@@ -192,7 +198,7 @@ public class StdLib {
 		}
 		
 		let splitDoc = """
-						Split a string in smaller strings.
+						Split a string into smaller strings.
 						- Parameter string: the string to split.
 						- Parameter separator: the separator to split by.
 						- Returns: an array of strings.
@@ -222,7 +228,7 @@ public class StdLib {
 		}
 		
 		let parseNumberDoc = """
-						Parses a string to a number.
+						Tries to parse a string to a number.
 						- Parameter value: the string to parse.
 						- Returns: a number if the string could be parsed, otherwise nil.
 						"""
