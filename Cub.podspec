@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Cub'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.license = 'MIT'
   s.summary = 'The Cub Programming Language'
   s.homepage = 'https://github.com/louisdh/cub'
