@@ -59,6 +59,7 @@ class Lexer_Tests: BaseTestCase {
 		XCTAssertEqual(expectedTokens, tokens)
 		
 	}
+	
 	func testLexerAssignment() {
 		
 		// Test "a = 0.3" lexing in various number notations
@@ -153,6 +154,22 @@ class Lexer_Tests: BaseTestCase {
 		expectedTokens.append(.init(type: .comment("// test"), range: 1..<8))
 		expectedTokens.append(.init(type: .comment("// hello"), range: 13..<21))
 		expectedTokens.append(.init(type: .comment("// world"), range: 26..<34))
+		
+		XCTAssertEqual(expectedTokens, tokens)
+		
+	}
+	
+	
+	func testLexerCrash1() {
+		
+		let source = """
+					"\\
+					"""
+		
+		let lexer = Lexer(input: source)
+		let tokens = lexer.tokenize()
+		
+		let expectedTokens = [Token]()
 		
 		XCTAssertEqual(expectedTokens, tokens)
 		
