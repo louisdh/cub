@@ -9,10 +9,16 @@
 import Foundation
 
 /// Interpreter Error
-public enum InterpreterErrorType: Error {
+public enum InterpreterErrorType: Error, Equatable {
 
 	/// Unexpected argument
 	case unexpectedArgument
+
+	/// Unexpected argument
+	case unexpectedArgumentExpectedNumber(found: ValueType)
+
+	/// Unexpected argument
+	case unexpectedArgumentExpectedBool
 
 	/// Illegal stack operation
 	case illegalStackOperation
@@ -48,6 +54,12 @@ extension InterpreterErrorType {
 		switch self {
 		case .unexpectedArgument:
 			return "An unexpected argument was found during interpretation."
+			
+		case .unexpectedArgumentExpectedNumber(let foundValue):
+			return "Expected a number during interpretation but found \(foundValue)."
+			
+		case .unexpectedArgumentExpectedBool:
+			return "An unexpected argument was found during interpretation, expected a boolean."
 			
 		case .illegalStackOperation:
 			return "An illegal stack operation was performed during interpretation."

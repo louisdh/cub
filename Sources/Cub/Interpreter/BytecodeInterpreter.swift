@@ -1144,7 +1144,7 @@ public class BytecodeInterpreter {
 		let last = try popStack()
 
 		guard case let ValueType.number(number) = last else {
-			throw error(.unexpectedArgument)
+			throw error(.unexpectedArgumentExpectedNumber(found: last))
 		}
 
 		return number
@@ -1155,7 +1155,7 @@ public class BytecodeInterpreter {
 		let last = try popStack()
 
 		guard case let ValueType.bool(bool) = last else {
-			throw error(.unexpectedArgument)
+			throw error(.unexpectedArgumentExpectedBool)
 		}
 
 		return bool
