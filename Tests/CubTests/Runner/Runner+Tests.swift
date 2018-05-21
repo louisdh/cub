@@ -108,12 +108,12 @@ class Runner_Tests: BaseTestCase {
 	}
 	
 	func testStringSubscriptSetError() {
-		let expectedError = InterpreterError(type: .arrayOutOfBounds, range: 19..<20)
+		let expectedError = InterpreterError(type: .arrayOutOfBounds(index: 10, arraySize: 5), range: 19..<20)
 		assertInterpretError(in: "StringSubscriptSetError", expectedError: expectedError, useStdLib: false)
 	}
 	
 	func testStringSubscriptGetError() {
-		let expectedError = InterpreterError(type: .arrayOutOfBounds, range: 18..<19)
+		let expectedError = InterpreterError(type: .arrayOutOfBounds(index: 10, arraySize: 5), range: 18..<19)
 		assertInterpretError(in: "StringSubscriptGetError", expectedError: expectedError, useStdLib: false)
 	}
 	
