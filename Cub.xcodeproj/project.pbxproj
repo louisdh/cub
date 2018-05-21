@@ -142,6 +142,7 @@
 		BE5F123420AA16D4005024A3 /* String.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123320AA16D4005024A3 /* String.cub */; };
 		BE5F123520AA16D4005024A3 /* String.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123320AA16D4005024A3 /* String.cub */; };
 		BE5F123720AA2123005024A3 /* HTMLRegex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123620AA2123005024A3 /* HTMLRegex.cub */; };
+		BE5F510020B2FC7C00A0B470 /* ParseNumber.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */; };
 		BE64E1F52025DE8200D4A6FF /* FunctionGlobalVar.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */; };
 		BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C82025DE8200D4A6FF /* Complex.cub */; };
 		BE64E1F72025DE8200D4A6FF /* EmptyOneLineComment.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */; };
@@ -304,6 +305,7 @@
 		BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringEscapeZero.cub; sourceTree = "<group>"; };
 		BE5F123320AA16D4005024A3 /* String.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = String.cub; sourceTree = "<group>"; };
 		BE5F123620AA2123005024A3 /* HTMLRegex.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = HTMLRegex.cub; sourceTree = "<group>"; };
+		BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParseNumber.cub; sourceTree = "<group>"; };
 		BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionGlobalVar.cub; sourceTree = "<group>"; };
 		BE64E1C82025DE8200D4A6FF /* Complex.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Complex.cub; sourceTree = "<group>"; };
 		BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyOneLineComment.cub; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				BE5F122B20AA0E14005024A3 /* StringEscapeT.cub */,
 				BE5F123620AA2123005024A3 /* HTMLRegex.cub */,
 				BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */,
+				BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */,
 			);
 			path = "Test source files";
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				BE5F123120AA0E15005024A3 /* StringEscapeNewLine.cub in Resources */,
 				BE64E20C2025DE8200D4A6FF /* LargeMathOperation.cub in Resources */,
 				BE882FA52048844500F4A194 /* StringSubscriptSet.cub in Resources */,
+				BE5F510020B2FC7C00A0B470 /* ParseNumber.cub in Resources */,
 				BED848A620A8B894003660A7 /* ArraySubscriptInBinaryOp.cub in Resources */,
 				BE64E20B2025DE8200D4A6FF /* Fibonacci.cub in Resources */,
 				BE64E2042025DE8200D4A6FF /* FunctionReturnGlobalVar.cub in Resources */,

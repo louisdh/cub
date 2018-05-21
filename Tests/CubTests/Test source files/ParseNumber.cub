@@ -1,0 +1,2 @@
+a = parseNumber("1.0")
+b = parseNumber("hello")

@@ -26,6 +26,11 @@ class Stdlib_Tests: BaseTestCase {
 		super.tearDown()
 	}
 	
+	func testParseNumber() {
+		assert(in: "ParseNumber", that: "a", equals: .number(1.0))
+		assert(in: "ParseNumber", that: "b", equals: .nil)
+	}
+	
 	func testTypeCheck() {
 		assert(in: "TypeCheck", that: "numberCheck", equals: .bool(true))
 		assert(in: "TypeCheck", that: "stringCheck", equals: .bool(true))
