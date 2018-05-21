@@ -33,7 +33,7 @@ public enum InterpreterErrorType: Error, Equatable {
 	case underflow
 	
 	/// Array out of bounds
-	case arrayOutOfBounds
+	case arrayOutOfBounds(index: Int, arraySize: Int)
 
 }
 
@@ -73,8 +73,8 @@ extension InterpreterErrorType {
 		case .underflow:
 			return "An underflow occurred during interpretation."
 			
-		case .arrayOutOfBounds:
-			return "An array was accessed outside its bounds during interpretation."
+		case .arrayOutOfBounds(let index, let arraySize):
+			return "An array was accessed outside its bounds during interpretation, tried to access index \(index) in an array of length \(arraySize)."
 			
 		}
 		
