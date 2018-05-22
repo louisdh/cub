@@ -127,6 +127,12 @@ public class BytecodeInterpreter {
 			if isManuallyTerminated {
 				break
 			}
+			
+			// Prevent Swift array crash when appending too much.
+			// TODO: find better way to find limit, instead of hardcoded 50M.
+			if pcTrace.count > 50_000_000 {
+				throw error(.outOfMemory)
+			}
 
 			pcTrace.append(pc)
 			let newPc = try executeInstruction(bytecode[pc], pc: pc)

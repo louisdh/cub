@@ -35,6 +35,9 @@ public enum InterpreterErrorType: Error, Equatable {
 	/// Array out of bounds
 	case arrayOutOfBounds(index: Int, arraySize: Int)
 
+	/// Out of memory
+	case outOfMemory
+
 }
 
 extension InterpreterErrorType {
@@ -75,6 +78,9 @@ extension InterpreterErrorType {
 			
 		case .arrayOutOfBounds(let index, let arraySize):
 			return "An array was accessed outside its bounds during interpretation, tried to access index \(index) in an array of length \(arraySize)."
+			
+		case .outOfMemory:
+			return "Out of memory."
 			
 		}
 		
