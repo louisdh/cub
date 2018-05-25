@@ -10,9 +10,19 @@ import Foundation
 
 #if canImport(SavannaKit)
 
+public enum SyntaxColorType {
+	case plain
+	case number
+	case string
+	case identifier
+	case keyword
+	case comment
+	case editorPlaceholder
+}
+
 import SavannaKit
 
-extension Cub.TokenType: SavannaKit.TokenType {
+extension Cub.TokenType {
 	
 	public var syntaxColorType: SyntaxColorType {
 		
@@ -64,11 +74,19 @@ extension Cub.TokenType: SavannaKit.TokenType {
 
 public struct SavannaCubToken: SavannaKit.Token {
 	
-	public let cubToken: Cub.Token
-	public let range: Range<String.Index>?
+	public let type: SyntaxColorType
 	
-	public init(cubToken: Cub.Token, in source: String) {
+	public let cubToken: Cub.Token
+	public let range: Range<String.Index>
+	
+	public var isEditorPlaceholder: Bool
+	
+	public var isPlain: Bool
+	
+	public init?(cubToken: Cub.Token, in source: String) {
 		self.cubToken = cubToken
+		
+		self.type = cubToken.type.syntaxColorType
 		
 		if let range = cubToken.range {
 			let lowerBound = source.index(source.startIndex, offsetBy: range.lowerBound)
@@ -77,15 +95,14 @@ public struct SavannaCubToken: SavannaKit.Token {
 			self.range = lowerBound..<upperBound
 			
 		} else {
-			self.range = nil
+			return nil
 		}
 		
+		isPlain = self.type == .plain
+		isEditorPlaceholder = self.type == .editorPlaceholder
+		
 	}
-	
-	public var savannaTokenType: SavannaKit.TokenType {
-		return cubToken.type
-	}
-	
+
 }
 
 extension Cub.Lexer: SavannaKit.Lexer {
@@ -95,7 +112,74 @@ extension Cub.Lexer: SavannaKit.Lexer {
 	}
 	
 	public func getSavannaTokens() -> [SavannaKit.Token] {
-		return self.tokenize().map({ SavannaCubToken(cubToken: $0, in: input) })
+		return self.tokenize().compactMap({ SavannaCubToken(cubToken: $0, in: input) })
+	}
+	
+}
+
+public struct DefaultTheme: SyntaxColorTheme {
+	
+	public init() {
+		
+	}
+	
+	private static var lineNumbersColor: Color {
+		return Color(red: 100/255, green: 100/255, blue: 100/255, alpha: 1.0)
+	}
+	
+	public let lineNumbersStyle: LineNumbersStyle? = LineNumbersStyle(font: Font(name: "Menlo", size: 16)!, textColor: lineNumbersColor, backgroundColor: Color(red: 21/255.0, green: 22/255, blue: 31/255, alpha: 1.0))
+	
+	public let font = Font(name: "Menlo", size: 15)!
+	
+	public let backgroundColor = Color(red: 31/255.0, green: 32/255, blue: 41/255, alpha: 1.0)
+	
+	public func color(for syntaxColorType: SyntaxColorType) -> Color {
+		
+		switch syntaxColorType {
+		case .plain:
+			return .white
+			
+		case .number:
+			return Color(red: 116/255, green: 109/255, blue: 176/255, alpha: 1.0)
+			
+		case .string:
+			return .red
+			
+		case .identifier:
+			return Color(red: 20/255, green: 156/255, blue: 146/255, alpha: 1.0)
+			
+		case .keyword:
+			return Color(red: 215/255, green: 0, blue: 143/255, alpha: 1.0)
+			
+		case .comment:
+			return Color(red: 69.0/255.0, green: 187.0/255.0, blue: 62.0/255.0, alpha: 1.0)
+			
+		case .editorPlaceholder:
+			return backgroundColor
+		}
+		
+	}
+	
+	public func globalAttributes() -> [NSAttributedStringKey: Any] {
+		
+		var attributes = [NSAttributedStringKey: Any]()
+		
+		attributes[.font] = font
+		attributes[.foregroundColor] = Color.white
+
+		return attributes
+	}
+	
+	public func attributes(for token: SavannaKit.Token) -> [NSAttributedStringKey: Any] {
+		var attributes = [NSAttributedStringKey: Any]()
+		
+		guard let savannaToken = token as? SavannaCubToken else {
+			return attributes
+		}
+		
+		attributes[.foregroundColor] = color(for: savannaToken.type)
+		
+		return attributes
 	}
 	
 }
