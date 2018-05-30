@@ -124,6 +124,10 @@ public class BytecodeInterpreter {
 
 		while true {
 			
+			if Thread.current.isCancelled {
+				break
+			}
+			
 			if isManuallyTerminated {
 				break
 			}
