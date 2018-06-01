@@ -144,6 +144,7 @@
 		BE5F123720AA2123005024A3 /* HTMLRegex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F123620AA2123005024A3 /* HTMLRegex.cub */; };
 		BE5F510020B2FC7C00A0B470 /* ParseNumber.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */; };
 		BE61088A20C1E0450015CBFC /* FunctionCallAsLoopCondition.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE61088920C1E0450015CBFC /* FunctionCallAsLoopCondition.cub */; };
+		BE61088C20C1E30C0015CBFC /* IfEqualsNil.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE61088B20C1E30C0015CBFC /* IfEqualsNil.cub */; };
 		BE64E1F52025DE8200D4A6FF /* FunctionGlobalVar.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */; };
 		BE64E1F62025DE8200D4A6FF /* Complex.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C82025DE8200D4A6FF /* Complex.cub */; };
 		BE64E1F72025DE8200D4A6FF /* EmptyOneLineComment.cub in Resources */ = {isa = PBXBuildFile; fileRef = BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */; };
@@ -308,6 +309,7 @@
 		BE5F123620AA2123005024A3 /* HTMLRegex.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = HTMLRegex.cub; sourceTree = "<group>"; };
 		BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParseNumber.cub; sourceTree = "<group>"; };
 		BE61088920C1E0450015CBFC /* FunctionCallAsLoopCondition.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = FunctionCallAsLoopCondition.cub; sourceTree = "<group>"; };
+		BE61088B20C1E30C0015CBFC /* IfEqualsNil.cub */ = {isa = PBXFileReference; lastKnownFileType = text; path = IfEqualsNil.cub; sourceTree = "<group>"; };
 		BE64E1C72025DE8200D4A6FF /* FunctionGlobalVar.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionGlobalVar.cub; sourceTree = "<group>"; };
 		BE64E1C82025DE8200D4A6FF /* Complex.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Complex.cub; sourceTree = "<group>"; };
 		BE64E1C92025DE8200D4A6FF /* EmptyOneLineComment.cub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyOneLineComment.cub; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 				BE5F122D20AA0E14005024A3 /* StringEscapeZero.cub */,
 				BE5F50FF20B2FC7C00A0B470 /* ParseNumber.cub */,
 				BE61088920C1E0450015CBFC /* FunctionCallAsLoopCondition.cub */,
+				BE61088B20C1E30C0015CBFC /* IfEqualsNil.cub */,
 			);
 			path = "Test source files";
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				BE7767CF20420047009E5B63 /* AssignBoolToVar.cub in Resources */,
 				BEC8665E204732D400761E36 /* ArrayAdd1.cub in Resources */,
 				BE64E1FB2025DE8200D4A6FF /* GreatestCommonDivisor.cub in Resources */,
+				BE61088C20C1E30C0015CBFC /* IfEqualsNil.cub in Resources */,
 				BE64E1F82025DE8200D4A6FF /* NumberSign.cub in Resources */,
 				BE759C6E203331FE001E814D /* ArrayInit.cub in Resources */,
 				BE759C6820332045001E814D /* StructDeepGet.cub in Resources */,

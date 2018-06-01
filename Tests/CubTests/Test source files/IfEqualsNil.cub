@@ -1,0 +1,5 @@
+a = nil
+
+if a == nil {
+	a = 1
+}

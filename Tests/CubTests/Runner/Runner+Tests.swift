@@ -205,4 +205,8 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "FunctionCallAsLoopCondition", that: "y", equals: .number(0), useStdLib: false)
 	}
 	
+	func testIfEqualsNil() {
+		assert(in: "IfEqualsNil", that: "a", equals: .number(1), useStdLib: false)
+	}
+	
 }
