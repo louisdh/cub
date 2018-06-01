@@ -201,4 +201,8 @@ class Runner_Tests: BaseTestCase {
 		assert(in: "HTMLRegex", that: "h1Tag", equals: .string("<h1>hello world</h1>"), useStdLib: true)
 	}
 	
+	func testFunctionCallAsLoopCondition() {
+		assert(in: "FunctionCallAsLoopCondition", that: "y", equals: .number(0), useStdLib: false)
+	}
+	
 }

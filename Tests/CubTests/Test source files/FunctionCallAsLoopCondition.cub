@@ -1,0 +1,10 @@
+y = 1
+
+while test(y) {
+	y = 0
+}
+
+func test(x) returns {
+	return x > 0
+}
+

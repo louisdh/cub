@@ -70,7 +70,7 @@ public struct CallNode: ASTNode {
 			return true
 		}
 
-		let isResultUsed = parent is BinaryOpNode || parent is AssignmentNode || parent is ReturnNode || parent is ConditionalStatementNode || parent is CallNode
+		let isResultUsed = parent is BinaryOpNode || parent is AssignmentNode || parent is ReturnNode || parent is ConditionalStatementNode || parent is CallNode || parent is LoopNode
 
 		return !isResultUsed
 
