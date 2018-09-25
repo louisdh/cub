@@ -9,7 +9,11 @@
 import Foundation
 
 /// Bytecode Interpreter
-public class BytecodeInterpreter {
+public class BytecodeInterpreter: Codable {
+	
+	enum CodingKeys: String, CodingKey {
+		case stackLimit, bytecode, stack, virtualMap, virtualEndMap, virtualInvokeStack, virtualDepth, registers, pcTrace, pc
+	}
 
 	private let stackLimit = 65_536
 

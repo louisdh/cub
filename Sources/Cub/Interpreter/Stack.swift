@@ -54,3 +54,11 @@ public struct Stack<Element>: CustomStringConvertible {
 	}
 
 }
+
+extension Stack: Decodable where Element: Decodable { }
+
+extension Stack: Encodable where Element: Encodable { }
+
+extension Stack: Equatable where Element: Equatable { }
+
+extension Stack: Hashable where Element: Hashable { }

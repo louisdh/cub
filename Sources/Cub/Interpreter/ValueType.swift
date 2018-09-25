@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct StructData: Equatable {
+public struct StructData: Hashable, Codable {
 	
 	var members: [Int: ValueType]
 	
 }
 
-public enum ValueType: Equatable {
+public enum ValueType: Hashable {
 
 	case number(NumberType)
 	case `struct`(StructData)
@@ -23,6 +23,53 @@ public enum ValueType: Equatable {
 	case array([ValueType])
 	case `nil`
 
+}
+
+extension ValueType: Codable {
+	
+	enum CodingKeys: String, CodingKey {
+		case number, `struct`, bool, string, array, `nil`
+	}
+	
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		
+		if let number = try container.decodeIfPresent(NumberType.self, forKey: .number) {
+			self = .number(number)
+		} else if let `struct` = try container.decodeIfPresent(StructData.self, forKey: .struct) {
+			self = .struct(`struct`)
+		} else if let bool = try container.decodeIfPresent(Bool.self, forKey: .bool) {
+			self = .bool(bool)
+		} else if let string = try container.decodeIfPresent(String.self, forKey: .string) {
+			self = .string(string)
+		} else if let array = try container.decodeIfPresent([ValueType].self, forKey: .array) {
+			self = .array(array)
+		} else if (try? container.decodeNil(forKey: .nil)) == true {
+			self = .nil
+		} else {
+			throw InstructionArgumentTypeCodingError.invalidValue
+		}
+		
+	}
+	
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		switch self {
+		case .number(let number):
+			try container.encode(number, forKey: .number)
+		case .struct(let `struct`):
+			try container.encode(`struct`, forKey: .struct)
+		case .bool(let bool):
+			try container.encode(bool, forKey: .bool)
+		case .string(let string):
+			try container.encode(string, forKey: .string)
+		case .array(let array):
+			try container.encode(array, forKey: .array)
+		case .nil:
+			try container.encodeNil(forKey: .nil)
+		}
+	}
+	
 }
 
 public extension ValueType {

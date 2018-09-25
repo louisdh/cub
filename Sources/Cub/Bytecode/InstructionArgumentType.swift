@@ -8,7 +8,11 @@
 
 import Foundation
 
-public enum InstructionArgumentType {
+enum InstructionArgumentTypeCodingError: Error {
+	case invalidValue
+}
+
+public enum InstructionArgumentType: Hashable {
 
 	case value(ValueType)
 	case index(Int)
@@ -24,4 +28,35 @@ public enum InstructionArgumentType {
 
 	}
 
+}
+
+extension InstructionArgumentType: Codable {
+	
+	enum CodingKeys: String, CodingKey {
+		case value, index
+	}
+	
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		
+		if let value = try container.decodeIfPresent(ValueType.self, forKey: .value) {
+			self = .value(value)
+		} else if let index = try container.decodeIfPresent(Int.self, forKey: .index) {
+			self = .index(index)
+		} else {
+			throw InstructionArgumentTypeCodingError.invalidValue
+		}
+		
+	}
+	
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		switch self {
+		case .value(let value):
+			try container.encode(value, forKey: .value)
+		case .index(let index):
+			try container.encode(index, forKey: .index)
+		}
+	}
+	
 }

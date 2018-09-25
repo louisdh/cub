@@ -13,7 +13,7 @@ import Foundation
 /// Enum cases are lower camel case (per Swift guideline)
 ///
 /// Instruction command descriptions are lower snake case
-public enum BytecodeInstructionType: UInt8, CustomStringConvertible {
+public enum BytecodeInstructionType: UInt8, CustomStringConvertible, Codable, Hashable {
 
 	// TODO: add documentation with stack before/after execution
 

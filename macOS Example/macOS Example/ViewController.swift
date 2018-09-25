@@ -71,6 +71,15 @@ class ViewController: NSViewController, RunnerDelegate {
 
 //		drawASTGraph(for: "A")
 	}
+	
+	func encodeInterpreterToJSON(_ interpreter: BytecodeInterpreter) throws -> Data {
+		
+		let encoder = JSONEncoder()
+		
+		let data = try encoder.encode(interpreter)
+		
+		return data
+	}
 
 	func drawASTGraph(for testFile: String) {
 
